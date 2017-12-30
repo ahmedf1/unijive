@@ -5,91 +5,62 @@
         <meta charset = "utf-8">
             <meta name = "viewport" content="width=device-width, initial-scale=1">
                 <link rel="stylesheet" href="bootstrap-4/css/bootstrap.css">
+                    <link rel="stylesheet" media="screen" href="https://fontlibrary.org/face/grand-hotel" type="text/css"/>
                     
                     <style>
                         
-                        a.main_page:link, a.main_page:hover{
-                            color: #B39DDB;
+                        a.main_page:link, a.main_page:hover, a.main_page:active{
+                            color: white;
                             text-decoration:none;
+                            font-family: "GrandHotelRegular";
+                            font-size: 25px;
                         }
-                    
+          
+                
+                    .welcome_splash{
+                        font-family: 'GrandHotelRegular';
+                        text-align: center;
+                        color: white;
+                    }
+                    body{
+                        background-color: #B39DDB;
+                    }
                         </style>
     </head>
     
     <body>
         
-        <div class = "navbar" style="background-color:#B39DDB">
-            <div class="navbar-brand" >unijive</div>
-            <div style="text-align:right, font-family:sans-serif">
-                <a href ="unijive.register.html"><button type= "button" class="btn btn-link">Register</button></a>
-                <a href ="unijive.login.html"><button type= "button" class="btn btn-link">Login</button></a>
-            </div>
-        </div>
         
-        <div class="container" >
-            <div class="row" style="margin-top:150px;" >
-                <div class="col-lg"  >
-                    <div style = "color:#B39DDB;text-align:center;">
-                        <a class ="main_page" href =  "unijive.my_chats.html">
-                            <img src = "icons/my_chats_icon.PNG" height="auto" width="auto">
-                                <div style = "margin-top:50px;">
-                                <h3>My Chats</h3></a>
-                    </div>
+        <div class = "jumbotron" style="background-color: #B39DDB">
+            <h1 class = "welcome_splash">welcome to unijive!</h1>
+            </div>
+        <div class = "container" style="margin-bottom:10px;clear:left;text-align:center;">
+            <div class = "form-label" style="color:white;">
+                Email:
+            </div>
+            
+            <input type = "email" name = "emailAddress1" style = "width:30%">
+                
+        </div>
+        <div class = "container" style="margin-bottom:10px;clear:left;text-align:center;">
+            <div class = "form-label" style="color:white;">
+                Password:
+            </div>
+            
+            <input type = "password" name = "password" style = "width:30%">
+                
                 </div>
-            </div>
-            <div class="col-lg" >
-                <div style = "color:#B39DDB;text-align:center;">
-                    <a class ="main_page" href =  "unijive.search_chats.html">
-                        <img src = "icons/search_icon.PNG" height="auto" width="auto">
-                            <div style = "margin-top:50px;">
-                            <h3>Search Chats</h3></a>
-                </div>
-            </div>
-        </div>
-        <div class="col-lg">
-            <div style = "color:#B39DDB;text-align:center;">
-                <a class ="main_page" href =  "unijive.chats_near_me.html">
-                    <img src = "icons/chats_near_me_icon.PNG" height="auto" width="auto">
-                        <div style = "margin-top:50px;">
-                        <h3>Chats Near Me</h3></a>
-            </div>
-        </div>
-        </div>
-        </div>
-        </div>
 
-<!--
+            <div style="text-align:center;">
+                <a href ="unijive.home_logged_in.html"><button type= "button" class="btn btn-link" style="color:white;  border:1px solid">Login</button></a>
+                <br>
+                <a class= "main_page" href ="unijive.register.html"><p>Don't have an account? Create one right now!</p></a>
+            </div>
+            
+            
+
         
-        <div class = "container" style="height:auto;width:33%;float:left;margin-top:150px;">
-            <div style = "color:#B39DDB;text-align:center;">
-                <a class ="main_page" href =  "unijive.my_chats.html">
-                    <img src = "icons/my_chats_icon.PNG" height="auto" width="auto">
-                        <div style = "margin-top:50px;">
-                        <h3>My Chats</h3></a>
-            </div>
-        </div>
-        </div>
-        <div class = "container" style="height:auto;width:33%;float:left;margin-top:132px;">
-            <div style = "color:#B39DDB;text-align:center;">
-                <a class ="main_page" href =  "unijive.search_chats.html">
-                    <img src = "icons/search_icon.PNG" height="auto" width="auto">
-                        <div style = "margin-top:50px;">
-                        <h3>Search Chats</h3></a>
-            </div>
-        </div>
-        </div>
-        <div class = "container" style="height:auto;width:33%;float:right; margin-top:51px;">
-            <div style = "color:#B39DDB;text-align:center;">
-                <a class ="main_page" href =  "unijive.chats_near_me.html">
-                    <img src = "icons/chats_near_me_icon.PNG" height="auto" width="auto">
-                        <div style = "margin-top:35px;">
-                        <h3>Chats Near Me</h3></a>
-            </div>
-        </div>
-        </div>
-
--->
-    </body>
+        </body>
     
     
     
