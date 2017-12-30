@@ -5,15 +5,15 @@
         <meta charset = "utf-8">
             <meta name = "viewport" content="width=device-width, initial-scale=1">
                 <link rel="stylesheet" href="bootstrap-4/css/bootstrap.css">
+                <link rel="stylesheet" media="screen" href="https://fontlibrary.org/face/grand-hotel" type="text/css"/>
                     
 <style>
 .
 </style>
 <div class = "navbar" style="background-color:#B39DDB">
-    <a href="unijive.home_logged_in.html"><div class="navbar-brand" >unijive</div></a>
+    <a href="unijive.home_logged_out.html"><div class="navbar-brand" style="font-family:GrandHotelRegular;">unijive</div></a>
     <div style="text-align:right, font-family:sans-serif">
-        <a href ="unijive.register.html"><button type= "button" class="btn btn-link">Register</button></a>
-        <button type= "button" class="btn btn-link">Login</button>
+        <a href="unijive.home_logged_out.html"><button type= "button" class="btn btn-link">Login</button></a>
     </div>
 </div>
 <br>
@@ -29,40 +29,41 @@
 <br>
 
 
-<div class = "container" style="margin-left:25%;width:20%;float:left;">
-<div class = "form-label">
-    First Name
-</div>
-    <input type = "text" name = "firstname" required style = "width:100%;">
-</div>
+    <div class="row" >
+        <div class = "col-md-2 offset-md-3" >
+            <div class = "form-label" >
+                First Name
+            </div>
+                <input type = "text" name = "firstname" required style = "width:100%;">
+        </div>
 
-<div class = "container" style="width:8%;float:left;">
-    <div class = "form-label">
-        Mid.
+        <div class = "col-sm-2">
+            <div class = "form-label">
+                Mid.
+            </div>
+            <input type = "text" name = "middleInitial" maxlength="1" style = "width:100%;">
+        </div>
+
+        <div class = "col-md-2" style="float:left;">
+            <div class = "form-label" style="width:auto;">
+                Last Name
+            </div>
+            <input type = "text" name = "lastname" required style = "width:100%;">
+        </div>
     </div>
     
-    <input type = "text" name = "middleInitial" maxlength="1" style = "width:100%;">
-</div>
-
-<div class = "container" style="width:20%;float:left;">
-    <div class = "form-label">
-        Last Name
-    </div>
-    <input type = "text" name = "lastname" required style = "width:100%;">
-</div>
-
-
-
-<div class = "container" style="margin-left:25%;clear:left;">
-    <div class = "form-label">
-       Email:
+    <div class = "row">
+        <div class = "col-md-6 offset-md-3">
+            <div class = "form-label">
+                Email:
+            </div>
+            <input type = "email" name = "emailAddress1" style = "width:100%">
+        </div>
     </div>
     
-    <input type = "email" name = "emailAddress1" style = "width:53%">
+    <div class = "row">
         
-</div>
 
-    
     
     
 
