@@ -50,98 +50,112 @@
                 <div id = "list_chat_1">
     
                     <a href="#" class="list-group-item" style="border:2px solid #B39DDB">
-                        <img id = "chat1_icon" src = "icons/unopened_muted_chat_icon.PNG" height="28px" width="auto"style = "float:left;">
+                        <img id = "chat_icon1" src = "icons/unopened_muted_chat_icon.PNG" height="28px" width="auto"style = "float:left;">
                         <h4 class="list-group-item-heading" style="color:black;">Calculus II, Jacobvits</h4>
-                    
+                            
                         <button id = "removebtn1" type= "button" class="btn" style = "float:right;height:auto;background-color:white;margin:0 0 0 0;"><p style="color:black;margin:0px 0px 0px 0px;">Remove</p> </button>
-                    
-                        <button id = "btn1" onclick ="changetoMute1();" type= "button" class="btn" style = "float:right;height:auto;background-color:white;margin:0 0 0 0;"><p id = "mutebtn1" style="color:black;margin:0px 0px 0px 0px;">Unmute</p> </button>
+                            
+                        <button id = "mutebtn1" data-chat-status="unopened" type= "button" class="mutebtn btn" style = "float:right;height:auto;background-color:white;margin:0 0 0 0;"><p id = "mute_btn_txt1" style="color:black;margin:0px 0px 0px 0px;">Unmute</p></button>
+                            
                         <p class="list-group-item-text" style="color:grey;">Did anyone get the answer to 3 on the hw?</p>
                     </a>
+                    <br>
                 </div>
                 
-                <br>
+                
                 
                 <div id = "list_chat_2">
                     <a href="#" class="list-group-item " style="border:2px solid #B39DDB">
-                    <img id = "chat2_icon" src = "icons/opened_chat_icon.PNG" height="28px" width="auto" style="float:left;">
-                    <h4 class="list-group-item-heading" style="color:black;">Physics III, Mugglin</h4>
-                    
-                    <button id = "removebtn2" type= "button" class="btn" style = "float:right;height:auto;background-color:white;margin:0 0 0 0;"><p  style="color:black;margin:0px 0px 0px 0px;">Remove</p>
-                    </button>
-                    
-                    <button id = "btn2" onclick ="changetoMute2();" type= "button" class="btn" style = "float:right;height:auto;background-color:white;margin:0 0 0 0;"><p id = "mutebtn2" style="color:black;margin:0px 0px 0px 0px;">Mute</p> </button>
-                    <p class="list-group-item-text" style="color:grey;">Wtf is going on in class</p>
-                </a>
+                        <img id = "chat_icon2" src = "icons/opened_chat_icon.PNG" height="28px" width="auto" style="float:left;">
+                            <h4 class="list-group-item-heading" style="color:black;">Physics III, Mugglin</h4>
+                            
+                            <button id = "removebtn2" type= "button" class="btn" style = "float:right;height:auto;background-color:white;margin:0 0 0 0;"><p style="color:black;margin:0px 0px 0px 0px;">Remove</p> </button>
+                            
+                            <button id = "mutebtn2" data-chat-status="opened"  type= "button" class="mutebtn btn" style = "float:right;height:auto;background-color:white;margin:0 0 0 0;"><p id = "mute_btn_txt2" style="color:black;margin:0px 0px 0px 0px;">Mute</p></button>
+                            
+                            <p class="list-group-item-text" style="color:grey;">Wtf is going on in class</p>
+                    </a>
+                    <br>
                 </div>
                 
-                <br>
+              
                 
                 <div id = "list_chat_3">
                     <a href="#" class="list-group-item " style="border:2px solid #B39DDB">
-                        <img id = "chat3_icon" src = "icons/unopened_chat_icon.PNG" height="28px" width="auto" style="float:left;">
-                        <h4 class="list-group-item-heading" style="color:black;">Chemistry, Santos</h4>
-                    
-                        <button id = "removebtn3" type= "button" class="btn" style = "float:right;height:auto;background-color:white;margin:0 0 0 0;"><p style="color:black;margin:0px 0px 0px 0px;">Remove</p> </button>
-                    
-                        <button id = "btn3" onclick ="changetoUnmute3();" type= "button" class="btn" style = "float:right;height:auto;background-color:white;margin:0 0 0 0;"><p id = "mutebtn3" style="color:black;margin:0px 0px 0px 0px;">Mute</p> </button>
-                        <p class="list-group-item-text" style="color:grey;">Can someone send the notes for today's class. I cudnt make it</p>
+                        <img id = "chat_icon3" src = "icons/unopened_chat_icon.PNG" height="28px" width="auto" style="float:left;">
+                            <h4 class="list-group-item-heading" style="color:black;">Chemistry, Santos</h4>
+                            
+                            <button id = "removebtn3" type= "button" class="btn" style = "float:right;height:auto;background-color:white;margin:0 0 0 0;"><p style="color:black;margin:0px 0px 0px 0px;">Remove</p> </button>
+                            
+                            <button id = "mutebtn3" data-chat-status="unopened" type= "button" class="mutebtn btn" style = "float:right;height:auto;background-color:white;margin:0 0 0 0;"><p id = "mute_btn_txt3" style="color:black;margin:0px 0px 0px 0px;">Mute</p> </button>
+                            
+                            <p class="list-group-item-text" style="color:grey;">Can someone send the notes for today's class. I cudnt make it</p>
                     </a>
+                    <br>
                 </div>
             </div>
         </div>
         
-        <script>
-            function changetoMute1(){
-                document.getElementById('chat1_icon').src = 'icons/unopened_chat_icon.PNG';
-                document.getElementById('mutebtn1').innerHTML = 'Mute';
-                document.getElementById('btn1').onclick = changetoUnmute1;
-                
-            }
-        function changetoUnmute1(){
-            document.getElementById('chat1_icon').src = 'icons/unopened_muted_chat_icon.PNG';
-            document.getElementById('mutebtn1').innerHTML = 'Unmute';
-            document.getElementById('btn1').onclick = changetoMute1;
-        }
+<script>
+//Initialize Remove button functionality
+$(document).ready(function(){
+                $("[id^=removebtn]").click(function(){
+                ($(this).closest("[id^=list_chat]")).remove();
+                });
+});
+                              
+function unopenedUnmute(){
+    $(this).siblings("img[id^=chat_icon]").attr("src",function(){return "icons/unopened_chat_icon.PNG";});
+    $(this).text("Mute");
+    $(this).off("click");
+    $(this).click(unopenedMute);
+}
         
-        function changetoMute2(){
-            document.getElementById('chat2_icon').src = 'icons/opened_muted_chat_icon.PNG';
-            document.getElementById('mutebtn2').innerHTML = 'Unmute';
-            document.getElementById('btn2').onclick = changetoUnmute2;
-            
-        }
-        function changetoUnmute2(){
-            document.getElementById('chat2_icon').src = 'icons/opened_chat_icon.PNG';
-            document.getElementById('mutebtn2').innerHTML = 'Mute';
-            document.getElementById('btn2').onclick = changetoMute2;
-        }
-        function changetoMute3(){
-            document.getElementById('chat3_icon').src = 'icons/unopened_chat_icon.PNG';
-            document.getElementById('mutebtn3').innerHTML = 'Mute';
-            document.getElementById('btn3').onclick = changetoUnmute3;
-            
-        }
-        function changetoUnmute3(){
-            document.getElementById('chat3_icon').src = 'icons/unopened_muted_chat_icon.PNG';
-            document.getElementById('mutebtn3').innerHTML = 'Unmute';
-            document.getElementById('btn3').onclick = changetoMute3;
-        }
+function unopenedMute(){
+    $(this).siblings("[id^=chat_icon]").attr("src",function(){return "icons/unopened_muted_chat_icon.PNG";});
+    $(this).text("Unmute");
+    $(this).off("click");
+    $(this).click(unopenedUnmute);
+}
         
-     
+function openedUnmute(){
+    $(this).siblings("img[id^=chat_icon]").attr("src",function(){return "icons/opened_chat_icon.PNG";});
+    $(this).text("Mute");
+    $(this).off("click");
+    $(this).click(openedMute);
+}
         
-        function removeElement(elementID){
-            // Removes an element from the document
-            var element = document.getElementById(elementId);
-            element.parentNode.removeChild(element);
-        }
+function openedMute(){
+    $(this).siblings("[id^=chat_icon]").attr("src",function(){return "icons/opened_muted_chat_icon.PNG";});
+    $(this).text("Unmute");
+    $(this).off("click");
+    $(this).click(openedUnmute);
+}
         
-        $(document).ready(function(){
-                          $("[id^=removebtn]").click(function(){
-                                                     //alert("hello good sir");
-                                                     ($(this).closest("[id^=list_chat]")).remove();
-                                                     });
-                          });
-            </script>
+//Initialize Mute/Unmute button functionality
+$(document).ready(function(){
+                $("[id^=mutebtn]").each(function(index){
+                if($(this).attr("data-chat-status") == "unopened"){
+                    if($(this).text() == "Unmute"){
+                        $(this).click(unopenedUnmute);
+                    }
+                    else {
+                    $(this).click(unopenedMute);
+                    }
+                }
+                else{
+                    if($(this).text() == "Unmute"){
+                        $(this).click(openedUnmute);
+                    }
+                    else{
+                        $(this).click(openedMute);
+                    }
+                }
+                });
+});
+
+
+</script>
       
      
      
