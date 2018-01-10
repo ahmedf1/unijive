@@ -4,7 +4,9 @@
         <title>unijive - My Chats</title>
         <meta charset = "utf-8">
             <script language = "javascript"></script>
+            <script src= "https://ajax.googleapis.com/ajax/libs/angularjs/1.6.7/angular.js" ></script>
             <script src = "jquery/jquery-3.2.1.js"></script>
+            <script src = "theangularfile.js"></script>
             <meta name = "viewport" content="width=device-width, initial-scale=1">
                 <link rel="stylesheet" href="bootstrap-4/css/bootstrap.css">
                     <link rel="stylesheet" media="screen" href="https://fontlibrary.org/face/grand-hotel" type="text/css"/>
@@ -21,12 +23,12 @@
                     
                         </style>
                     
-                    <div class = "navbar" style="background-color:#B39DDB">
+                    <div class = "navbar" style="background-color:#439DBB">
                         <div class="navbar-brand" style="font-family:GrandHotelRegular;"><h2>unijive</h2></div>
                         <div style="text-align:right, font-family:sans-serif">
                             <a href ="unijive.my_account.html">
                                 <button type= "button" class="btn btn-link">
-                                    <img src = "icons/account_icon.PNG" height="45px" width="45px">
+                                    <img src = "icons_/account_icon.PNG" height="45px" width="45px">
                                         </button>
                             </a>
                         </div>
@@ -39,57 +41,25 @@
 
         
         <div class = "page-header" style = "margin-top:50px;margin-left:60px;">
-            <h1>My Chats
-                <a href = "unijive.chats_near_me.html"><img src = "icons/chats_near_me_icon.PNG" height="60px" width="auto" style = "float:right;margin-right:60px;"></a>
-                <a href = "unijive.search_chats.html"><img src = "icons/search_icon.PNG" height="60px" width="60px" style = "float:right;margin-right:20px;"></a>
+            <h1 style = "color:#439DBB;">My Chats
+                <a href = "unijive.chats_near_me.html"><img src = "icons_/chats_near_me_icon.PNG" height="60px" width="auto" style = "float:right;margin-right:60px;"></a>
+                <a href = "unijive.search_chats.html"><img src = "icons_/search_icon.PNG" height="60px" width="60px" style = "float:right;margin-right:20px;"></a>
             </h1>
             
         </div>
         <div class = "container" style="margin-top:20px;">
-            <div class = "list-group">
-                <div id = "list_chat_1">
+            <div class = "list-group" ng-app="classesApp" ng-controller="ClassListController">
+                <div id = "list_chat" ng-repeat="class in classes">
     
-                    <a href="#" class="list-group-item" style="border:2px solid #B39DDB">
-                        <img id = "chat_icon1" src = "icons/unopened_muted_chat_icon.PNG" height="28px" width="auto"style = "float:left;">
-                        <h4 class="list-group-item-heading" style="color:black;">Calculus II, Jacobvits</h4>
+                    <a href="#" class="list-group-item" style="border:2px solid #439DBB">
+                        <img id = "chat_icon1" src = "{{class.src}}" height="28px" width="auto"style = "float:left;">
+                            <h4 class="list-group-item-heading" style="color:black;">{{class.name}}</h4>
                             
                         <button id = "removebtn1" type= "button" class="btn" style = "float:right;height:auto;background-color:white;margin:0 0 0 0;"><p style="color:black;margin:0px 0px 0px 0px;">Remove</p> </button>
                             
-                        <button id = "mutebtn1" data-chat-status="unopened" type= "button" class="mutebtn btn" style = "float:right;height:auto;background-color:white;margin:0 0 0 0;"><p id = "mute_btn_txt1" style="color:black;margin:0px 0px 0px 0px;">Unmute</p></button>
+                            <button id = "mutebtn1" data-chat-status="{{class.chat_status}}" type= "button" class="mutebtn btn" style = "float:right;height:auto;background-color:white;margin:0 0 0 0;"><p id = "mute_btn_txt1" style="color:black;margin:0px 0px 0px 0px;">{{class.button_text}}</p></button>
                             
-                        <p class="list-group-item-text" style="color:grey;">Did anyone get the answer to 3 on the hw?</p>
-                    </a>
-                    <br>
-                </div>
-                
-                
-                
-                <div id = "list_chat_2">
-                    <a href="#" class="list-group-item " style="border:2px solid #B39DDB">
-                        <img id = "chat_icon2" src = "icons/opened_chat_icon.PNG" height="28px" width="auto" style="float:left;">
-                            <h4 class="list-group-item-heading" style="color:black;">Physics III, Mugglin</h4>
-                            
-                            <button id = "removebtn2" type= "button" class="btn" style = "float:right;height:auto;background-color:white;margin:0 0 0 0;"><p style="color:black;margin:0px 0px 0px 0px;">Remove</p> </button>
-                            
-                            <button id = "mutebtn2" data-chat-status="opened"  type= "button" class="mutebtn btn" style = "float:right;height:auto;background-color:white;margin:0 0 0 0;"><p id = "mute_btn_txt2" style="color:black;margin:0px 0px 0px 0px;">Mute</p></button>
-                            
-                            <p class="list-group-item-text" style="color:grey;">Wtf is going on in class</p>
-                    </a>
-                    <br>
-                </div>
-                
-              
-                
-                <div id = "list_chat_3">
-                    <a href="#" class="list-group-item " style="border:2px solid #B39DDB">
-                        <img id = "chat_icon3" src = "icons/unopened_chat_icon.PNG" height="28px" width="auto" style="float:left;">
-                            <h4 class="list-group-item-heading" style="color:black;">Chemistry, Santos</h4>
-                            
-                            <button id = "removebtn3" type= "button" class="btn" style = "float:right;height:auto;background-color:white;margin:0 0 0 0;"><p style="color:black;margin:0px 0px 0px 0px;">Remove</p> </button>
-                            
-                            <button id = "mutebtn3" data-chat-status="unopened" type= "button" class="mutebtn btn" style = "float:right;height:auto;background-color:white;margin:0 0 0 0;"><p id = "mute_btn_txt3" style="color:black;margin:0px 0px 0px 0px;">Mute</p> </button>
-                            
-                            <p class="list-group-item-text" style="color:grey;">Can someone send the notes for today's class. I cudnt make it</p>
+                            <p class="list-group-item-text" style="color:grey;">{{class.snippet}}</p>
                     </a>
                     <br>
                 </div>
@@ -101,32 +71,34 @@
 $(document).ready(function(){
                 $("[id^=removebtn]").click(function(){
                 ($(this).closest("[id^=list_chat]")).remove();
+                
                 });
 });
+
                               
 function unopenedUnmute(){
-    $(this).siblings("img[id^=chat_icon]").attr("src",function(){return "icons/unopened_chat_icon.PNG";});
+    $(this).siblings("img[id^=chat_icon]").attr("src",function(){return "icons_/unopened_chat_icon.PNG";});
     $(this).text("Mute");
     $(this).off("click");
     $(this).click(unopenedMute);
 }
         
 function unopenedMute(){
-    $(this).siblings("[id^=chat_icon]").attr("src",function(){return "icons/unopened_muted_chat_icon.PNG";});
+    $(this).siblings("[id^=chat_icon]").attr("src",function(){return "icons_/unopened_muted_chat_icon.PNG";});
     $(this).text("Unmute");
     $(this).off("click");
     $(this).click(unopenedUnmute);
 }
         
 function openedUnmute(){
-    $(this).siblings("img[id^=chat_icon]").attr("src",function(){return "icons/opened_chat_icon.PNG";});
+    $(this).siblings("img[id^=chat_icon]").attr("src",function(){return "icons_/opened_chat_icon.PNG";});
     $(this).text("Mute");
     $(this).off("click");
     $(this).click(openedMute);
 }
         
 function openedMute(){
-    $(this).siblings("[id^=chat_icon]").attr("src",function(){return "icons/opened_muted_chat_icon.PNG";});
+    $(this).siblings("[id^=chat_icon]").attr("src",function(){return "icons_/opened_muted_chat_icon.PNG";});
     $(this).text("Unmute");
     $(this).off("click");
     $(this).click(openedUnmute);
