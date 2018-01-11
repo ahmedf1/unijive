@@ -21,45 +21,81 @@
                         max-width:33%;
                     }
                     
+                    .image-cropper{
+                        float:right;
+                        width:55px;
+                        height:55px;
+                        position:relative;
+                        overflow:hidden;
+                        -webkit-border-radius: 50%;
+                        -moz-border-radius: 50%;
+                        -ms-border-radius: 50%;
+                        -o-border-radius: 50%;
+                        border-radius: 50%;
+                    }
+                    .rounded{
+                        display: inline;
+                        margin: 0 auto;
+                        height: 45px;
+                        width:45px;
+                    }
+                    .page-header-like-modal{
+                        padding: 15px;
+                        border-bottom: 1px solid #e9ecef;
+                        border-top-left-radius: 0.3rem;
+                        border-top-right-radius: 0.3rem;
+                    }
+                    
                         </style>
                     
                     <div class = "navbar" style="background-color:#439DBB">
                         <div class="navbar-brand" style="font-family:GrandHotelRegular;"><h2>unijive</h2></div>
-                        <div style="text-align:right, font-family:sans-serif">
+                
                             <a href ="unijive.my_account.html">
                                 <button type= "button" class="btn btn-link">
-                                    <img src = "icons_/account_icon.PNG" height="45px" width="45px">
+                                    <div class = "image-cropper">
+                                    <img class = "rounded" src = "icons_/account_icon.PNG">
                                         </button>
+                                    </div>
                             </a>
-                        </div>
-                    </div>
+                    
+                    
                     </div>
     </head>
     
-    <body>
+    <body style ="background-color:#439DBB1F;">
         
 
         
-        <div class = "page-header" style = "margin-top:50px;margin-left:60px;">
+        <div class = "page-header-like-modal"  >
             <h1 style = "color:#439DBB;">My Chats
-                <a href = "unijive.chats_near_me.html"><img src = "icons_/chats_near_me_icon.PNG" height="60px" width="auto" style = "float:right;margin-right:60px;"></a>
-                <a href = "unijive.search_chats.html"><img src = "icons_/search_icon.PNG" height="60px" width="60px" style = "float:right;margin-right:20px;"></a>
-            </h1>
+                <span class="badge-pill" style="background-color:#439DBB;color:white;vertical-align:middle;">2</span>
+                <a href = "unijive.chats_near_me.html"><img src = "icons_/chats_near_me_icon.PNG" height="60px" width="auto" style = "float:right;margin-right:30px;"></a>
+                <a href = "unijive.search_chats.html"><img src = "icons_/search_icon.PNG" height="60px" width="60px" style = "float:right;margin-right:30px;"></a>
+                </h1>
+
+            
+            
             
         </div>
-        <div class = "container" style="margin-top:20px;">
+        <div class = "modal-body"  >
             <div class = "list-group" ng-app="classesApp" ng-controller="ClassListController">
                 <div id = "list_chat" ng-repeat="class in classes">
     
-                    <a href="#" class="list-group-item" style="border:2px solid #439DBB">
-                        <img id = "chat_icon1" src = "{{class.src}}" height="28px" width="auto"style = "float:left;">
+                    <a href="#" class="list-group-item" style="border:2px solid #439DBB;border-radius:15px;background-color:#439DBB1F;">
+                        
+                        <img id = "chat_icon1" src = "{{class.src}}" height="28px" width="auto"  style="float:left;margin-top:20px;margin-right:10px;magin-left:10px;">
+                  
+                            
+                            <div style="margin-left:40px;">
                             <h4 class="list-group-item-heading" style="color:black;">{{class.name}}</h4>
                             
-                        <button id = "removebtn1" type= "button" class="btn" style = "float:right;height:auto;background-color:white;margin:0 0 0 0;"><p style="color:black;margin:0px 0px 0px 0px;">Remove</p> </button>
+                        <button id = "removebtn1" type= "button" class="btn" style = "float:right;height:auto;margin:0 0 0 0;background-color:#0000;"><p style="color:black;margin:0px 0px 0px 0px;">Remove</p> </button>
                             
-                            <button id = "mutebtn1" data-chat-status="{{class.chat_status}}" type= "button" class="mutebtn btn" style = "float:right;height:auto;background-color:white;margin:0 0 0 0;"><p id = "mute_btn_txt1" style="color:black;margin:0px 0px 0px 0px;">{{class.button_text}}</p></button>
+                            <button id = "mutebtn1" data-chat-status="{{class.chat_status}}" type= "button" class="mutebtn btn" style = "float:right;height:auto;background-color:#0000;margin:0 0 0 0;"><p id = "mute_btn_txt1" style="color:black;margin:0px 0px 0px 0px;">{{class.button_text}}</p></button>
                             
                             <p class="list-group-item-text" style="color:grey;">{{class.snippet}}</p>
+                            </div>
                     </a>
                     <br>
                 </div>
@@ -77,28 +113,28 @@ $(document).ready(function(){
 
                               
 function unopenedUnmute(){
-    $(this).siblings("img[id^=chat_icon]").attr("src",function(){return "icons_/unopened_chat_icon.PNG";});
+    $(this).parent().siblings("img[id^=chat_icon]").attr("src",function(){return "icons_/unopened_chat_icon.PNG";});
     $(this).text("Mute");
     $(this).off("click");
     $(this).click(unopenedMute);
 }
         
 function unopenedMute(){
-    $(this).siblings("[id^=chat_icon]").attr("src",function(){return "icons_/unopened_muted_chat_icon.PNG";});
+    $(this).parent().siblings("[id^=chat_icon]").attr("src",function(){return "icons_/unopened_muted_chat_icon.PNG";});
     $(this).text("Unmute");
     $(this).off("click");
     $(this).click(unopenedUnmute);
 }
         
 function openedUnmute(){
-    $(this).siblings("img[id^=chat_icon]").attr("src",function(){return "icons_/opened_chat_icon.PNG";});
+    $(this).parent().siblings("img[id^=chat_icon]").attr("src",function(){return "icons_/opened_chat_icon.PNG";});
     $(this).text("Mute");
     $(this).off("click");
     $(this).click(openedMute);
 }
         
 function openedMute(){
-    $(this).siblings("[id^=chat_icon]").attr("src",function(){return "icons_/opened_muted_chat_icon.PNG";});
+    $(this).parent().siblings("[id^=chat_icon]").attr("src",function(){return "icons_/opened_muted_chat_icon.PNG";});
     $(this).text("Unmute");
     $(this).off("click");
     $(this).click(openedUnmute);
@@ -136,7 +172,7 @@ $(document).ready(function(){
 
     </body>
     
-    
+
     
     
     
