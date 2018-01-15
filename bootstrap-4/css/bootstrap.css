@@ -4752,6 +4752,7 @@ tbody.collapse.show {
   border: 1px solid rgba(0, 0, 0, 0.125);
 }
 
+
 .list-group-item:first-child {
   border-top-left-radius: 0.25rem;
   border-top-right-radius: 0.25rem;
@@ -8373,3 +8374,127 @@ a.text-dark:focus, a.text-dark:hover {
   visibility: hidden !important;
 }
 /*# sourceMappingURL=bootstrap.css.map */
+
+
+a.main_page:link, a.main_page:hover{
+    color: #439DBB;
+    text-decoration:none;
+}
+
+a.unijive:link, a.unijive:hover{
+    color: white;
+    text-decoration:none;
+}
+a.no:link, a.no:hover{
+    color: #439DBB;
+    text-decoration:none;
+}
+img.test{
+    max-width:33%;
+}
+
+.image-cropper{
+    float:right;
+    width:55px;
+    height:55px;
+    position:relative;
+    overflow:hidden;
+    -webkit-border-radius: 50%;
+    -moz-border-radius: 50%;
+    -ms-border-radius: 50%;
+    -o-border-radius: 50%;
+    border-radius: 50%;
+}
+.rounded{
+    display: inline;
+    margin: 0 auto;
+    height: 45px;
+    width:45px;
+}
+.page-header-like-modal{
+    padding: 15px;
+    border-bottom: 1px solid #e9ecef;
+    border-top-left-radius: 0.3rem;
+    border-top-right-radius: 0.3rem;
+}
+
+/*Chat Page Sidebar CSS*/
+html, body {
+    margin: 0;
+    padding: 0; }
+
+
+.toggle {
+    text-decoration: none;
+    font-size: 2em;
+    color: rgba(0, 0, 0, 0.61);
+    -webkit-transition: all 0.15s ease-out 0;
+    -moz-transition: all 0.15s ease-out 0;
+    transition: all 0.45s ease-out 0;
+    position: fixed;
+    top: 72px;
+    left: 20px;
+    z-index: 2;
+    cursor: pointer;
+}
+
+.sidebar {
+    position: fixed;
+    top: 72px;
+    bottom: 0px;
+    left: -250px;
+    -webkit-transition: all 0.45s ease-out 0;
+    -moz-transition: all 0.45s ease-out 0;
+    transition: all 0.45s ease-out 0;
+    z-index:2;
+    width: 15rem;
+    padding: 0.2em;
+    background: #439DBB1F;
+}
+
+.sidebar ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.sidebar li a {
+    color: #439DBB;
+    
+    font-size: 1em;
+    margin: 0;
+    margin-bottom: 16px;
+    cursor: pointer;
+    text-decoration: none;
+    line-height: 100%;
+}
+
+.sidebar a:hover {
+    color: #439DBB;
+    text-decoration:none;
+    
+}
+.sidebar a:active {
+    color: #439DBB;
+    
+}
+.sidebar a:link {
+    color: #439DBB;
+    
+}
+
+
+#slide:checked + .container .sidebar {
+    left: 0px;
+}
+
+#slide:checked + .container .toggle {
+    left: 250px;
+}
+
+
+#slide {
+    display: none;
+}
+
+
