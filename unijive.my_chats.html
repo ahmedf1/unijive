@@ -17,6 +17,11 @@
                             color: #B39DDB;
                             text-decoration:none;
                         }
+                    a.chat_title_link:link, a.chat_title_link:hover{
+                        color: #B39DDB;
+                        text-decoration:none;
+                    }
+                    
                     img.test{
                         max-width:33%;
                     }
@@ -49,7 +54,7 @@
                         </style>
                     
                     <div class = "navbar" style="background-color:#439DBB">
-                        <div class="navbar-brand" style="font-family:GrandHotelRegular;"><h2>unijive</h2></div>
+                        <div class="navbar-brand" style="font-family:GrandHotelRegular;"><a class = "unijive"href="unijive.home_logged_in.html"><h2>unijive</h2></a></div>
                 
                             <a href ="unijive.my_account.html">
                                 <button type= "button" class="btn btn-link">
@@ -82,27 +87,30 @@
             <div class = "list-group" ng-app="classesApp" ng-controller="ClassListController">
                 <div id = "list_chat" ng-repeat="class in classes">
     
-                    <a href="#" class="list-group-item" style="border:2px solid #439DBB;border-radius:15px;background-color:#439DBB1F;">
+                    <div class="list-group-item" style="border:2px solid #439DBB;border-radius:15px;background-color:#439DBB1F;">
                         
                         <img id = "chat_icon1" src = "{{class.src}}" height="28px" width="auto"  style="float:left;margin-top:20px;margin-right:10px;magin-left:10px;">
                   
                             
                             <div style="margin-left:40px;">
-                            <h4 class="list-group-item-heading" style="color:black;">{{class.name}}</h4>
-                            
-                        <button id = "removebtn1" type= "button" class="btn" style = "float:right;height:auto;margin:0 0 0 0;background-color:#0000;"><p style="color:black;margin:0px 0px 0px 0px;">Remove</p> </button>
+                            <a id = "chat_title_link" href="{{class.chat_page}}"><h4 class="list-group-item-heading" style="color:black;">{{class.name}}</h4></a>
+                            <button id = "removebtn1" type= "button" class="btn" style = "float:right;height:auto;margin:0 0 0 0;background-color:#0000;"><p style="color:black;margin:0px 0px 0px 0px;">Remove</p> </button>
                             
                             <button id = "mutebtn1" data-chat-status="{{class.chat_status}}" type= "button" class="mutebtn btn" style = "float:right;height:auto;background-color:#0000;margin:0 0 0 0;"><p id = "mute_btn_txt1" style="color:black;margin:0px 0px 0px 0px;">{{class.button_text}}</p></button>
+                        
                             
                             <p class="list-group-item-text" style="color:grey;">{{class.snippet}}</p>
                             </div>
-                    </a>
+                            
+                    </div>
+
                     <br>
                 </div>
             </div>
         </div>
         
 <script>
+  //  href="{{class.chat_page}}"
 //Initialize Remove button functionality
 $(document).ready(function(){
                 $("[id^=removebtn]").click(function(){
