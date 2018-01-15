@@ -9,20 +9,22 @@ classesApp.controller('ClassListController', function ClassListController($scope
                                         snippet: 'Did anyone get the answer to 3 on the hw?',
                                         src: 'icons_/unopened_muted_chat_icon.PNG',
                                         chat_status: 'unopened',
-                                        button_text:'Unmute'
+                                        button_text:'Unmute',
+                                        chat_page: 'unijive.chat_page.html'
                                         }, {
                                         name: 'Physics III, Mugglin',
                                         snippet: 'Wtf is going on in class',
                                         src: 'icons_/opened_chat_icon.PNG',
                                         chat_status: 'opened',
-                                        button_text:'Mute'
+                                        button_text:'Mute',
+                                         chat_page: 'unijive.chat_page.html'
                                         }, {
                                         name: 'Chemistry, Santos',
                                         snippet: "Can someone send the notes for today's class. I cudnt make it",
                                         src: 'icons_/unopened_chat_icon.PNG',
                                         chat_status: 'unopened',
-                                        button_text:'Mute'
-                                        
+                                        button_text:'Mute',
+                                        chat_page: 'unijive.chat_page.html'
                                         }
                                         ];
                        });
