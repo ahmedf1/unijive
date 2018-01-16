@@ -8,13 +8,18 @@
                 <link rel="stylesheet" media="screen" href="https://fontlibrary.org/face/grand-hotel" type="text/css"/>
                     
 <style>
-.
+    
+
 </style>
 <div class = "navbar" style="background-color:#439DBB">
     <a href="unijive.home_logged_out.html"><div class="navbar-brand" style="font-family:GrandHotelRegular;">unijive</div></a>
-    <div style="text-align:right, font-family:sans-serif">
-        <a href="unijive.home_logged_out.html"><button type= "button" class="btn btn-link">Login</button></a>
-    </div>
+    <a href ="unijive.my_account.html">
+        <button type= "button" class="btn btn-link">
+            <div class = "image-cropper">
+                <img class = "rounded" src = "icons_/account_icon.PNG">
+                    </button>
+        </div>
+</a>
 </div>
 <br>
 <br>
@@ -24,48 +29,82 @@
     
 <body>
 
-<h1 style = "text-align:center;">Create an Account With Us!</h1>
+<h3 style = "text-align:center;">Step 2: Add your classes at {{insert University here}}</h3>
 <br>
-<br>
 
 
-    <div class="row" >
-        <div class = "col-md-2 offset-md-3" >
-            <div class = "form-label" >
-                First Name
-            </div>
-                <input type = "text" name = "firstname" required style = "width:100%;">
-        </div>
-
-        <div class = "col-sm-2">
-            <div class = "form-label">
-                Mid.
-            </div>
-            <input type = "text" name = "middleInitial" maxlength="1" style = "width:100%;">
-        </div>
-
-        <div class = "col-md-2" style="float:left;">
-            <div class = "form-label" style="width:auto;">
-                Last Name
-            </div>
-            <input type = "text" name = "lastname" required style = "width:100%;">
-        </div>
-    </div>
-    
-    <div class = "row">
-        <div class = "col-md-6 offset-md-3">
-            <div class = "form-label">
-                Email:
-            </div>
-            <input type = "email" name = "emailAddress1" style = "width:100%">
-        </div>
-    </div>
-    
-    <div class = "row">
+<div class = "container">
+<div class="row">
+    <div class="col-lg" ><h6 class="col-lg-9" style="text-align:center;">Search for your classes here!</h6>
+    <div class = "container-fluid" style="margin-top:20px;text-align:center;border-right: 2px solid black">
+        <div class = "row">
+            <div class="col-lg-9">
+                <div class="input-group" style="margin-top:15px;margin-bottom:15px;">
+                    <input type="text" id = "class" name="class" class="form-control" placeholder="Class">
+                </div><!-- /input-group -->
+            </div><!-- /.col-lg-6 -->
+        </div><!-- /.row -->
+        <div class = "row">
+            <div class="col-lg-9">
+                <div class="input-group" style="margin-top:15px;margin-bottom:15px;">
+                    <input type="text" id= "professor" name="professor" class="form-control" placeholder="Professor">
+                        </div><!-- /input-group -->
+            </div><!-- /.col-lg-6 -->
+        </div><!-- /.row -->
+        <div class = "row">
+            <div class="col-lg-9 ">
+                <div class="input-group" style="margin-top:15px;margin-bottom:15px;">
+                    <input type="text" id="section" name="section" class="form-control" placeholder="Section">
+                        </div><!-- /input-group -->
+            </div><!-- /.col-lg-6 -->
+        </div><!-- /.row -->
         
+        <span class="input-group-btn col-lg-9 offset-lg-1">
+            <button class="btn btn-default col-lg-9 " style = "border-radius:10px;" type="button">Add</button>
+        </span>
+        
+    </div>
+</div>
+<div class="col-lg">
+    <div class = "container-fluid">
+        <br>
+        <br>
 
-    
-    
+    <table class="table table-hover">
+        <thead>
+            <tr>
+                <th>Class</th>
+                <th>Proffesor</th>
+                <th>Section</th>
+                <th>Remove</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>Calculus II</td>
+                <td>Jacobvits</td>
+                <td>A</td>
+                <td><button>x</button></td>
+            </tr>
+            <tr>
+                <td>Physics III</td>
+                <td>Mugglin</td>
+                <td>A</td>
+                <td><button>x</button></td>
+            </tr>
+            <tr>
+                <td>Chemistry</td>
+                <td>Santos</td>
+                <td>C2</td>
+                <td><button style="color:red;">x</button></td>
+            </tr>
+        </tbody>
+    </table>
+    <button class="btn btn-default col-lg-9 offset-lg-1" style = "border-radius:10px;" type="button">Confirm Classes</button>
+    </div>
+</div>
+</div>
+</div>
 
 
 

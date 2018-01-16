@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="phonecatApp">
+    <head>
+    <script src= "https://ajax.googleapis.com/ajax/libs/angularjs/1.6.7/angular.js" ></script>
+    <script src = "theangularfile.js"></script>
+    <script src="jquery/jquery-3.2.1.js"></script>
+    <link rel="stylesheet" href="bootstrap-4/css/bootstrap.css">
+    </head>
+    <body ng-controller="PhoneListController">
+        
+        <div class = "list-group">
+            <div id = "list_chat_1" ng-repeat="phone in phones">
+                
+                <a href="#" class="list-group-item" style="border:2px solid #B39DDB">
+                    <img id = "chat_icon1" src = "{{phone.src}}" height="28px" width="auto"style = "float:left;">
+                        <h4 class="list-group-item-heading" style="color:black;">{{phone.name}}</h4>
+                        
+                        <button id = "removebtn1" type= "button" class="btn" style = "float:right;height:auto;background-color:white;margin:0 0 0 0;"><p style="color:black;margin:0px 0px 0px 0px;">Remove</p> </button>
+                        
+                        <button id = "mutebtn1" data-chat-status="unopened" type= "button" class="mutebtn btn" style = "float:right;height:auto;background-color:white;margin:0 0 0 0;"><p id = "mute_btn_txt1" style="color:black;margin:0px 0px 0px 0px;">Unmute</p></button>
+                        
+                        <p class="list-group-item-text" style="color:grey;">{{phone.snippet}}</p>
+                        </a>
+            </div>
+        </div>
+
+
+<!--
+        <ul>
+            <li ng-repeat="phone in phones">
+                
+                <p>{{phone.name}}</p>
+                
+                <p>{{phone.snippet}}</p>
+            </li>
+        </ul> -->
+        
+    </body>
+    
+    <script>
+        $(document).ready(function(){
+                          $("[id^=removebtn]").click(function(){
+                                                     
+                                                     ($(this).closest("[id^=list_chat]")).remove();
+                                                     });
+                          });
+                          
+                          function unopenedUnmute(){
+                              $(this).siblings("img[id^=chat_icon]").attr("src",function(){return "icons/unopened_chat_icon.PNG";});
+                              $(this).text("Mute");
+                              $(this).off("click");
+                              $(this).click(unopenedMute);
+                          }
+    
+    function unopenedMute(){
+        $(this).siblings("[id^=chat_icon]").attr("src",function(){return "icons/unopened_muted_chat_icon.PNG";});
+        $(this).text("Unmute");
+        $(this).off("click");
+        $(this).click(unopenedUnmute);
+    }
+    
+    function openedUnmute(){
+        $(this).siblings("img[id^=chat_icon]").attr("src",function(){return "icons/opened_chat_icon.PNG";});
+        $(this).text("Mute");
+        $(this).off("click");
+        $(this).click(openedMute);
+    }
+    
+    function openedMute(){
+        $(this).siblings("[id^=chat_icon]").attr("src",function(){return "icons/opened_muted_chat_icon.PNG";});
+        $(this).text("Unmute");
+        $(this).off("click");
+        $(this).click(openedUnmute);
+    }
+    
+    //
+    $(document).ready(function(){
+                      $("[id^=mutebtn]").each(function(index){
+                                              if($(this).attr("data-chat-status") == "unopened"){
+                                              if($(this).text() == "Unmute"){
+                                              $(this).click(unopenedUnmute);
+                                              }
+                                              else {
+                                              $(this).click(unopenedMute);
+                                              }
+                                              }
+                                              else{
+                                              
+                                              if($(this).text() == "Unmute"){
+                                              $(this).click(openedUnmute);
+                                              }
+                                              else{
+                                              $(this).click(openedMute);
+                                              
+                                              }
+                                              
+                                              }
+                                              
+                                              
+                                              });
+                      
+                      });
+                      
+                      
+
+        </script>
+</html>
+
