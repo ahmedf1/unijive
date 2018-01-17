@@ -1,0 +1,38 @@
+<!DOCTYPE hmtl>
+<html>
+<head>
+    <title>{% block head_title %}unijive - Network Better{% endblock head_title %}</title>
+    <meta charset = "utf-8">
+    <meta name = "viewport" content="width=device-width, initial-scale=1">
+    {% include 'snippets/css.html' %}
+    {% include 'snippets/js.html' %}
+    <style>
+    
+            a.main_page:link, a.main_page:hover{
+                color: #439DBB;
+                text-decoration:none;
+            }
+        img.test{
+            max-width:33%;
+        }
+        
+        </style>
+
+<div class = "navbar" style="background-color:#439DBB">
+    <div class="navbar-brand" style="font-family:GrandHotelRegular;color:white;"><h2>unijive</h2></div>
+    
+        <a href ="unijive.my_account.html">
+            <button type= "button" class="btn btn-link">
+                <div class = "image-cropper">
+                    <img class = "rounded" src = "icons_/account_icon.PNG">
+                        </button>
+            </div>
+    </a>
+    
+    
+</div>
+</head>
+{% block content %}
+
+{% endblock content %}
+</html>

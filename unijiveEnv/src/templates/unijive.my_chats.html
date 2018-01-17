@@ -1,73 +1,9 @@
-<!DOCTYPE hmtl>
-<html>
-    <head>
-        <title>unijive - My Chats</title>
-        <meta charset = "utf-8">
-            <script language = "javascript"></script>
-            <script src= "https://ajax.googleapis.com/ajax/libs/angularjs/1.6.7/angular.js" ></script>
-            <script src = "jquery/jquery-3.2.1.js"></script>
-            <script src = "theangularfile.js"></script>
-            <meta name = "viewport" content="width=device-width, initial-scale=1">
-                <link rel="stylesheet" href="bootstrap-4/css/bootstrap.css">
-                    <link rel="stylesheet" media="screen" href="https://fontlibrary.org/face/grand-hotel" type="text/css"/>
-                    
-                    <style>
-                        
-                        a.main_page:link, a.main_page:hover{
-                            color: #B39DDB;
-                            text-decoration:none;
-                        }
-                    a.chat_title_link:link, a.chat_title_link:hover{
-                        color: #B39DDB;
-                        text-decoration:none;
-                    }
-                    
-                    img.test{
-                        max-width:33%;
-                    }
-                    
-                    .image-cropper{
-                        float:right;
-                        width:55px;
-                        height:55px;
-                        position:relative;
-                        overflow:hidden;
-                        -webkit-border-radius: 50%;
-                        -moz-border-radius: 50%;
-                        -ms-border-radius: 50%;
-                        -o-border-radius: 50%;
-                        border-radius: 50%;
-                    }
-                    .rounded{
-                        display: inline;
-                        margin: 0 auto;
-                        height: 45px;
-                        width:45px;
-                    }
-                    .page-header-like-modal{
-                        padding: 15px;
-                        border-bottom: 1px solid #e9ecef;
-                        border-top-left-radius: 0.3rem;
-                        border-top-right-radius: 0.3rem;
-                    }
-                    
-                        </style>
-                    
-                    <div class = "navbar" style="background-color:#439DBB">
-                        <div class="navbar-brand" style="font-family:GrandHotelRegular;"><a class = "unijive"href="unijive.home_logged_in.html"><h2>unijive</h2></a></div>
-                
-                            <a href ="unijive.my_account.html">
-                                <button type= "button" class="btn btn-link">
-                                    <div class = "image-cropper">
-                                    <img class = "rounded" src = "icons_/account_icon.PNG">
-                                        </button>
-                                    </div>
-                            </a>
-                    
-                    
-                    </div>
-    </head>
-    
+
+
+{% extends "unijive.nav_bar_base.html" %}
+{% block head_title %}My Chats || {{block.super}}{% endblock head_title %}
+
+    {% block content %}
     <body style ="background-color:#439DBB1F;">
         
 
@@ -89,7 +25,7 @@
     
                     <div class="list-group-item" style="border:2px solid #439DBB;border-radius:15px;background-color:#439DBB1F;">
                         
-                        <img id = "chat_icon1" src = "{{class.src}}" height="28px" width="auto"  style="float:left;margin-top:20px;margin-right:10px;magin-left:10px;">
+                        <img id = "chat_icon1" src = "{{class.src}}" height="28px" width="auto"  style="float:left;margin-top:20px;margin-right:10px;margin-left:10px;">
                   
                             
                             <div style="margin-left:40px;">
@@ -179,6 +115,7 @@ $(document).ready(function(){
 
 
     </body>
+{% endblock content%}
     
 
     
@@ -187,4 +124,4 @@ $(document).ready(function(){
     
     
     
-</html>
+

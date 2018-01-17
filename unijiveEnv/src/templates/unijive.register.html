@@ -1,35 +1,9 @@
-<!DOCTYPE hmtl>
-<html>
-    <head>
-        <title>unijive - Create an Account</title>
-        <meta charset = "utf-8">
-            <meta name = "viewport" content="width=device-width, initial-scale=1">
-                <link rel="stylesheet" href="bootstrap-4/css/bootstrap.css">
-                <link rel="stylesheet" media="screen" href="https://fontlibrary.org/face/grand-hotel" type="text/css"/>
-                    
-<style>
-    
-
-</style>
-<div class = "navbar" style="background-color:#439DBB">
-    <a href="unijive.home_logged_out.html"><div class="navbar-brand" style="font-family:GrandHotelRegular;">unijive</div></a>
-    <a href ="unijive.my_account.html">
-        <button type= "button" class="btn btn-link">
-            <div class = "image-cropper">
-                <img class = "rounded" src = "icons_/account_icon.PNG">
-                    </button>
-        </div>
-</a>
-</div>
-<br>
-<br>
-<br>
-
-</head>
-    
+{% extends "unijive.nav_bar_base.html"%}
+{% block head_title %} Register || {{block.super}}{% endblock head_title %}
+{% block content %}
 <body>
 
-<h3 style = "text-align:center;">Step 2: Add your classes at {{insert University here}}</h3>
+<h3 style = "text-align:center;">Step 2: Add your classes at </h3>
 <br>
 
 
@@ -114,4 +88,4 @@
 
 
 
-</html>
+{% endblock %}
