@@ -20,8 +20,9 @@
             
         </div>
         <div class = "modal-body"  >
-            <div class = "list-group" ng-app="classesApp" ng-controller="ClassListController">
-                <div id = "list_chat" ng-repeat="class in classes">
+            <div class = "list-group" >
+                {% for  %}
+                <div id = "list_chat" >
     
                     <div class="list-group-item" style="border:2px solid #439DBB;border-radius:15px;background-color:#439DBB1F;">
                         
@@ -42,6 +43,7 @@
 
                     <br>
                 </div>
+                {% endfor %}
             </div>
         </div>
         
