@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+
+{% block title %} Chat List {% endblock %}
+
+
+{% block content %}
+<h1>Chat List:</h1>
+<ul>
+    {% for chat in chat_list %}
+    <h2><li>{{chat.title}}</li></h2>
+    {% empty %}
+    <h2><li>No Chats</li></h2>
+    {%endfor%}
+</ul>
+{% endblock %}
