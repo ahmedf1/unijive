@@ -1,45 +1,13 @@
-<!DOCTYPE hmtl>
-<html>
-    <head>
-        <title>unijive - Search Chats</title>
-        <meta charset = "utf-8">
-            <meta name = "viewport" content="width=device-width, initial-scale=1">
-                <link rel="stylesheet" href="bootstrap-4/css/bootstrap.css">
-                    <link rel="stylesheet" media="screen" href="https://fontlibrary.org/face/grand-hotel" type="text/css"/>
-                    
-                    <style>
-                        
-                        a.main_page:link, a.main_page:hover{
-                            color: #439DBB;
-                            text-decoration:none;
-                        }
-                    img.test{
-                        max-width:33%;
-                    }
-                    
-                        </style>
-                    
-                    <div class = "navbar" style="background-color:#439DBB">
-                        <div class="navbar-brand" style="font-family:GrandHotelRegular;"><h2>unijive</h2></div>
-                        <div style="text-align:right; font-family:sans-serif">
-                            <a href ="unijive.my_account.html"><button type= "button" class="btn btn-link">
-                                <img src = "icons_/account_icon.PNG" height="45px" width="45px">
-                                    </button>
-                            </a>
-                            
-                        </div>
-                    </div>
-                    
-                    </head>
-    
-    <body style="background-color:#439DBB1F;">
+{% extends 'unijive.nav_bar_base.html' %}
         
+{% block content%}
+{% load static %}
 
         <div class = "page-header" style = "margin-top:50px;margin-left:30px;">
             <h1>
-                <a href = "unijive.my_chats.html"><img src = "icons_/my_chats_icon.PNG" height="80px" width="auto" style = "float:left;"></a>
+                <a href = "/my_chats.html"><img src = "{% static "icons_/my_chats_icon.PNG" %}" height="80px" width="auto" style = "float:left;"></a>
                 <h1 style = "text-align:center;color:#439DBB;">Search Chats
-                <a href = "unijive.chats_near_me.html"><img src = "icons_/chats_near_me_icon.PNG" height="80px" width="auto" style = "float:right;margin-right:60px;"></a>
+                <a href = "/chats_near_me"><img src = "{% static "icons_/chats_near_me_icon.PNG" %}" height="80px" width="auto" style = "float:right;margin-right:60px;"></a>
                 </h1>
             </h1>
             
@@ -74,15 +42,12 @@
 </span>
         </div>
         
+{% endblock content%}
+    
+    
+    
+    
+    
+    
+    
 
-
-    </body>
-    
-    
-    
-    
-    
-    
-    
-    
-</html>

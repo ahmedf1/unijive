@@ -1,49 +1,42 @@
-from django.shortcuts import render
+from django.db.models import Q
+from django.http import HttpResponse, HttpResponseRedirect
+from django.shortcuts import render, get_object_or_404
 from django.views import View
+from django.views.generic import TemplateView, ListView, DetailView, CreateView
 
+
+from .forms import UserCreateForm
+from .models import ListofChats, User_s_Chats, User
 
 # Create your views here.
 
+class ChatsListView(ListView):
+   
 
-"""
-class HomeLoggedOut(View):
-    def get(self,request, *args, **kwargs):
-        context = {}
-        return render(request, "unijive.home_logged_out.html", context)
+    def get_queryset(self):
+        slug = self.kwargs.get("slug")      #userID
+        #int slugv2 = int(slug)
+        if slug:
+            queryset = User_s_Chats.objects.filter(
+                Q(userID__exact = slug)
+            )
+        
+        else:
+            queryset = User_s_Chats.objects.none()
+        return queryset
 
-class HomeLoggedIn(View):
-    def get(self,request, *args, **kwargs):
-        context = {}
-        return render(request, "unijive.home_logged_in.html", context)
+class AccountDetailView(DetailView):
+    
+    queryset = User.objects.all()
+ 
 
-class HomeRegister(View):
-    def get(self,request, *args, **kwargs):
-        context = {}
-        return render(request, "unijive.register.html", context)
+    def get_object(self, *args, **kwargs):
+        user_id = self.kwargs.get('pk')      #userID
+        obj = get_object_or_404(User, userID=user_id)
+        return obj
 
-class MyChats(View):
-    def get(self,request, *args, **kwargs):
-        context = {}
-        return render(request, "unijive.my_chats.html", context)
 
-class SearchChats(View):
-    def get(self,request, *args, **kwargs):
-        context = {}
-        return render(request, "unijive.search_chats.html", context)
-
-class ChatPage(View):
-    def get(self,request, *args, **kwargs):
-        context = {}
-        return render(request, "unijive.chat_page.html", context)
-
-class ChatsNearMe(View):
-    def get(self,request, *args, **kwargs):
-        context = {}
-        return render(request, "unijive.chats_near_me.html", context)
-
-class MyAccount(View):
-    def get(self,request, *args, **kwargs):
-        context = {}
-        return render(request, "unijive.my_account.html", context)
-
-"""
+class UserCreateView(CreateView):
+    form_class         = UserCreateForm 
+    success_url        =  "/register/"
+    

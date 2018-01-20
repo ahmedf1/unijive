@@ -96,6 +96,7 @@
         <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
             <div class="modal-dialog" role="document">
                 <div class="modal-content">
+                    <form method = "POST"> {% csrf_token %}
                     <div class="modal-header">
                         <h5 class="modal-title" id="exampleModalLabel" >Creating an Account is Easy!</h5>
                         
@@ -110,14 +111,14 @@
                                 <div style ="float:left;padding:10px;width:50%;">
                                     <label label-default="" for="Fname" class="col-sm-6"> First Name:</label>
                                 <div class="col-sm-12">
-                                    <input type="text" class="form-control" id="Fname" name="Fname" placeholder="First Name" required>
+                                    <input type="text" class="form-control" id="Fname" name="firstName" placeholder="First Name" required>
                                 </div>
                                 
                                 </div>
                             <div style = "float:right;padding:10px;width:50%;">
                                 <label label-default="" for="Lname" class="col-sm-6" > Last Name:</label>
                                 <div class="col-sm-12">
-                                    <input type="text" class="form-control" id="Lname" name="Lname" placeholder="Last Name" required>
+                                    <input type="text" class="form-control" id="Lname" name="lastName" placeholder="Last Name" required>
                                 </div>
                             </div>
                             </div>
@@ -125,7 +126,7 @@
                         <div class="form-group">
                             <label label-default="" for="school" class="col-sm-12"> School/University:</label>
                             <div class="col-sm-12">
-                                <input type="text" class="form-control" id="school" name="school" placeholder="School/University" required>
+                                <input type="text" class="form-control" id="school" name="university" placeholder="School/University" required>
                                     </div>
                         </div>
                         
@@ -161,6 +162,7 @@
                     <div class="modal-footer">
                         <a href = "/register"><button id="registerBtn" type="submit" class="btn btn-primary" >Next Step!</button></a>
                     </div>
+                </form>
                 </div>
             </div>
         </div>

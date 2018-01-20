@@ -17,14 +17,16 @@
         }
         
         </style>
+{% load static%}
+<link rel="stylesheet" media="screen" href="{% static "sidebar.css"%}" type="text/css"/>
 
 <div class = "navbar" style="background-color:#439DBB">
     <div class="navbar-brand" style="font-family:GrandHotelRegular;color:white;"><h2>unijive</h2></div>
     
-        <a href ="unijive.my_account.html">
+        <a href ="/my_account">
             <button type= "button" class="btn btn-link">
                 <div class = "image-cropper">
-                    <img class = "rounded" src = "icons_/account_icon.PNG">
+                    <img class = "rounded" src = "{% static "icons_/account_icon.PNG" %}">
                         </button>
             </div>
     </a>
@@ -32,7 +34,11 @@
     
 </div>
 </head>
+<body style = "background-color:#439DBB1F"></body>
+
 {% block content %}
 
 {% endblock content %}
+</body>
+    
 </html>

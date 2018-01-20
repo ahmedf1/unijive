@@ -14,3 +14,13 @@ THings TO Do:
     -ex) currently would have to order by timestamp
         -would be easier if messages from same chat were in same table so they can be ordered  
          by existing message id
+
+- add if logic to my chats to check status and set image
+
+
+-User Model need profile pic capabilities
+    -field is set, but not loading image :/
+
+-Get data from from tandon of faculty/classes offered
+
+-when adding classes, dropdown should appear as you're typing into the field to select a choice
