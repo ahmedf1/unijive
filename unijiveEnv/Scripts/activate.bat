@@ -1,5 +1,5 @@
 @echo off
-set "VIRTUAL_ENV=C:\Users\heart\Dev\project1\unijiveEnv"
+set "VIRTUAL_ENV=C:\Users\heart\OneDrive\Documents\GitHub\unijive\unijiveEnv"
 
 if not defined PROMPT (
     set "PROMPT=$P$G"
