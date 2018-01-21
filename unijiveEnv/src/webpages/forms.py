@@ -14,4 +14,9 @@ class UserCreateForm(forms.ModelForm):
             'username',
         ]
 
+    def clean_email(self):
+        email   = self.cleaned_data.get("email")
+        if ".edu" not in email:
+            raise forms.ValidationError("Please use your University associated email")
+        return email
 

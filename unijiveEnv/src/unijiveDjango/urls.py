@@ -15,7 +15,7 @@ Including another URLconf
 """
 from django.conf.urls import url
 from django.contrib import admin
-from django.views.generic import TemplateView
+from django.views.generic import TemplateView   
 
 #from webpages.views import HomeLoggedIn,HomeLoggedOut,HomeRegister, MyChats, SearchChats,ChatPage
 from webpages.views import ChatsListView, AccountDetailView, UserCreateView
