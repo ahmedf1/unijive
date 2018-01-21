@@ -1,0 +1,144 @@
+{% extends "unijive.nav_bar_base.html"%}
+{% block head_title %} Register || {{block.super}}{% endblock head_title %}
+{% block content %}
+
+<body>
+
+<h3 style = "text-align:center;">Step 2: Add your classes at </h3>
+<br>
+
+
+<div class = "container">
+<div class="row">
+    <div class="col-lg" ><h6 class="col-lg-10 offset-lg-1" style="text-align:center;">Search for your classes here!</h6>
+    <div class = "container-fluid" style="margin-top:20px;text-align:center;border-right: 2px solid black">
+        <div class = "row">
+            <div class="col-lg-10 offset-lg-1">
+                <div class="input-group" style="margin-top:15px;margin-bottom:15px;">
+                    <input type="text" id = "class" name="class" class="form-control" placeholder="Class" >
+                </div><!-- /input-group -->
+            </div><!-- /.col-lg-6 -->
+        </div><!-- /.row -->
+        <div class = "row">
+            <div class="col-lg-10 offset-lg-1 ">
+                <div class="input-group" style="margin-top:15px;margin-bottom:15px;">
+                    <input type="text" id= "professor" name="professor" class="form-control" placeholder="Professor">
+                        </div><!-- /input-group -->
+            </div><!-- /.col-lg-6 -->
+        </div><!-- /.row -->
+        <div class = "row">
+            <div class="col-lg-10 offset-lg-1">
+                <div class="input-group" style="margin-top:15px;margin-bottom:15px;">
+                    <input type="text" id="section" name="section" class="form-control" placeholder="Section">
+                        </div><!-- /input-group -->
+            </div><!-- /.col-lg-6 -->
+        </div><!-- /.row -->
+        
+        <span class="input-group-btn col-lg-8">
+            <button class="btn btn-default col-lg-10 " id = "addBtn" style = "border-radius:10px;" type="button">Add</button>
+        </span>
+        
+    </div>
+</div>
+<div class="col-lg">
+    <div class = "container-fluid">
+        <br>
+        <br>
+
+    <table class="table table-striped table-bordered" id= "tableOFaddedClasses">
+        <thead>
+            <tr>
+                <th>Class</th>
+                <th>Proffesor</th>
+                <th>Section</th>
+                <th>Remove</th>
+            </tr>
+        </thead>
+        <tbody id = "tableBody">
+            
+        </tbody>
+    </table>
+    <button class="btn btn-default col-lg-9 offset-lg-1" style = "border-radius:10px;" type="button">Confirm Classes</button>
+    </div>
+</div>
+</div>
+</div>
+
+<script>
+$(document).ready(function(){
+    $('#addBtn').click(function(){
+        var classname =$('#class').val();
+        var professor = $('#professor').val();
+        var section = $('#section').val();
+        if(classname!="" && professor !="" && section !=""){
+        insertRow(classname, professor,section);
+        ClearFields();
+        addRemoveFunctionality();
+        }
+        else{
+            alert("Please Fill out all Fields")
+        }
+    });
+});
+
+function addRemoveFunctionality(){
+    $('[id^=removeBTN]').click(function(){
+        $(this).closest('tr').remove();
+    });
+}
+
+function ClearFields() {
+    document.getElementById("class").value = "";
+    document.getElementById("professor").value = "";
+    document.getElementById("section").value = "";
+}
+
+function jsUcfirst(string) 
+{
+    return string.charAt(0).toUpperCase() + string.slice(1);
+}
+
+var index = 0;
+    function insertRow(classname, professor, section){
+                var table=document.getElementById("tableBody");
+                var row=table.insertRow(table.rows.length);
+                var cell1=row.insertCell(0);
+                var t1=document.createElement("h6");
+                    t1.id = "className"+index;
+                    t1.innerText = jsUcfirst(classname);
+                    t1.style.textAlign = "center";
+                    cell1.appendChild(t1);
+                var cell2=row.insertCell(1);
+                var t2=document.createElement("h6");
+                    t2.id = "professor"+index;
+                    t2.innerText = jsUcfirst(professor);
+                    t2.style.textAlign = "center";
+                    cell2.appendChild(t2);
+                var cell3=row.insertCell(2);
+                var t3=document.createElement("h6");
+                    t3.id = "section"+index;
+                    t3.innerText = jsUcfirst(section);
+                    t3.style.textAlign = "center";
+                    cell3.appendChild(t3);
+                var cell4=row.insertCell(3);
+                var t4=document.createElement("button");
+                    t4.id = "removeBTN"+index;
+                    t4.type = "button"
+                    t4.className = "btn btn-danger"
+                    t4.innerText = 'X';
+                    t4.style.margin = "auto";
+                    t4.style.display = "block";
+                    t4.style.padding = "2 5 2 5";
+                    cell4.appendChild(t4);
+          index++;
+
+    }
+</script>
+
+
+
+</body>
+
+
+
+{% endblock %}

@@ -1,0 +1,26 @@
+
+
+
+THings TO Do:
+
+
+
+-make sure that the database checks that the input data is already in the database
+    -ex)in users chats, shouldnt be allowed to add chat if you're already in the chat
+
+
+-create separate messages table for each chat
+    -ex) messages are ordered as a whole and not corresponding to their specific chat 
+    -ex) currently would have to order by timestamp
+        -would be easier if messages from same chat were in same table so they can be ordered  
+         by existing message id
+
+- add if logic to my chats to check status and set image
+
+
+-User Model need profile pic capabilities
+    -field is set, but not loading image :/
+
+-Get data from from tandon of faculty/classes offered
+
+-when adding classes, dropdown should appear as you're typing into the field to select a choice

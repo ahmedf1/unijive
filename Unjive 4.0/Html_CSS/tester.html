@@ -1,0 +1,144 @@
+<!DOCTYPE hmtl>
+<html>
+    <head>
+        <title>unijive - Create an Account</title>
+        <meta charset = "utf-8">
+            <script src= "https://ajax.googleapis.com/ajax/libs/angularjs/1.6.7/angular.js" ></script>
+            <script src="jquery/jquery-3.2.1.js"></script>
+            <script src = "theangularfile.js"></script>
+            <meta name = "viewport" content="width=device-width, initial-scale=1">
+                <link rel="stylesheet" href="bootstrap-4/css/bootstrap.css">
+                
+                    <link rel="stylesheet" media="screen" href="https://fontlibrary.org/face/grand-hotel" type="text/css"/>
+                    <style>
+                
+
+                        </style>
+                 
+                 
+                    
+    </head>
+    
+    <body>
+        <div class = "navbar" style="background-color:#B39DDB">
+            <a href="unijive.home_logged_out.html"><div class="navbar-brand" style="font-family:GrandHotelRegular;">unijive</div></a>
+            <div style="text-align:right, font-family:sans-serif">
+                <a href="unijive.home_logged_out.html"><button type= "button" class="btn btn-link">Login</button></a>
+            </div>
+        </div>
+        <br>
+        <br>
+        <br>
+        <div class = "page-header" style = "margin-top:50px;margin-left:60px;">
+            <h1>My Chats
+                <a href = "unijive.chats_near_me.html"><img src = "icons_/chats_near_me_icon.PNG" height="60px" width="auto" style = "float:right;margin-right:60px;"></a>
+                <a href = "unijive.search_chats.html"><img src = "icons_/search_icon.PNG" height="60px" width="60px" style = "float:right;margin-right:20px;"></a>
+            </h1>
+            
+        </div>
+        <div class = "container" style="margin-top:20px;">
+            <div class = "list-group" ng-app="phonecatApp" ng-controller="PhoneListController">
+                <p ng-hide = "list-group.children()">no shit</p>
+                
+                <div id = "list_chat_1" ng-repeat="phone in phones">
+                    <a href="#" class="list-group-item" style="border:2px solid #B39DDB">
+                        <img id = "chat_icon1" src = "{{phone.src}}" height="28px" width="auto"style = "float:left;">
+                            <h4 class="list-group-item-heading" style="color:black;">{{phone.name}}</h4>
+                            
+                            <button id = "removebtn1" type= "button" class="btn" style = "float:right;height:auto;background-color:white;margin:0 0 0 0;"><p style="color:black;margin:0px 0px 0px 0px;">Remove</p> </button>
+                            
+                            <button id = "mutebtn1" data-chat-status="{{phone.chat_status}}" type= "button" class="mutebtn btn" style = "float:right;height:auto;background-color:white;margin:0 0 0 0;"><p id = "mute_btn_txt1" style="color:black;margin:0px 0px 0px 0px;">{{phone.button_text}}</p></button>
+                            
+                            <p class="list-group-item-text" style="color:grey;">{{phone.snippet}}</p>
+                            </a>
+                    <br>
+                </div>
+                
+                <br>
+                
+                
+            </div>
+            
+        </div>
+
+
+<script>
+//Initialize Remove button functionality
+$(document).ready(function(){
+                  $("[id^=removebtn]").click(function(){
+                                            
+                                            ($(this).closest("[id^=list_chat]")).remove();
+                                             //checkchats();
+                                            }
+                                             );
+                  });
+                  
+ 
+function checkchats(){
+    //var item = $('#list-group');
+    
+}
+
+
+                  
+function unopenedUnmute(){
+    $(this).siblings("img[id^=chat_icon]").attr("src",function(){return "icons_/unopened_chat_icon.PNG";});
+    $(this).text("Mute");
+    $(this).off("click");
+    $(this).click(unopenedMute);
+}
+
+function unopenedMute(){
+        $(this).siblings("[id^=chat_icon]").attr("src",function(){return "icons_/unopened_muted_chat_icon.PNG";});
+        $(this).text("Unmute");
+        $(this).off("click");
+        $(this).click(unopenedUnmute);
+}
+
+function openedUnmute(){
+        $(this).siblings("img[id^=chat_icon]").attr("src",function(){return "icons_/opened_chat_icon.PNG";});
+        $(this).text("Mute");
+        $(this).off("click");
+        $(this).click(openedMute);
+}
+
+function openedMute(){
+        $(this).siblings("[id^=chat_icon]").attr("src",function(){return "icons_/opened_muted_chat_icon.PNG";});
+        $(this).text("Unmute");
+        $(this).off("click");
+        $(this).click(openedUnmute);
+}
+
+//
+$(document).ready(function(){
+                  $("[id^=mutebtn]").each(function(index){
+                            if($(this).attr("data-chat-status") == "unopened"){
+                                if($(this).text() == "Unmute"){
+                                          $(this).click(unopenedUnmute);
+                                }
+                                          else {
+                                          $(this).click(unopenedMute);
+                                }
+                            }
+                            else{
+                                
+                                    if($(this).text() == "Unmute"){
+                                        $(this).click(openedUnmute);
+                                          }
+                                          else{
+                                          $(this).click(openedMute);
+
+                                          }
+                                
+                            }
+                                          
+                                               
+                                               });
+            
+        });
+        
+
+
+</script>
+</body>
+</html>

@@ -1,0 +1,73 @@
+{% extends 'unijive.nav_bar_base.html' %}
+
+
+    
+{% block content %}
+{% load static %}
+
+    <body style ="background-color:#439DBB1F">
+        <input type="checkbox" id="slide" name="" value="" />
+        <div class="container">
+            <label for="slide" class="toggle"><img src = "{% static "icons_/my_chats_icon.PNG" %}" height = "60px" width = "auto" title="My Chats"></label>
+            <nav class="sidebar" >
+                <h4 class="list-group-item-heading" style="text-align:center;"><a href = "/my_chats">My Chats</a></h4>
+                <ul class = "list-group" ng-app="classesApp" ng-controller="ClassListController" >
+                    <li id = "list_chat" ng-repeat="class in classes">
+                        <a href="#" class="list-group-item" style="border-top:2px solid white;border-bottom:2px solid white;background-color:#439DBB;">
+                        
+                        <img id = "chat_icon1" src = "{{class.src}}" height="28px" width="auto"  style="float:left;margin-top:20px;margin-right:10px;margin-left:10px;">
+                            
+                            
+                            <div style="margin-left:40px;">
+                                <h6 class="list-group-item-heading" style="color:white;">{{class.name}}</h6>
+                                
+                                <p class="list-group-item-text" style="color:white;">{{class.snippet}}</p>
+                            </div>
+                            </a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+        
+        <div class="chat">
+            <div class="chat-title">
+                <h1>Calculus II</h1>
+                <h2>Jacobvits</h2>
+                <figure class="avatar"></figure>
+            </div>
+            <div class="messages">
+                <div class="messages-content"></div>
+            </div>
+            <div class="message-box">
+                <textarea type="text" class="message-input" placeholder="Type message..."></textarea>
+                <button type="submit" class="message-submit">Send</button>
+            </div>
+            
+        </div>
+        <div class="bg"></div>
+
+
+        
+        
+<!--
+ ☰
+
+-->
+
+
+{% include 'snippets/chat_page.html' %}
+
+
+
+
+        
+        
+    </body>
+    
+    
+    
+    {% endblock content %}
+    
+    
+    
+
