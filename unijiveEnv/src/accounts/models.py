@@ -4,6 +4,14 @@ from django.contrib.auth.models import ( AbstractBaseUser, BaseUserManager )
 import os
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
+'''
+Super User Login Info  (Move from here after viewing)
+   email : farhad@sucks.com
+    pass : king123456
+
+'''
+
+
 class UserManager(BaseUserManager):
     def create_user(self, email, password = None, is_active = True, is_staff = False, is_admin = False):
         if not email: raise ValueError("Users must have an email address! ")
@@ -35,7 +43,7 @@ class User(AbstractBaseUser):
     memberSince     = models.DateTimeField(auto_now_add=True)
 
     USERNAME_FIELD  = 'email'
-    REQUIRED_FIELDS = ['firstName','lastName']
+    REQUIRED_FIELDS = []
 
     objects = UserManager()
 
@@ -43,6 +51,10 @@ class User(AbstractBaseUser):
         return self.email
 
     def get_full_name(self):
+        # The user is identified by their email address
+        return self.email
+
+    def get_short_name(self):
         # The user is identified by their email address
         return self.email
 
@@ -88,7 +100,7 @@ class UserProfile(models.Model):
         ('Senior', 'Senior'),
     )
     year_in_school = models.CharField(max_length=15, choices=YEAR_IN_SCHOOL_CHOICES, default='Freshman',)
- 
-    def get_full_name(self):
+    
+    #def get_full_name(self):
         # The user is identified by their email address
-        return self.firstName + " " + self.lastName
+        #return self.firstName + " " + self.lastName
