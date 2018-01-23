@@ -1,13 +1,16 @@
 from django.db import models
+from django.conf import settings            #importing base.py
 import os
 
+User = settings.AUTH_USER_MODEL
+ 
 # Create your models here.
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 #print(BASE_DIR)
 #print(os.path.join(BASE_DIR, "/webpages/static/icons_/account_icon.PNG"))
 
-
-class User(models.Model):
+'''
+class UserZ(models.Model):
     class Meta:
         verbose_name_plural = "Users"
     userID          = models.AutoField(primary_key=True)
@@ -32,7 +35,7 @@ class User(models.Model):
     def __str__(self):
         return self.username + ' (' + str(self.userID) + ')'
 
-
+'''
 
 '''
     MEMBER_STATUS_CHOICES = (
@@ -59,7 +62,7 @@ class MessagesInAChat(models.Model):
                      on_delete=models.PROTECT,
                 )
     userID      = models.ForeignKey(
-                    'User',
+                    User,
                      on_delete=models.PROTECT,
                 )
     message     = models.CharField(max_length = 100)
@@ -90,15 +93,14 @@ class User_s_Chats(models.Model):
                         'ListofChats',
                          on_delete=models.PROTECT,
                     )
-    userID         = models.ForeignKey(
-                        'User',
+    owner         = models.ForeignKey(User,
                          on_delete=models.PROTECT,
                     )
     status         = models.BooleanField(default = False)
     mutedStatus    = models.BooleanField(default = False)
 
     def __str__(self):
-        return self.userID.username + ' | ' + self.chatID.className + ' ' + self.chatID.professor + ' ' + self.chatID.s_year
+        return self.owner.email + ' | ' + self.chatID.className + ' ' + self.chatID.professor + ' ' + self.chatID.s_year
     
 
 

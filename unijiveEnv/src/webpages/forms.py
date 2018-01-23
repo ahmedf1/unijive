@@ -1,10 +1,10 @@
 
 from django import forms
-from .models import User
-
+#from .models import UserZ
+'''
 class UserCreateForm(forms.ModelForm):
     class Meta:
-        model   = User
+        model   = UserZ
         fields  = [
             'firstName',
             'lastName',
@@ -19,4 +19,4 @@ class UserCreateForm(forms.ModelForm):
         if ".edu" not in email:
             raise forms.ValidationError("Please use your University associated email")
         return email
-
+'''

@@ -18,24 +18,24 @@ from django.contrib import admin
 from django.views.generic import TemplateView   
 
 #from webpages.views import HomeLoggedIn,HomeLoggedOut,HomeRegister, MyChats, SearchChats,ChatPage
-from webpages.views import ChatsListView, AccountDetailView, UserCreateView
+#from webpages.views import ChatsListView, AccountDetailView#, UserCreateView
 
 #ChatsNearMe
 #MyAccount  
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
-    url(r'^$', UserCreateView.as_view(template_name = "unijive.home_logged_out.html")),
+    url(r'^$', TemplateView.as_view(template_name = "unijive.home_logged_out.html")),
     url(r'^logged_in/$', TemplateView.as_view(template_name = "unijive.home_logged_in.html")),
     url(r'^register/$', TemplateView.as_view(template_name = "unijive.register.html")),
 
     url(r'^chat_page/$', TemplateView.as_view(template_name = "unijive.chat_page.html")),
-    url(r'^my_chats/$', ChatsListView.as_view( template_name = 'unijive.my_chats.html') ),
-    url(r'^my_chats/(?P<slug>\w+)/$', ChatsListView.as_view( template_name = 'unijive.my_chats.html') ),
+    url(r'^my_chats/$', TemplateView.as_view( template_name = 'unijive.my_chats.html') ),
+    url(r'^my_chats/(?P<slug>\w+)/$', TemplateView.as_view( template_name = 'unijive.my_chats.html') ),
    
     url(r'^search_chats/$', TemplateView.as_view(template_name = "unijive.search_chats.html")),
     url(r'^my_account/$', TemplateView.as_view(template_name = "unijive.my_account.html")),
-    url(r'^my_account/(?P<pk>\w+)/$', AccountDetailView.as_view(template_name = "unijive.my_account.html")),
+    url(r'^my_account/(?P<pk>\w+)/$', TemplateView.as_view(template_name = "unijive.my_account.html")),
      #url(r'^my_chats/$', TemplateView.as_view(template_name = "unijive.my_chats.html")),
     # url(r'^chats_near_me/$', TemplateView.as_view(template_name = "unijive.chats_near_me.html")),
     

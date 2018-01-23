@@ -6,7 +6,6 @@
             <meta name = "viewport" content="width=device-width, initial-scale=1">
                 
 
-                <link rel="stylesheet" media="screen" href="https://fontlibrary.org/face/grand-hotel" type="text/css"/>
 
                     <script src="https://code.jquery.com/jquery-3.1.1.min.js">
                         </script>
@@ -39,7 +38,7 @@
           
                 
                     .welcome_splash{
-                        font-family: 'GrandHotelRegular';
+                        font-family: 'CaviarDreams';
                         text-align: center;
                         color: white;
                     }
@@ -49,6 +48,11 @@
                         
                         /*style = "background-color:#439DBB1F"*/
                     }
+                    {% load static %}
+                    @font-face{
+                       font-family: 'CaviarDreams';
+                       src: url("{% static 'caviar_dreams/CaviarDreams.ttf' %}");
+                     }
                         </style>
                         {% include 'snippets/formValidate.html' %}
 
@@ -62,7 +66,7 @@
 
         <div style = "background-color:#439DBB0A;width:50%;margin:auto;border-radius:5px;">
         <div class = "container" style="margin-bottom:10px;clear:left;text-align:center;">
-            <div class = "form-label" style="color:white;">
+            <div class = "form-label" style="color:white;font-family: 'CaviarDreams';">
                 Email:
             </div>
             
@@ -71,7 +75,7 @@
         </div>
         
         <div class = "container" style="margin-bottom:10px;clear:left;text-align:center;">
-            <div class = "form-label" style="color:white;">
+            <div class = "form-label" style="color:white;font-family: 'CaviarDreams';">
                 Password:
             </div>
             
@@ -81,9 +85,9 @@
 
             <div style="text-align:center;">
                 <div style = "margin-bottom:10px;">
-                <a href ="/logged_in"><button type= "button" class="btn btn-link" style="color:white;  border:1px solid; border-radius: 15px;">Login</button></a>
+                <a href ="/logged_in"><button type= "button" class="btn btn-link" style="color:white;  border:1px solid; border-radius: 15px;font-family: 'CaviarDreams';">Login</button></a>
                 </div>
-                <a id = "createAccount" class= "main_page" data-toggle = "modal" data-target="#myModal" style="color:white;font-family: 'GrandHotelRegular';">Don't have an account? Create one right now!</a>
+                <a id = "createAccount" class= "main_page" data-toggle = "modal" data-target="#myModal" style="color:white;font-family: 'CaviarDreams';">Don't have an account? Create one right now!</a>
             </div>
         </div>
 

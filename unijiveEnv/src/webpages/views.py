@@ -5,11 +5,11 @@ from django.views import View
 from django.views.generic import TemplateView, ListView, DetailView, CreateView
 
 
-from .forms import UserCreateForm
-from .models import ListofChats, User_s_Chats, User
+#from .forms import UserCreateForm
+from .models import ListofChats, User_s_Chats#, UserZ
 
 # Create your views here.
-
+'''
 class ChatsListView(ListView):
    
 
@@ -27,7 +27,7 @@ class ChatsListView(ListView):
 
 class AccountDetailView(DetailView):
     
-    queryset = User.objects.all()
+    queryset = UserZ.objects.all()
  
 
     def get_object(self, *args, **kwargs):
@@ -40,3 +40,4 @@ class UserCreateView(CreateView):
     form_class         = UserCreateForm 
     success_url        =  "/register/"
     
+'''

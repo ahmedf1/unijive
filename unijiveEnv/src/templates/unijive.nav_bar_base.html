@@ -6,6 +6,7 @@
     <meta name = "viewport" content="width=device-width, initial-scale=1">
     {% include 'snippets/css.html' %}
     {% include 'snippets/js.html' %}
+    {% load static %}
     <style>
     
             a.main_page:link, a.main_page:hover{
@@ -15,13 +16,19 @@
         img.test{
             max-width:33%;
         }
+    
+     @font-face{
+     font-family: 'CaviarDreams';
+     src: url("{% static 'caviar_dreams/CaviarDreams.ttf' %}");
+    }
+
         
         </style>
 {% load static%}
 <link rel="stylesheet" media="screen" href="{% static "sidebar.css"%}" type="text/css"/>
 
 <div class = "navbar" style="background-color:#439DBB">
-    <div class="navbar-brand" style="font-family:GrandHotelRegular;color:white;"><h2>unijive</h2></div>
+    <div class="navbar-brand" style="font-family:CaviarDreams;color:white;"><h1>unijive</h1></div>
     
         <a href ="/my_account">
             <button type= "button" class="btn btn-link">
