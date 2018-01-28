@@ -1,0 +1,238 @@
+{% extends 'unijive.nav_bar_base.html'%}
+{% block head_title %}Distractions || {{block.super}}{% endblock head_title %}
+{% block content %}
+
+{% load static %}
+{% include 'snippets/game_page.html' %}
+<div class = "page-header-like-modal"  >
+    <div class = "row">
+        <div class = "col-sm-5">
+        <h3 style = "color:#439DBB;">Don't get distracted for too long!
+                
+                <!--<img src = "{% static "icons_/search_icon.PNG" %}" height="60px" width="60px" style = "float:right;margin-right:30px;"></a>-->
+            </h3>
+        </div>
+        <div class = "col-sm-5">
+            <div class="container-fluid">
+                <div class = "container" style="float:right; height:auto;">
+                    <div class ="row">
+                        <div class = "col-sm-10" >
+                            <div class = "row" style = "margin-left:25%;">
+                            <div class = "timer1">
+                                    <input oninput= "javascript: this.value = this.value.slice(0, this.maxLength);"
+                                    type = "number" id = "hour" class = "timer1 contents" type="number" placeholder = "0" maxlength = "1" default = "0">
+                                    <p class = "timer1Colon">:</p>
+                            </div>
+                            <div class = "timerRest">
+                                    <input id = "minute10" oninput= "javascript: this.value = this.value.slice(0, this.maxLength);" class = "timerRest contents" type="number" placeholder = "0" maxlength = "1" default = "0">
+                            </div>
+                            <div class = "timerRest">
+                                    <input id = "minute1" oninput= "javascript: this.value = this.value.slice(0, this.maxLength);" class = "timerRest contents" type="number" placeholder = "0" maxlength = "1" default = "0">
+                                    <p class = "timer1Colon">:</p>
+                            </div>
+                            <div class = "timerRest">
+                                    <input id = "sec1" oninput= "javascript: this.value = this.value.slice(0, this.maxLength);" class = "timerRest contents" type="number" placeholder = "0" maxlength = "1" default = "0">
+                            </div>
+                            <div class = "timerRest">
+                                    <input id = "sec10" oninput= "javascript: this.value = this.value.slice(0, this.maxLength);" class = "timerRest contents" type="number" placeholder = "0" maxlength = "1" default = "0">
+                            </div>
+                            
+                        </div>
+                        </div>
+                        <div class = "col-sm-2" style="float:right;">
+                                <div class="btn-group-vertical" role="group">
+                                        <button id="setTimerBTN" onclick = "settingTimer()" type="button" class="btn btn-primary">Set</button>
+                                        <button type="button" class="btn btn-primary">Stop</button>
+                                </div>
+                        </div>
+                            
+                    </div>
+                   
+                </div>
+
+            </div>
+
+        </div>
+        <div class = "col-sm-2">
+                <a href = "/my_chats"><button class="btn btn-primary" style= "float:right;">Get Back to Work &#x23ce</button></a>
+        </div>
+           
+        </div>   
+
+        
+        
+        
+    </div>
+<div class = "container">
+    <div class = "row">
+        <div class = "col-sm-3">
+        <div class="list-group">    <!-- list of games -->
+                <a href="#" class="list-group-item list-group-item-action  list-group-item-info">
+                <h4>8 Ball Pool</h4>
+                </a>
+                <a href="#" class="list-group-item list-group-item-action list-group-item-success">
+                <h4>Puss 'n' Boots</h4>
+                </a>
+                <a href="#" class="list-group-item list-group-item-action list-group-item-warning active">
+                <h4>Fairies Wear Boots</h4>
+                </a>
+        </div>
+    </div>
+    <!-- Game   
+    <div class = "col-sm-6">
+        <div class = "game"> 
+
+        <div class="miniclip-game-embed" data-game-name="new-8-ball-pool" data-theme="5" data-width="100%" data-height="80%" data-language="en"><a href="https://www.miniclip.com/games/new-8-ball-pool/">Play New 8 Ball Pool </a></div>
+
+        <script src="//static.miniclipcdn.com/js/game-embed.js"></script>   
+        </div>
+        <div class="card card-body">
+            <h4 class="card-title">8 Ball Pool</h4>
+            <p class="card-text">8 Ball Pool is the biggest & best multiplayer Pool game online! Play billiards for FREE against other players & friends in 1-on-1 matches, enter tournaments to win big!</p>
+        </div>
+    </div>
+    -->
+   
+       
+    
+    <div class = "col-sm-3">
+            <div id="chatbox">
+                    <div id="friendslist">
+                        <div id="topmenu">
+                            <span class="friends"></span>
+                            <span class="chats"></span>
+                            <span class="history"></span>
+                        </div>
+                        
+                        <div id="friends">
+                            <div class="friend">
+                                <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/245657/1_copy.jpg" />
+                                <p>
+                                    <strong>Miro Badev</strong>
+                                    <span>mirobadev@gmail.com</span>
+                                </p>
+                                <div class="status available"></div>
+                            </div>
+                            
+                            <div class="friend">
+                                <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/245657/2_copy.jpg" />
+                                <p>
+                                    <strong>Martin Joseph</strong>
+                                    <span>marjoseph@gmail.com</span>
+                                </p>
+                                <div class="status away"></div>
+                            </div>
+                            
+                            <div class="friend">
+                                <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/245657/3_copy.jpg" />
+                                <p>
+                                    <strong>Tomas Kennedy</strong>
+                                    <span>tomaskennedy@gmail.com</span>
+                                </p>
+                                <div class="status inactive"></div>
+                            </div>
+                            
+                            <div class="friend">
+                                <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/245657/4_copy.jpg" />
+                                <p>
+                                    <strong>Enrique	Sutton</strong>
+                                    <span>enriquesutton@gmail.com</span>
+                                </p>
+                                <div class="status inactive"></div>
+                            </div>
+                            
+                            <div class="friend">
+                                <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/245657/5_copy.jpg" />
+                                <p>
+                                <strong>	Darnell	Strickland</strong>
+                                    <span>darnellstrickland@gmail.com</span>
+                                </p>
+                                <div class="status inactive"></div>
+                            </div>
+                            
+                            <div id="search">
+                                <input type="text" id="searchfield" value="Search contacts..." />
+                            </div>
+                            
+                        </div>                
+                        
+                    </div>	
+                    
+                    <div id="chatview" class="p1">    	
+                        <div id="profile">
+                
+                            <div id="close">
+                                <div class="cy"></div>
+                                <div class="cx"></div>
+                            </div>
+                            
+                            <p>Miro Badev</p>
+                            <span>miro@badev@gmail.com</span>
+                        </div>
+                        <div id="chat-messages">
+                            <label>Thursday 02</label>
+                            
+                            <div class="message">
+                                <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/245657/1_copy.jpg" />
+                                <div class="bubble">
+                                    Really cool stuff!
+                                    <div class="corner"></div>
+                                    <span>3 min</span>
+                                </div>
+                            </div>
+                            
+                            <div class="message right">
+                                <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/245657/2_copy.jpg" />
+                                <div class="bubble">
+                                    Can you share a link for the tutorial?
+                                    <div class="corner"></div>
+                                    <span>1 min</span>
+                                </div>
+                            </div>
+                            
+                            <div class="message">
+                                <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/245657/1_copy.jpg" />
+                                <div class="bubble">
+                                    Yeah, hold on
+                                    <div class="corner"></div>
+                                    <span>Now</span>
+                                </div>
+                            </div>
+                            
+                            <div class="message right">
+                                <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/245657/2_copy.jpg" />
+                                <div class="bubble">
+                                    Can you share a link for the tutorial?
+                                    <div class="corner"></div>
+                                    <span>1 min</span>
+                                </div>
+                            </div>
+                            
+                            <div class="message">
+                                <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/245657/1_copy.jpg" />
+                                <div class="bubble">
+                                    Yeah, hold on
+                                    <div class="corner"></div>
+                                    <span>Now</span>
+                                </div>
+                            </div>
+                            
+                        </div>
+                        
+                        <div id="sendmessage">
+                            <input type="text" value="Send message..." />
+                            <button id="send"></button>
+                        </div>
+                    
+                    </div>        
+                </div>	
+                    
+                <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+        </div>
+</div>
+
+</div>
+
+
+
+{% endblock content %}

@@ -37,7 +37,7 @@ urlpatterns = [
     url(r'^my_account/$', TemplateView.as_view(template_name = "unijive.my_account.html")),
     url(r'^my_account/(?P<pk>\w+)/$', TemplateView.as_view(template_name = "unijive.my_account.html")),
      #url(r'^my_chats/$', TemplateView.as_view(template_name = "unijive.my_chats.html")),
-    # url(r'^chats_near_me/$', TemplateView.as_view(template_name = "unijive.chats_near_me.html")),
+    url(r'^distractions/$', TemplateView.as_view(template_name = "unijive.distractions.html")),
     
 
 

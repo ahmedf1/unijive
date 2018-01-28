@@ -13,6 +13,10 @@
                 color: #439DBB;
                 text-decoration:none;
             }
+            a.navbarLink:link, a.navbarLink:hover{
+                color: white;
+                text-decoration:none;
+            }
         img.test{
             max-width:33%;
         }
@@ -28,7 +32,7 @@
 <link rel="stylesheet" media="screen" href="{% static "sidebar.css"%}" type="text/css"/>
 
 <div class = "navbar" style="background-color:#439DBB">
-    <div class="navbar-brand" style="font-family:CaviarDreams;color:white;"><h1>unijive</h1></div>
+    <div class="navbar-brand" style="font-family:CaviarDreams;color:white;"><a href = "/logged_in" class = "navbarLink"><h1>unijive</h1></a></div>
     
         <a href ="/my_account">
             <button type= "button" class="btn btn-link">
