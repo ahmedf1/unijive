@@ -57,6 +57,8 @@ MIDDLEWARE = [
 ]
 
 ROOT_URLCONF = 'unijiveDjango.urls'
+LOGIN_URL = '/login/'
+LOGIN_REDIRECT_URL = '/logged_in/'
 
 TEMPLATES = [
     {

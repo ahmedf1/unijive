@@ -1,22 +1,26 @@
 
 from django import forms
-#from .models import UserZ
-'''
+from django.conf import settings  
+from accounts.models import UserProfile
+User = settings.AUTH_USER_MODEL
+
+
 class UserCreateForm(forms.ModelForm):
     class Meta:
-        model   = UserZ
+        model   = UserProfile
         fields  = [
             'firstName',
             'lastName',
             'university',
-            'email',
-            'password',
+            #'email',
             'username',
+            #'password',
         ]
-
+'''
     def clean_email(self):
         email   = self.cleaned_data.get("email")
         if ".edu" not in email:
             raise forms.ValidationError("Please use your University associated email")
         return email
 '''
+
