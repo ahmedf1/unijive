@@ -22,17 +22,17 @@
             <div class="row">
             <div class = "col-lg">
         
-        <h4> {{object.firstName}} {{object.lastName}}</h4>
-        <h7>{{object.university}}</h7><br>
-        <h7>{{object.year_in_school}}</h7><br>
-        <h7>Member Since: {{object.memberSince.year}}</h7>
+        <h4> {{user.userprofile.firstName}} {{user.userprofile.lastName}}</h4>
+        <h7>{{user.userprofile.university}}</h7><br>
+        <h7>{{user.userprofile.year_in_school}}</h7><br>
+        <h7>Member Since: {{user.memberSince.year}}</h7>
         <br>
         
         </div>
         <div class= "col-lg">
             <div class = "container"> 
         <h4 style = "margin-right:5%;">Status: Gold (dis is hardcoded)</h4>
-        <span class="badge-pill" style="background-color:#439DBB;color:white;margin-right:5%;">&#x1f44d: {{object.numberofLikes}} </span>
+        <span class="badge-pill" style="background-color:#439DBB;color:white;margin-right:5%;">&#x1f44d: {{user.userprofile.numberofLikes}} </span>
         </div>
         </div>
         </div>
