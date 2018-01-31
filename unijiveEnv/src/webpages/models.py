@@ -2,7 +2,8 @@ from django.db import models
 from django.conf import settings            #importing base.py
 import os
 
-User = settings.AUTH_USER_MODEL
+from accounts.models import User
+#User = settings.AUTH_USER_MODEL
  
 # Create your models here.
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -100,7 +101,7 @@ class User_s_Chats(models.Model):
     mutedStatus    = models.BooleanField(default = False)
 
     def __str__(self):
-        return self.owner.email + ' | ' + self.chatID.className + ' ' + self.chatID.professor + ' ' + self.chatID.s_year
+        return self.owner.email + ' | ' + self.chatID.className + ' | ' + self.chatID.professor + ' | ' + self.chatID.s_year + " | " + str(self.uscID)
     
 
 

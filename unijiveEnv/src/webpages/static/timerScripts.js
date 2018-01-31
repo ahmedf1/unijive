@@ -33,6 +33,14 @@ function settingTimer(){
 
 }
 
+function stopTimer(){
+    document.getElementById("hour").disabled=false;
+    document.getElementById("minute10").disabled=false;
+    document.getElementById("minute1").disabled=false;
+    document.getElementById("sec1").disabled=false;
+    document.getElementById("sec10").disabled=false; 
+}
+
 
 var countDownDate = new Date("Jan 26, 2018 23:58:00").getTime();
 

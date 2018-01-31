@@ -31,20 +31,23 @@
 {% load static%}
 <link rel="stylesheet" media="screen" href="{% static "sidebar.css"%}" type="text/css"/>
 
+
 <div class = "navbar" style="background-color:#439DBB">
-    <div class="navbar-brand" style="font-family:CaviarDreams;color:white;"><a href = "/logged_in" class = "navbarLink"><h1>unijive</h1></a></div>
-    <div class = "page-heading" style="background-color: #439DBB;margin-bottom:0px;">
+    <div class="col-lg-4"><div class="navbar-brand" style="font-family:CaviarDreams;color:white;"><a href = "/logged_in" class = "navbarLink"><h1>unijive</h1></a></div></div>
+    <div class="col-lg-4"><div class = "page-heading" style="background-color: #439DBB;margin-bottom:0px;">
             <h1 class = "welcome_splash" style="text-align:center;color:white;font-family:CaviarDreams;">Welcome, {{ user.userprofile.firstName }}!</h1>
-        </div>
-        <a href ="/my_account">
-            <button type= "button" class="btn btn-link">
-                <div class = "image-cropper">
-                    <img class = "rounded" src = "{% static "icons_/account_icon.PNG" %}">
-                        </button>
-            </div>
-    </a>
-    
-    
+        </div></div>
+    <div class="col-lg-4" >
+            <a href ="/my_account" style = "float:right;" >
+                <button type= "button" class="btn btn-link">
+                    <div class = "image-cropper">
+                        <img class = "rounded" src = "{% static "icons_/account_icon.PNG" %}">
+                    </div>
+                </button>
+                
+        </a>
+        
+    </div>
 </div>
 </head>
 <body style = "background-color:#439DBB1F"></body>

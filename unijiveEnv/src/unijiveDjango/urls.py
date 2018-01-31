@@ -35,7 +35,7 @@ urlpatterns = [
 
     url(r'^chat_page/$', ChatPageView.as_view(template_name = "unijive.chat_page.html")),
     url(r'^my_chats/$', ChatsListView.as_view( template_name = 'unijive.my_chats.html') ),
-    url(r'^my_chats/(?P<slug>\w+)/$', ChatsListView.as_view( template_name = 'unijive.my_chats.html') ),
+    #url(r'^my_chats/(?P<slug>\w+)/$', ChatsListView.as_view( template_name = 'unijive.my_chats.html') ),
    
     url(r'^search_chats/$', SearchChatsView.as_view(template_name = "unijive.search_chats.html")),
     url(r'^my_account/$', TemplateView.as_view(template_name = "unijive.my_account.html")),
