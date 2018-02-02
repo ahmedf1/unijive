@@ -5,7 +5,6 @@ from django.contrib.auth.admin import UserAdmin as BaseUserAdmin
 
 from .forms import UserAdminChangeForm, UserAdminCreationForm
 from .models import UserProfile
-#from .model import User
 from django.contrib.auth import get_user_model
 User = get_user_model()
 
