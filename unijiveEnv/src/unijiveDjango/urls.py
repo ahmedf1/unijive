@@ -18,7 +18,9 @@ from django.contrib import admin
 from django.views.generic import TemplateView   
 from django.contrib.auth.views import LoginView
 
-from webpages.views import ChatsListView, AccountDetailView, UserCreateView, LoggedInMainPageView, RegisterClassesView, ChatPageView, SearchChatsView, DistractionsView
+from webpages.views import (ChatsListView, AccountDetailView, UserCreateView, 
+                            LoggedInMainPageView, RegisterClassesView, ChatPageView,
+                            SearchChatsView, DistractionsView)
 
 #ChatsNearMe
 #MyAccount  
