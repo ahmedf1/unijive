@@ -27,14 +27,28 @@
                     
                     <div class="list-group-item" style="border:2px solid #439DBB;border-radius:15px;background-color:#439DBB1F;">
                         
-                        <img id = "chat_icon1" src = "{{class.src}}" height="28px" width="auto"  style="float:left;margin-top:20px;margin-right:10px;margin-left:10px;">
-                        
+                        {% if object.seen and object.mutedStatus %}  
+
+                        <img id = "chat_icon1" src = "{% static "icons_/opened_muted_chat_icon.PNG" %}" height="28px" width="auto"  style="float:left;margin-top:20px;margin-right:10px;margin-left:10px;">
+                        {% endif %}
+
+                        {% if not object.seen and object.mutedStatus %}  
+
+                        <img id = "chat_icon1" src = "{% static "icons_/unopened_muted_chat_icon.PNG" %}" height="28px" width="auto"  style="float:left;margin-top:20px;margin-right:10px;margin-left:10px;">
+                        {% endif %}
+                        {% if not object.seen and not object.mutedStatus %}  
+
+                        <img id = "chat_icon1" src = "{% static "icons_/unopened_chat_icon.PNG" %}" height="28px" width="auto"  style="float:left;margin-top:20px;margin-right:10px;margin-left:10px;">
+                        {% endif %}
+                        {% if object.seen and not object.mutedStatus %}  
+                        <img id = "chat_icon1" src = "{% static "icons_/opened_chat_icon.PNG" %}" height="28px" width="auto"  style="float:left;margin-top:20px;margin-right:10px;margin-left:10px;">
+                        {% endif %}
                             
                             <div style="margin-left:40px;">
                             <a id = "chat_title_link" href="{{class.chat_page}}"><h4 class="list-group-item-heading" style="color:black;">{{object.chatID.className}}, {{object.chatID.professor}}</h4></a>
                             <button id = "removebtn1" type= "button" class="btn" style = "float:right;height:auto;margin:0 0 0 0;background-color:#0000;"><p style="color:black;margin:0px 0px 0px 0px;">Remove</p> </button>
                             
-                            <button id = "mutebtn1" data-chat-status="{{class.chat_status}}" type= "button" class="mutebtn btn" style = "float:right;height:auto;background-color:#0000;margin:0 0 0 0;"><p id = "mute_btn_txt1" style="color:black;margin:0px 0px 0px 0px;">{{class.button_text}}</p></button>
+                            <button id = "mutebtn1" type= "button" class="mutebtn btn" style = "float:right;height:auto;background-color:#0000;margin:0 0 0 0;"><p id = "mute_btn_txt1" style="color:black;margin:0px 0px 0px 0px;">{{class.button_text}}</p></button>
                         
                             
                             <p class="list-group-item-text" style="color:grey;">{{class.snippet}}</p>
@@ -62,28 +76,28 @@ $(document).ready(function(){
 
                               
 function unopenedUnmute(){
-    $(this).parent().siblings("img[id^=chat_icon]").attr("src",function(){return "icons_/unopened_chat_icon.PNG";});
+    $(this).parent().siblings("img[id^=chat_icon]").attr("src",function(){return "{% static 'icons_/unopened_chat_icon.PNG' %}";});
     $(this).text("Mute");
     $(this).off("click");
     $(this).click(unopenedMute);
 }
         
 function unopenedMute(){
-    $(this).parent().siblings("[id^=chat_icon]").attr("src",function(){return "icons_/unopened_muted_chat_icon.PNG";});
+    $(this).parent().siblings("[id^=chat_icon]").attr("src",function(){return "{% static 'icons_/unopened_muted_chat_icon.PNG' %}";});
     $(this).text("Unmute");
     $(this).off("click");
     $(this).click(unopenedUnmute);
 }
         
 function openedUnmute(){
-    $(this).parent().siblings("img[id^=chat_icon]").attr("src",function(){return "icons_/opened_chat_icon.PNG";});
+    $(this).parent().siblings("img[id^=chat_icon]").attr("src",function(){return "{% static 'icons_/opened_chat_icon.PNG' %}";});
     $(this).text("Mute");
     $(this).off("click");
     $(this).click(openedMute);
 }
         
 function openedMute(){
-    $(this).parent().siblings("[id^=chat_icon]").attr("src",function(){return "icons_/opened_muted_chat_icon.PNG";});
+    $(this).parent().siblings("[id^=chat_icon]").attr("src",function(){return "{% static 'icons_/opened_muted_chat_icon.PNG' %}";});
     $(this).text("Unmute");
     $(this).off("click");
     $(this).click(openedUnmute);
@@ -92,6 +106,8 @@ function openedMute(){
 //Initialize Mute/Unmute button functionality
 $(document).ready(function(){
                 $("[id^=mutebtn]").each(function(index){
+                    $("id=")
+                    /*
                 if($(this).attr("data-chat-status") == "unopened"){
                     if($(this).text() == "Unmute"){
                         $(this).click(unopenedUnmute);
@@ -108,6 +124,7 @@ $(document).ready(function(){
                         $(this).click(openedMute);
                     }
                 }
+                */
                 });
 });
 

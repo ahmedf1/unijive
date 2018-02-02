@@ -31,8 +31,8 @@
         </div>
         <div class= "col-lg">
             <div class = "container"> 
-        <h4 style = "margin-right:5%;">Status: Gold (dis is hardcoded)</h4>
-        <span class="badge-pill" style="background-color:#439DBB;color:white;margin-right:5%;">&#x1f44d: {{user.userprofile.numberofLikes}} </span>
+        <!--<h4 style = "margin-right:5%;">Status: Gold (dis is hardcoded)</h4>-->
+        <span class="badge-pill" style="background-color:#439DBB;color:white;float:left;">&#x1f44d: {{user.userprofile.numberofLikes}} </span>
         </div>
         </div>
         </div>
@@ -41,26 +41,22 @@
 
     <li class = "media">
         <div class="media-body" style = "margin-top:10%">
-            <h5>Currently Taking:</h5>
+            <h5>Currently Taking this Semester:</h5>
                 <table class="table table-striped table-bordered">
-
+                        <thead>
+                            <td><strong>Class</strong></td>
+                            <td><strong>Professor</strong></td>
                         </thead>
                         <tbody>
+                        {% for  object in object_list %}
+                        {% if object.chatID.currently_active%}
                         <tr>
-                        <td>Cell</td>
-                        <td>Cell</td>
-                        <td>Cell</td>
+                        <td>{{object.chatID.className}}</td>
+                        <td>{{object.chatID.professor}}</td>
+                        
                         </tr>
-                        <tr>
-                        <td>Cell</td>
-                        <td>Cell</td>
-                        <td>Cell</td>
-                        </tr>
-                        <tr>
-                        <td>Cell</td>
-                        <td>Cell</td>
-                        <td>Cell</td>
-                        </tr>
+                        {% endif %}
+                        {% endfor %}
                         </tbody>
                         </table>
         
@@ -74,22 +70,27 @@
         <div class="media-body">
                 <h5>Classes Taken:</h5>
                 <table class="table table-striped table-bordered">
+                        <thead>
+                            <td><strong>Class</strong></td>
+                            <td><strong>Professor</strong></td>
+                            <td><strong>Semester Taken</strong></td>
+                        </thead>
                         <tbody>
-                        <tr>
-                        <td>Cell</td>
-                        <td>Cell</td>
-                        <td>Cell</td>
-                        </tr>
-                        <tr>
-                        <td>Cell</td>
-                        <td>Cell</td>
-                        <td>Cell</td>
-                        </tr>
-                        <tr>
-                        <td>Cell</td>
-                        <td>Cell</td>
-                        <td>Cell</td>
-                        </tr>
+                            {% for  object in object_list %}
+                            {% if object.chatID.currently_active == 0 %}
+                            <tr>
+                            <td>{{object.chatID.className}}</td>
+                            <td>{{object.chatID.professor}}</td>
+                            {% if object.chatID.s_year|make_list|first == 'F' %}
+                            <td>Fall '{{object.chatID.s_year|slice:'1:' }}</td>
+                            {% endif %}
+                            {% if object.chatID.s_year|make_list|first == 'S' %}
+                            <td>Spring '{{object.chatID.s_year|slice:'1:' }}</td>
+                            {% endif %}
+                            
+                            </tr>
+                            {% endif %}
+                            {% endfor %}
                         </tbody>
                         </table>
         </div>

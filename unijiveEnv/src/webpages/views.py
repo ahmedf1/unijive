@@ -27,17 +27,18 @@ class ChatsListView(LoginRequiredMixin, ListView):
         return queryset
 
 
-class AccountDetailView(LoginRequiredMixin, DetailView):
-    
-    '''
-    queryset = User.objects.all()
- 
+class AccountDetailView(LoginRequiredMixin, ListView):
 
+    def get_queryset(self):
+        queryset = User_s_Chats.objects.filter(owner = self.request.user)
+        return queryset
+
+'''
     def get_object(self, *args, **kwargs):
-        User = self.kwargs.get('pk')      #userID   4:32:00
-        obj = get_object_or_404(User, userID=user_id)
+        curr_User = self.request.user      #userID   4:32:00
+        obj = get_object_or_404(User, email = curr_User.email)
         return obj
-    '''
+'''
 
 
 class LoggedInMainPageView(LoginRequiredMixin, TemplateView):

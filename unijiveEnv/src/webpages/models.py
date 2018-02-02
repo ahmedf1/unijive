@@ -78,10 +78,11 @@ class MessagesInAChat(models.Model):
 class ListofChats(models.Model):
     class Meta:
         verbose_name_plural = "List of Chats"
-    chatID       = models.AutoField(primary_key=True)
-    className    = models.CharField(max_length = 30)
-    professor    = models.CharField(max_length = 30)
-    s_year       = models.CharField(max_length = 3)
+    chatID              = models.AutoField(primary_key=True)
+    className           = models.CharField(max_length = 30)
+    professor           = models.CharField(max_length = 30)
+    s_year              = models.CharField(max_length = 3)
+    currently_active    = models.BooleanField(default = 0)
 
     def __str__(self):
         return self.className + ' (' + str(self.chatID) + ')'
@@ -97,7 +98,7 @@ class User_s_Chats(models.Model):
     owner         = models.ForeignKey(User,
                          on_delete=models.PROTECT,
                     )
-    status         = models.BooleanField(default = False)
+    seen          = models.BooleanField(default = False)
     mutedStatus    = models.BooleanField(default = False)
 
     def __str__(self):
