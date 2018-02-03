@@ -3,12 +3,12 @@ from django.contrib.auth import authenticate, login, logout, get_user
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.db.models import Q
 from django.http import HttpResponse, HttpResponseRedirect,HttpRequest
-from django.shortcuts import render, get_object_or_404, render_to_response, redirect, reverse
+from django.shortcuts import render, get_object_or_404, render_to_response, redirect#, reverse
 from django.views import View
 from django.views.generic import TemplateView, ListView, DetailView, CreateView
 
 
-from .forms import UserProfileCreateForm #UserCreateForm, UserInLineFormset
+from .forms import UserProfileCreateForm #, UserCreateForm, UserInLineFormset
 from .models import ListofChats, User_s_Chats
 from accounts.models import User, UserProfile
 
@@ -42,8 +42,10 @@ class LoggedInMainPageView(LoginRequiredMixin, TemplateView):
 class RegisterClassesView(LoginRequiredMixin, TemplateView):
     x = "asdasd"
 
-class ChatPageView(LoginRequiredMixin, TemplateView):
-    x = "asdasd"    
+class ChatPageView(LoginRequiredMixin, ListView):
+    def get_queryset(self):
+        queryset = User_s_Chats.objects.filter(owner = self.request.user)
+        return queryset   
 
 
 class SearchChatsView(LoginRequiredMixin, TemplateView):
@@ -55,7 +57,7 @@ class DistractionsView(LoginRequiredMixin, TemplateView):
 
 
 class UserCreateView(CreateView):
-    
+  
     form_class         = UserProfileCreateForm 
     success_url        =  "/register/"
     '''
@@ -90,4 +92,4 @@ class UserCreateView(CreateView):
             ctx['form'] = User()
             ctx['inlines'] = UserInLineFormset()
         return ctx
-'''
+  '''

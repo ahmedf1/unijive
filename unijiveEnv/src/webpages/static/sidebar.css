@@ -54,7 +54,7 @@ html, body {
     -moz-transition: all 0.15s ease-out 0;
     transition: all 0.45s ease-out 0;
     position: fixed;
-    top: 72px;
+    top: 85px;
     left: 20px;
     z-index: 2;
     cursor: pointer;
@@ -62,7 +62,7 @@ html, body {
 
 .sidebar {
     position: fixed;
-    top: 72px;
+    top: 85px;
     bottom: 0px;
     left: -250px;
     -webkit-transition: all 0.45s ease-out 0;

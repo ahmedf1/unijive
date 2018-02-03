@@ -32,18 +32,18 @@ urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^login/$', LoginView.as_view(template_name = "unijive.home_logged_out.html",redirect_field_name = "/logged_in"), name='login'),
     #url(r'^login/$', UserCreateView.as_view(template_name = "unijive.home_logged_out.html")),
-    url(r'^logged_in/$', LoggedInMainPageView.as_view(template_name = "unijive.home_logged_in.html")),
-    url(r'^register/$', RegisterClassesView.as_view(template_name = "unijive.register.html")),
+    url(r'^logged_in/$', LoggedInMainPageView.as_view(template_name = "unijive.home_logged_in.html"), name ='home'),
+    url(r'^register/$', RegisterClassesView.as_view(template_name = "unijive.register.html"), name='addClasses'),
 
-    url(r'^chat_page/$', ChatPageView.as_view(template_name = "unijive.chat_page.html")),
-    url(r'^my_chats/$', ChatsListView.as_view( template_name = 'unijive.my_chats.html') ),
+    url(r'^chat_page/$', ChatPageView.as_view(template_name = "unijive.chat_page.html")), # need customizable name
+    url(r'^my_chats/$', ChatsListView.as_view( template_name = 'unijive.my_chats.html'),name="myChats"),
     #url(r'^my_chats/(?P<slug>\w+)/$', ChatsListView.as_view( template_name = 'unijive.my_chats.html') ),
    
-    url(r'^search_chats/$', SearchChatsView.as_view(template_name = "unijive.search_chats.html")),
-    url(r'^my_account/$', AccountDetailView.as_view(template_name = "unijive.my_account.html")),
+    url(r'^search_chats/$', SearchChatsView.as_view(template_name = "unijive.search_chats.html"), name="searchChats"),
+    url(r'^my_account/$', AccountDetailView.as_view(template_name = "unijive.my_account.html"), name='myAccount'),
     #url(r'^my_account/(?P<pk>\w+)/$', AccountDetailView.as_view(template_name = "unijive.my_account.html")),
      #url(r'^my_chats/$', TemplateView.as_view(template_name = "unijive.my_chats.html")),
-    url(r'^distractions/$', DistractionsView.as_view(template_name = "unijive.distractions.html")),
+    url(r'^distractions/$', DistractionsView.as_view(template_name = "unijive.distractions.html"), name="distractions"),
     
 
 
