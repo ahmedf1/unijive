@@ -14,6 +14,20 @@ from .models import ListofChats, User_s_Chats
 from accounts.models import User, UserProfile
 
 #Create your views here.
+'''
+from django.contrib.auth import authenticate, login
+def login(request):
+    email = request.POST['username']
+    password = request.POST['password']
+    user = authenticate(request, username=email, password=password)
+    if user is not None:
+        login(request, user)
+        redirect()
+    #else:
+        # Return an 'invalid login' error message.
+        #..
+    return render(request, "unijive.home_logged_out.html")
+'''
 
 class ChatsListView(LoginRequiredMixin, ListView):
     def get_queryset(self):
@@ -38,6 +52,41 @@ class ChatPageView(LoginRequiredMixin, ListView):
     def get_queryset(self):
         queryset = User_s_Chats.objects.filter(owner = self.request.user)
         return queryset   
+
+
+
+'''
+from django.contrib.auth import authenticate, login
+def my_view(request):
+    username = request.POST['username']
+    password = request.POST['password']
+    user = authenticate(request, username=username, password=password)
+    if user is not None:
+        login(request, user)
+        # Redirect to a success page.
+        ...
+    else:
+        # Return an 'invalid login' error message.
+        ...
+
+
+from django.contrib.auth import logout
+def logout_view(request):
+    logout(request)
+    # Redirect to a success page.
+
+
+from django.contrib.auth import update_session_auth_hash
+def password_change(request):
+    if request.method == 'POST':
+        form = PasswordChangeForm(user=request.user, data=request.POST)
+        if form.is_valid():
+            form.save()
+            update_session_auth_hash(request, form.user)
+    else:
+        ...
+
+'''
 
 
 '''
