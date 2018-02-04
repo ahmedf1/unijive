@@ -3,44 +3,36 @@ from django.contrib.auth import authenticate, login, logout, get_user
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.db.models import Q
 from django.http import HttpResponse, HttpResponseRedirect,HttpRequest
-from django.shortcuts import render, get_object_or_404, render_to_response, redirect#, reverse
+from django.shortcuts import render, get_object_or_404, render_to_response, redirect, reverse
 from django.views import View
 from django.views.generic import TemplateView, ListView, DetailView, CreateView
+from django.contrib.auth.views import LoginView
+#from django.views.generic.edit.FormMixin import get_form_class
 
-
-from .forms import UserProfileCreateForm #, UserCreateForm, UserInLineFormset
+#from .forms import UserProfileCreateForm, UserCreateForm, UserInLineFormset
 from .models import ListofChats, User_s_Chats
 from accounts.models import User, UserProfile
 
-#User = settings.AUTH_USER_MODEL
-
-# Create your views here.
+#Create your views here.
 
 class ChatsListView(LoginRequiredMixin, ListView):
     def get_queryset(self):
         queryset = User_s_Chats.objects.filter(owner = self.request.user)
         return queryset
 
-
 class AccountDetailView(LoginRequiredMixin, ListView):
-
     def get_queryset(self):
         queryset = User_s_Chats.objects.filter(owner = self.request.user)
         return queryset
 
-'''
-    def get_object(self, *args, **kwargs):
-        curr_User = self.request.user      #userID   4:32:00
-        obj = get_object_or_404(User, email = curr_User.email)
-        return obj
-'''
-
-
 class LoggedInMainPageView(LoginRequiredMixin, TemplateView):
     x = "asdasd"    
-
 class RegisterClassesView(LoginRequiredMixin, TemplateView):
     x = "asdasd"
+class SearchChatsView(LoginRequiredMixin, TemplateView):
+    x = "asdasd"    
+class DistractionsView(LoginRequiredMixin, TemplateView):
+    x = "asdasd"    
 
 class ChatPageView(LoginRequiredMixin, ListView):
     def get_queryset(self):
@@ -48,19 +40,18 @@ class ChatPageView(LoginRequiredMixin, ListView):
         return queryset   
 
 
-class SearchChatsView(LoginRequiredMixin, TemplateView):
-    x = "asdasd"    
-
-
-class DistractionsView(LoginRequiredMixin, TemplateView):
-    x = "asdasd"    
-
-
+'''
+class UserCreateLoginView(CreateView):
+    form_class          = UserCreateForm
+    success_url         = "/register/"
+    
+''' 
+'''
 class UserCreateView(CreateView):
   
     form_class         = UserProfileCreateForm 
     success_url        =  "/register/"
-    '''
+    
     template_name       = "unijive.home_logged_out.html"
     model               = User
     form_class          = UserCreateForm
@@ -92,4 +83,4 @@ class UserCreateView(CreateView):
             ctx['form'] = User()
             ctx['inlines'] = UserInLineFormset()
         return ctx
-  '''
+'''

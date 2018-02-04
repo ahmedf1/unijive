@@ -18,7 +18,7 @@ from django.contrib import admin
 from django.views.generic import TemplateView   
 from django.contrib.auth.views import LoginView
 
-from webpages.views import (ChatsListView, AccountDetailView, UserCreateView, 
+from webpages.views import (ChatsListView, AccountDetailView, #UserCreateLoginView, 
                             LoggedInMainPageView, RegisterClassesView, ChatPageView,
                             SearchChatsView, DistractionsView)
 
@@ -26,10 +26,9 @@ from webpages.views import (ChatsListView, AccountDetailView, UserCreateView,
 #MyAccount  
 
 
-
-
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
+    #url(r'^login/$', UserCreateLoginView.as_view(template_name = "unijive.home_logged_out.html"), name='login'),
     url(r'^login/$', LoginView.as_view(template_name = "unijive.home_logged_out.html",redirect_field_name = "/logged_in"), name='login'),
     #url(r'^login/$', UserCreateView.as_view(template_name = "unijive.home_logged_out.html")),
     url(r'^logged_in/$', LoggedInMainPageView.as_view(template_name = "unijive.home_logged_in.html"), name ='home'),

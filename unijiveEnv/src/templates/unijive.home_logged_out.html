@@ -144,7 +144,7 @@
         <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
             <div class="modal-dialog" role="document">
                 <div class="modal-content">
-                    <form method = "POST" name="registration" onsubmit="return formValidation();"> {% csrf_token %}
+                    
                     <div class="modal-header">
                         <h5 class="modal-title" id="exampleModalLabel" >Creating an Account is Easy!</h5>
                         
@@ -152,6 +152,7 @@
                             <span aria-hidden="true">&times;</span>
                         </button>
                     </div>
+                    <form method = "POST" name="registration" onsubmit="return formValidation();"> {% csrf_token %}
                     <div class="modal-body">
                         <p style = "text-align:center;">Step 1: Let us know a bit about yourself!</p>
                         <div class="form-group">
@@ -159,14 +160,20 @@
                                 <div style ="float:left;padding:10px;width:50%;">
                                     <label label-default="" for="Fname" class="col-sm-6"> First Name:</label>
                                 <div class="col-sm-12">
-                                    <input type="text" class="form-control" id="Fname" name="firstName" placeholder="First Name" required  >
+                                  <!--  
+                                    <input type="text" class="form-control" id="Fname" name="firstName" placeholder="First Name" required  > 
+                                  -->
+                                  {{ form.firstName }}
                                 </div>
                                 
                                 </div>
                             <div style = "float:right;padding:10px;width:50%;">
                                 <label label-default="" for="Lname" class="col-sm-6" > Last Name:</label>
                                 <div class="col-sm-12">
+                                <!--
                                     <input type="text" class="form-control" id="Lname" name="lastName" placeholder="Last Name" required>
+                                -->
+                                {{ form.lastName }}
                                 </div>
                             </div>
                             </div>
@@ -174,28 +181,41 @@
                         <div class="form-group">
                             <label label-default="" for="school" class="col-sm-12"> School/University:</label>
                             <div class="col-sm-12">
+                                <!--
                                 <input type="text" class="form-control" id="school" name="university" placeholder="School/University" required>
-                                    </div>
+                                -->
+                                {{ form.university }}
+                            </div>
                         </div>
                         
                         <div class="form-group">
                             <label label-default="" for="email" class="col-sm-12"> Email Address:</label>
                             <div class="col-sm-12">
+                                <!--
                                 <input type="email" class="form-control" id="email" name="email" placeholder="example@university.edu" required>
-                                </div>
+                                -->
+                                {{ form.email }}
+                            </div>
                         </div>
                         
                         <div class="form-group">
                             <label label-default="" for="username" class="col-sm-12"> Username:</label>
                             <div class="col-sm-12">
+                                <!--
                                 <input type="text" class="form-control" id="username" name="username" placeholder="Username" required>
-                                    </div>
+                                -->
+                                {{ form.username }}  
+                                
+                            </div>
                         </div>
                         <div class="form-group">
                             <label label-default="" for="password" class="col-sm-12">Enter a Password:</label>
                             <div class="col-sm-12">
+                                <!--
                                 <input type="password" class="form-control" id="password" name="password" placeholder="" required>
-                                    </div>
+                                -->
+                                {{ form.password }}
+                            </div>
                         </div>
                         <div class="form-group">
                             <label label-default="" for="confirmPass" class="col-sm-12">Confirm Password:</label>
