@@ -17,8 +17,15 @@
                 color: white;
                 text-decoration:none;
             }
-        img.test{
+        img.test{   
             max-width:33%;
+        }
+        .dropdown:last-child .dropdown-menu {
+            right: 0;
+            left: auto;
+        }
+        .dropdown-item{
+            color:white;
         }
     
      @font-face{
@@ -32,10 +39,10 @@
 <link rel="stylesheet" media="screen" href="{% static "sidebar.css"%}" type="text/css"/>
 
 <div class = "navbar" style="background-color:#439DBB">
-    <div class = "col-lg-6">
+    <div class = "col">
     <div class="navbar-brand" style="font-family:CaviarDreams;color:white;"><a href = "{% url "home" %}" class = "navbarLink"><h1>unijive</h1></a></div>
     </div>
-    <div class = "col-lg-6">
+    <div class = "col">
         <div class = "row" style = "float:right;">
         <a href ="{% url "myAccount" %}" >
             <button type= "button" class="btn btn-link">
@@ -44,7 +51,18 @@
                 </div>
             </button>
         </a>
-        <div style = "height:auto; width:auto;">&#9881;</div>
+        
+        <div class = "dropdown" >
+        <img id="settings" class="dropdown-toggle" src="{% static "icons_/settings.gif" %}" height ="35px"alt="" style = "margin-top:17px;position:relative;" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        <div class="dropdown-menu" aria-labelledby="settings" style = "background-color:#439DBB;">
+            <a class="dropdown-item" href="{% url "myAccount" %}"" >My Account</a>
+            <a class="dropdown-item" href="#">Preferences</a>
+            <a class="dropdown-item" href="#">Log Out</a>
+        </div>
+        </div>
+        
+        
+    
     </div>
     </div>
 
@@ -53,6 +71,7 @@
 </div>
 </head>
 <body style = "background-color:#439DBB1F"></body>
+
 
 {% block content %}
 
