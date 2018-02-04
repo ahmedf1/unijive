@@ -32,15 +32,22 @@
 <link rel="stylesheet" media="screen" href="{% static "sidebar.css"%}" type="text/css"/>
 
 <div class = "navbar" style="background-color:#439DBB">
+    <div class = "col-lg-6">
     <div class="navbar-brand" style="font-family:CaviarDreams;color:white;"><a href = "{% url "home" %}" class = "navbarLink"><h1>unijive</h1></a></div>
-    
-        <a href ="{% url "myAccount" %}">
+    </div>
+    <div class = "col-lg-6">
+        <div class = "row" style = "float:right;">
+        <a href ="{% url "myAccount" %}" >
             <button type= "button" class="btn btn-link">
                 <div class = "image-cropper">
                     <img class = "rounded" src = "{% static "icons_/account_icon.PNG" %}">
-                        </button>
-            </div>
-    </a>
+                </div>
+            </button>
+        </a>
+        <div style = "height:auto; width:auto;">&#9881;</div>
+    </div>
+    </div>
+
     
     
 </div>

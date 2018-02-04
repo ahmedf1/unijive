@@ -43,10 +43,6 @@ urlpatterns = [
     #url(r'^my_account/(?P<pk>\w+)/$', AccountDetailView.as_view(template_name = "unijive.my_account.html")),
      #url(r'^my_chats/$', TemplateView.as_view(template_name = "unijive.my_chats.html")),
     url(r'^distractions/$', DistractionsView.as_view(template_name = "unijive.distractions.html"), name="distractions"),
-    
-
-
-  
 ]
 
 
