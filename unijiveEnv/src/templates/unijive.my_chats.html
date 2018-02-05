@@ -29,30 +29,30 @@
                         
                         {% if object.seen and object.mutedStatus %}  
                         
-                        <img id = "chat_icon1" src = "{% static 'icons_/opened_muted_chat_icon.PNG' %}" height="35px" width="auto"  style="float:left;margin-top:0px;margin-right:10px;margin-left:0px;">
-                        <button id = "mutebtn1" data-chat-seen="{{object.seen}}" data-chat-muteStatus="{{object.mutedStatus}}"  type= "button" class="btn" style = "float:right;height:auto;background-color:#0000;margin:0 0 0 0;"><p id = "mute_btn_txt1" style="color:black;margin:0px 0px 0px 0px;">Unmute</p></button>
-                        <button id = "removebtn1" type= "button" class="btn" style = "float:right;height:auto;margin:0 0 0 0;background-color:#0000;"><p style="color:black;margin:0px 0px 0px 0px;">Remove</p> </button>
+                        <img id = "chat_icon1" src = "{% static 'icons_/opened_muted_chat_icon.PNG' %}" height="35px" width="37px"  style="float:left;margin-top:0px;margin-right:10px;margin-left:0px;">
+                        <button id = "mutebtn1" data-chat-seen="{{object.seen}}" data-chat-muteStatus="{{object.mutedStatus}}"  type= "button" class="btn" style = "float:right;height:auto;background-color:#0000;margin:0 0 0 0;width:80px;"><p id = "mute_btn_txt1" style="color:black;margin:0px 0px 0px 0px;">Unmute</p></button>
+                        <button id = "removebtn1" type= "button" class="btn" style = "float:right;height:auto;margin:0 0 0 0;background-color:#0000;"><p style="color:black;margin:0px 0px 0px 0px;">Leave</p> </button>
                         {% endif %}
 
                         {% if not object.seen and object.mutedStatus %}  
                             
-                        <img id = "chat_icon1" src = "{% static 'icons_/unopened_muted_chat_icon.PNG' %}" height="35px" width="auto"  style="float:left;margin-top:0px;margin-right:10px;margin-left:0px;">
-                        <button id = "mutebtn1" data-chat-seen="{{object.seen}}" data-chat-muteStatus="{{object.mutedStatus}}" type= "button" class="btn" style = "float:right;height:auto;background-color:#0000;margin:0 0 0 0;"><p id = "mute_btn_txt1" style="color:black;margin:0px 0px 0px 0px;">Unmute</p></button>
-                        <button id = "removebtn1" type= "button" class="btn" style = "float:right;height:auto;margin:0 0 0 0;background-color:#0000;"><p style="color:black;margin:0px 0px 0px 0px;">Remove</p> </button>
+                        <img id = "chat_icon1" src = "{% static 'icons_/unopened_muted_chat_icon.PNG' %}" height="35px" width="37px"  style="float:left;margin-top:0px;margin-right:10px;margin-left:0px;">
+                        <button id = "mutebtn1" data-chat-seen="{{object.seen}}" data-chat-muteStatus="{{object.mutedStatus}}" type= "button" class="btn" style = "float:right;height:auto;background-color:#0000;margin:0 0 0 0;width:80px;"><p id = "mute_btn_txt1" style="color:black;margin:0px 0px 0px 0px;">Unmute</p></button>
+                        <button id = "removebtn1" type= "button" class="btn" style = "float:right;height:auto;margin:0 0 0 0;background-color:#0000;"><p style="color:black;margin:0px 0px 0px 0px;">Leave</p> </button>
                         {% endif %}
 
                         {% if not object.seen and not object.mutedStatus %}  
                        
-                        <img id = "chat_icon1" src = "{% static 'icons_/unopened_chat_icon.PNG' %}" height="35px" width="auto"  style="float:left;margin-top:0px;margin-right:10px;margin-left:0px;">
-                        <button id = "mutebtn1" data-chat-seen="{{object.seen}}" data-chat-muteStatus="{{object.mutedStatus}}" type= "button" class="btn" style = "float:right;height:auto;background-color:#0000;margin:0 0 0 0;"><p id = "mute_btn_txt1" style="color:black;margin:0px 0px 0px 0px;">Mute</p></button>
-                        <button id = "removebtn1" type= "button" class="btn" style = "float:right;height:auto;margin:0 0 0 0;background-color:#0000;"><p style="color:black;margin:0px 0px 0px 0px;">Remove</p> </button>
+                        <img id = "chat_icon1" src = "{% static 'icons_/unopened_chat_icon.PNG' %}" height="35px" width="37px"  style="float:left;margin-top:0px;margin-right:10px;margin-left:0px;">
+                        <button id = "mutebtn1" data-chat-seen="{{object.seen}}" data-chat-muteStatus="{{object.mutedStatus}}" type= "button" class="btn" style = "float:right;height:auto;background-color:#0000;margin:0 0 0 0;width:80px;"><p id = "mute_btn_txt1" style="color:black;margin:0px 0px 0px 0px;">Mute</p></button>
+                        <button id = "removebtn1" type= "button" class="btn" style = "float:right;height:auto;margin:0 0 0 0;background-color:#0000;"><p style="color:black;margin:0px 0px 0px 0px;">Leave</p> </button>
                         {% endif %}
 
                         {% if object.seen and not object.mutedStatus %}  
                         
-                        <img id = "chat_icon1" src = "{% static 'icons_/opened_chat_icon.PNG' %}" height="35px" width="auto"  style="float:left;margin-top:0px;margin-right:10px;margin-left:0px;">
-                        <button id = "mutebtn1" data-chat-seen="{{object.seen}}" data-chat-muteStatus="{{object.mutedStatus}}" type= "button" class="btn" style = "float:right;height:auto;background-color:#0000;margin:0 0 0 0;"><p id = "mute_btn_txt1" style="color:black;margin:0px 0px 0px 0px;">Mute</p></button>
-                        <button id = "removebtn1" type= "button" class="btn" style = "float:right;height:auto;margin:0 0 0 0;background-color:#0000;"><p style="color:black;margin:0px 0px 0px 0px;">Remove</p> </button>
+                        <img id = "chat_icon1" src = "{% static 'icons_/opened_chat_icon.PNG' %}" height="35px" width="37px"  style="float:left;margin-top:0px;margin-right:10px;margin-left:0px;">
+                        <button id = "mutebtn1" data-chat-seen="{{object.seen}}" data-chat-muteStatus="{{object.mutedStatus}}" type= "button" class="btn" style = "float:right;height:auto;background-color:#0000;margin:0 0 0 0;width:80px;"><p id = "mute_btn_txt1" style="color:black;margin:0px 0px 0px 0px;">Mute</p></button>
+                        <button id = "removebtn1" type= "button" class="btn" style = "float:right;height:auto;margin:0 0 0 0;background-color:#0000;"><p style="color:black;margin:0px 0px 0px 0px;">Leave</p> </button>
                         {% endif %}
                             
                             <div style="margin-left:40px;">
@@ -88,6 +88,7 @@ $(document).ready(function(){
 
 function unopenedUnmute(){
     $(this).siblings("[id^=chat_icon]").attr("src","{% static 'icons_/unopened_chat_icon.PNG' %}");
+    
     $(this).text("Mute");
     $(this).off("click");
     $(this).click(unopenedMute);

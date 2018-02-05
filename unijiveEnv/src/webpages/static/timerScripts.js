@@ -22,30 +22,112 @@ function settingTimer(){
     if(!timerSecond10){timerSecond10 = 0;}
 
     var totalMinutes = timerMinute10 + timerMinute1;
+    if(totalMinutes<10){totalMinutes = ("0" + totalMinutes).slice(-2);}
+
     var totalSeconds = timerSecond1 + timerSecond10;
+    if(totalSeconds<10){totalSeconds = ("0" + totalSeconds).slice(-2);}
+/*
+    alert(timerHour);
+    alert(totalMinutes);
+    alert(totalSeconds);
+    */
+
+
 
     document.getElementById("hour").disabled=true;
     document.getElementById("minute10").disabled=true;
     document.getElementById("minute1").disabled=true;
     document.getElementById("sec1").disabled=true;
     document.getElementById("sec10").disabled=true;
+
+    
+
+            // min/hr * sec/min * ms/sec
+    var sum = (timerHour * 60 * 60 * 1000) + (totalMinutes * 60 * 1000) + (totalSeconds * 1000);
+    var deadline = new Date(Date.parse(new Date()) + sum);
+    cancelled = false;
+    initializeClock(deadline);
+
    
 
 }
 
 function stopTimer(){
+    cancelled = true;
+    // resetting values
+    document.getElementById("hour").value=0;
+    document.getElementById("minute10").value=0;
+    document.getElementById("minute1").value=0;
+    document.getElementById("sec1").value=0;
+    document.getElementById("sec10").value=0; 
+
+    // allowing input again
     document.getElementById("hour").disabled=false;
     document.getElementById("minute10").disabled=false;
     document.getElementById("minute1").disabled=false;
     document.getElementById("sec1").disabled=false;
     document.getElementById("sec10").disabled=false; 
+
+    
 }
+
+
+function getTimeRemaining(deadline) {
+    var t = Date.parse(deadline) - Date.parse(new Date());
+    var seconds1 = Math.floor(((t / 1000) % 60) / 10);
+    var seconds10 = Math.floor(((t / 1000) % 60) % 10);
+    var minutes10 = Math.floor(((t / 1000 / 60) % 60) / 10);
+    var minutes1 = Math.floor(((t / 1000 / 60) % 60) % 10);
+    var hours = Math.floor((t / (1000 * 60 * 60)) % 24);
+    return {
+      'total': t,
+      'hours': hours,
+      'minutes10': minutes10,
+      'minutes1': minutes1,
+      'seconds1': seconds1,
+      'seconds10': seconds10,
+    };
+  }
+  
+  var cancelled = false;
 
 
 var countDownDate = new Date("Jan 26, 2018 23:58:00").getTime();
 
-// Update the count down every 1 second
+  
+  function initializeClock(endtime) {
+    var hourSpan = document.getElementById("hour");
+    var minute10Span = document.getElementById("minute10");
+    var minute1Span = document.getElementById("minute1");
+    var sec1Span = document.getElementById("sec1");
+    var sec10Span = document.getElementById("sec10"); 
 
+  
+    function updateClock() {
+      var t = getTimeRemaining(endtime);
+  
+      
+      hourSpan.value = (t.hours);
+      minute10Span.value = (t.minutes10);
+      minute1Span.value = (t.minutes1);
+      sec1Span.value = (t.seconds1);
+      sec10Span.value = (t.seconds10);
+  
+      if (t.total <= 0) {
+        clearInterval(timeinterval);
+      }
+
+      if(cancelled){clearInterval(timeinterval);}
+    }
+  
+    updateClock();
+    var timeinterval = setInterval(updateClock, 1000);
+  }
+  
+  
+
+  // Update the count down every 1 second
+/*
 var x = setInterval(function() {
 
     // Get todays date and time
@@ -69,3 +151,5 @@ var x = setInterval(function() {
         document.getElementById("demo").innerHTML = "EXPIRED";
     }
 }, 1000);
+
+*/
