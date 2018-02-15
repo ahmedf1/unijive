@@ -29,10 +29,39 @@ def login(request):
     return render(request, "unijive.home_logged_out.html")
 '''
 
+def mute_chat(request):       
+    if request.method == 'GET':
+        userChatID = request.GET['userChatID']
+        mutedChat = User_s_Chats.objects.get(pk=userChatID)
+        mutedChat.mutedStatus = not mutedChat.mutedStatus
+        mutedChat.save()
+        return HttpResponse("Success!")
+    else:
+        return HttpResponse("FAILED!")
+
+
+def leave_chat(request):       
+    if request.method == 'GET':
+        userChatID = request.GET['userChatID']
+        archivedChat = User_s_Chats.objects.get(pk=userChatID)
+        archivedChat.archived = True
+        archivedChat.save()
+        return HttpResponse("Success!")
+    else:
+        return HttpResponse("FAILED!")
+
+        
+
+
+
 class ChatsListView(LoginRequiredMixin, ListView):
     def get_queryset(self):
         queryset = User_s_Chats.objects.filter(owner = self.request.user)
         return queryset
+    
+
+    
+
 
 class AccountDetailView(LoginRequiredMixin, ListView):
     def get_queryset(self):

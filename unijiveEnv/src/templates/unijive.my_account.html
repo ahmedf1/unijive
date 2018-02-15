@@ -56,6 +56,10 @@
                         
                         </tr>
                         {% endif %}
+                        {% empty %}
+                        <tr>
+                          <td colspan="7" class="text-center bg-warning">Not in any chats this semster :(</td>
+                        </tr>                
                         {% endfor %}
                         </tbody>
                         </table>
@@ -90,6 +94,10 @@
                             
                             </tr>
                             {% endif %}
+                            {% empty %}
+                            <tr>
+                              <td colspan="7" class="text-center bg-warning">No previous history of classes :(</td>
+                            </tr> 
                             {% endfor %}
                         </tbody>
                         </table>

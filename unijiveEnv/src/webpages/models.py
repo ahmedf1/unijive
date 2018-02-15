@@ -90,16 +90,17 @@ class ListofChats(models.Model):
 class User_s_Chats(models.Model):
     class Meta:
         verbose_name_plural = "User's Chats"
-    uscID          = models.AutoField(primary_key=True)
-    chatID         = models.ForeignKey(
+    uscID           = models.AutoField(primary_key=True)
+    chatID          = models.ForeignKey(
                         'ListofChats',
                          on_delete=models.PROTECT,
                     )
-    owner         = models.ForeignKey(User,
+    owner           = models.ForeignKey(User,
                          on_delete=models.PROTECT,
                     )
-    seen          = models.BooleanField(default = False)
-    mutedStatus    = models.BooleanField(default = False)
+    seen            = models.BooleanField(default = False)
+    mutedStatus     = models.BooleanField(default = False)
+    archived        = models.BooleanField(default = False)
 
     def __str__(self):
         return self.owner.email + ' | ' + self.chatID.className + ' | ' + self.chatID.professor + ' | ' + self.chatID.s_year + " | " + str(self.uscID)

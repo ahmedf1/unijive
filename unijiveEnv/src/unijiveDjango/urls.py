@@ -21,7 +21,7 @@ from django.contrib.auth.views import LoginView
 
 from webpages.views import (ChatsListView, AccountDetailView, #UserCreateLoginView, 
                             LoggedInMainPageView, RegisterClassesView, ChatPageView,
-                            SearchChatsView, DistractionsView, #login
+                            SearchChatsView, DistractionsView, mute_chat, leave_chat #login
                             )
 
 #ChatsNearMe
@@ -39,6 +39,8 @@ urlpatterns = [
 
     url(r'^chat_page/$', ChatPageView.as_view(template_name = "unijive.chat_page.html")), # need customizable name
     url(r'^my_chats/$', ChatsListView.as_view( template_name = 'unijive.my_chats.html'),name="myChats"),
+    url(r'^mute_chat/$', mute_chat,name="mute_chat"),
+    url(r'^leave_chat/$', leave_chat,name ="leave_chat"),
     #url(r'^my_chats/(?P<slug>\w+)/$', ChatsListView.as_view( template_name = 'unijive.my_chats.html') ),
    
     url(r'^search_chats/$', SearchChatsView.as_view(template_name = "unijive.search_chats.html"), name="searchChats"),

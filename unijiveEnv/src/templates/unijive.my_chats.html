@@ -9,7 +9,7 @@
         
         <div class = "page-header-like-modal"  >
             <h1 style = "color:#439DBB;">My Chats
-                <span class="badge-pill" style="background-color:#439DBB;color:white;vertical-align:middle;">2</span>
+                <span id = "numofunopenedChats"class="badge-pill" style="background-color:#439DBB;color:white;vertical-align:middle;visibility:visible;"></span>
                 <a href = "{% url "distractions" %}"><img src = "{% static "icons_/distractions.png" %}" height="60px" width="auto" style = "float:right;margin-right:30px;"></a>
                 <a href = "{% url "searchChats" %}"><img src = "{% static "icons_/search_icon.PNG" %}" height="60px" width="60px" style = "float:right;margin-right:30px;"></a>
                 </h1>
@@ -21,80 +21,196 @@
         <div class = "modal-body"  >
             <div class = "list-group" >
                 {% for  object in object_list %}
+                {% if not object.archived %}
                 <div id = "list_chat" >
-                    
-                    
                     
                     <div class="list-group-item" style="border:2px solid #439DBB;border-radius:15px;background-color:#439DBB1F;">
                         
                         {% if object.seen and object.mutedStatus %}  
                         
                         <img id = "chat_icon1" src = "{% static 'icons_/opened_muted_chat_icon.PNG' %}" height="35px" width="37px"  style="float:left;margin-top:0px;margin-right:10px;margin-left:0px;">
-                        <button id = "mutebtn1" data-chat-seen="{{object.seen}}" data-chat-muteStatus="{{object.mutedStatus}}"  type= "button" class="btn" style = "float:right;height:auto;background-color:#0000;margin:0 0 0 0;width:80px;"><p id = "mute_btn_txt1" style="color:black;margin:0px 0px 0px 0px;">Unmute</p></button>
-                        <button id = "removebtn1" type= "button" class="btn" style = "float:right;height:auto;margin:0 0 0 0;background-color:#0000;"><p style="color:black;margin:0px 0px 0px 0px;">Leave</p> </button>
+                        <button id = "mutebtn1" data-userChatID = "{{object.uscID}}" data-chat-seen="{{object.seen}}" data-chat-muteStatus="{{object.mutedStatus}}"  type= "button" class="btn" style = "float:right;height:auto;background-color:#0000;margin:0 0 0 0;width:80px;">Unmute</button>
+                        <button id = "removebtn1" data-userChatID = {{object.uscID}} type= "button" class="btn" style = "float:right;height:auto;margin:0 0 0 0;background-color:#0000;"><p style="color:black;margin:0px 0px 0px 0px;">Leave</p> </button>
                         {% endif %}
 
-                        {% if not object.seen and object.mutedStatus %}  
+                        {% if not object.seen and object.mutedStatus%}  
                             
                         <img id = "chat_icon1" src = "{% static 'icons_/unopened_muted_chat_icon.PNG' %}" height="35px" width="37px"  style="float:left;margin-top:0px;margin-right:10px;margin-left:0px;">
-                        <button id = "mutebtn1" data-chat-seen="{{object.seen}}" data-chat-muteStatus="{{object.mutedStatus}}" type= "button" class="btn" style = "float:right;height:auto;background-color:#0000;margin:0 0 0 0;width:80px;"><p id = "mute_btn_txt1" style="color:black;margin:0px 0px 0px 0px;">Unmute</p></button>
-                        <button id = "removebtn1" type= "button" class="btn" style = "float:right;height:auto;margin:0 0 0 0;background-color:#0000;"><p style="color:black;margin:0px 0px 0px 0px;">Leave</p> </button>
+                        <button id = "mutebtn1" data-userChatID = "{{object.uscID}}" data-chat-seen="{{object.seen}}" data-chat-muteStatus="{{object.mutedStatus}}" type= "button" class="btn" style = "float:right;height:auto;background-color:#0000;margin:0 0 0 0;width:80px;">Unmute</button>
+                        <button id = "removebtn1" data-userChatID = {{object.uscID}} type= "button" class="btn" style = "float:right;height:auto;margin:0 0 0 0;background-color:#0000;"><p style="color:black;margin:0px 0px 0px 0px;">Leave</p> </button>
                         {% endif %}
 
                         {% if not object.seen and not object.mutedStatus %}  
                        
                         <img id = "chat_icon1" src = "{% static 'icons_/unopened_chat_icon.PNG' %}" height="35px" width="37px"  style="float:left;margin-top:0px;margin-right:10px;margin-left:0px;">
-                        <button id = "mutebtn1" data-chat-seen="{{object.seen}}" data-chat-muteStatus="{{object.mutedStatus}}" type= "button" class="btn" style = "float:right;height:auto;background-color:#0000;margin:0 0 0 0;width:80px;"><p id = "mute_btn_txt1" style="color:black;margin:0px 0px 0px 0px;">Mute</p></button>
+                        <button id = "mutebtn1" data-userChatID = "{{object.uscID}}" data-chat-seen="{{object.seen}}" data-chat-muteStatus="{{object.mutedStatus}}" type= "button" class="btn" style = "float:right;height:auto;background-color:#0000;margin:0 0 0 0;width:80px;">Mute</button>
                         <button id = "removebtn1" type= "button" class="btn" style = "float:right;height:auto;margin:0 0 0 0;background-color:#0000;"><p style="color:black;margin:0px 0px 0px 0px;">Leave</p> </button>
                         {% endif %}
 
                         {% if object.seen and not object.mutedStatus %}  
                         
                         <img id = "chat_icon1" src = "{% static 'icons_/opened_chat_icon.PNG' %}" height="35px" width="37px"  style="float:left;margin-top:0px;margin-right:10px;margin-left:0px;">
-                        <button id = "mutebtn1" data-chat-seen="{{object.seen}}" data-chat-muteStatus="{{object.mutedStatus}}" type= "button" class="btn" style = "float:right;height:auto;background-color:#0000;margin:0 0 0 0;width:80px;"><p id = "mute_btn_txt1" style="color:black;margin:0px 0px 0px 0px;">Mute</p></button>
-                        <button id = "removebtn1" type= "button" class="btn" style = "float:right;height:auto;margin:0 0 0 0;background-color:#0000;"><p style="color:black;margin:0px 0px 0px 0px;">Leave</p> </button>
+                        <button id = "mutebtn1" data-userChatID = "{{object.uscID}}" data-chat-seen="{{object.seen}}" data-chat-muteStatus="{{object.mutedStatus}}" type= "button" class="btn" style = "float:right;height:auto;background-color:#0000;margin:0 0 0 0;width:80px;">Mute</button>
+                        <button id = "removebtn1" data-userChatID = "{{object.uscID}}" type= "button" class="btn" style = "float:right;height:auto;margin:0 0 0 0;background-color:#0000;"><p style="color:black;margin:0px 0px 0px 0px;">Leave</p> </button>
                         {% endif %}
-                            
+                        
+                        
                             <div style="margin-left:40px;">
-                            <a id = "chat_title_link" href="{{class.chat_page}}"><h4 class="list-group-item-heading" style="color:black;margin-top:5px;">{{object.chatID.className}}, {{object.chatID.professor}}</h4></a>
-                            
-                            
+                            <a id = "chat_title_link" href="{{class.chat_page}}"><h4 class="list-group-item-heading" style="color:black;margin-top:5px;">{{object.uscID}}, {{object.chatID.className}}, {{object.chatID.professor}}</h4></a>
                             
                         
                             
                             <p class="list-group-item-text" style="color:grey;">{{class.snippet}}</p>
                             </div>
+                       
                             
                     </div>
-
                     <br>
-            
-                   
                 </div>
+                {% endif %}
                 {% endfor %}
+
             </div>
+                <div>
+                  <h4 id = "nochats" class="text-center" style="visibility:hidden;background-color:#439DBBCF; color:white;">No Chats Here :( &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Try searching for some up there &#8599; </h4>
+                </div>
         </div>
         
 <script>
   //  href="{{class.chat_page}}"
 //Initialize Remove button functionality
 $(document).ready(function(){
-                $("[id^=removebtn]").click(function(){
-                ($(this).closest("[id^=list_chat]")).remove();
-                
+                $("[id^=removebtn]").each(function(index){  
+                $(this).click(function (){
+                    var chatID;
+                    chatID = $(this).attr("data-userChatID");
+                    
+                    $.ajax(
+                        {
+                            type:"GET",
+                            url: "/leave_chat",
+                            data:{
+                            userChatID: chatID
+                                },
+                            success: function(data)
+                            {
+                                //($(this).closest("[id^=list_chat]")).remove();
+                                location.reload();
+                                //alert(data);
+                                //($(this).closest("[id^=list_chat]")).remove();
+                            }
+                        }
+                     )
+                //$(this).closest("[id^=list_chat]").remove();
+});
                 });
 });
+$( document ).ajaxError(function( event, jqxhr, settings, exception ) {  
+    alert( "Triggered ajaxError handler." );  
+}); 
 
+/*
+function archiveChat(){
+    var chatID;
+    chatID = $(this).attr("data-userChatID");
+    $.ajax(
+        {
+            type:"GET",
+            url: "/leave_chat",
+            data:{
+                userChatID: chatID
+                },
+            success: function(data)
+            {
+                //($(this).closest("[id^=list_chat]")).remove();
+                location.reload();
+                //($(this).closest("[id^=list_chat]")).remove();
+            }
+        }
+    )
+    $(this).closest("[id^=list_chat]").remove();
+}
+
+
+$(document).ready(function(){
+    
+    $('#mutebtn1').click(
+    
+    function(){
+    var chatID;
+    chatID = $(this).attr("data-userChatID");
+    $.ajax(
+        {
+            type:"GET",
+            url: "/mute_chat",
+            data:{
+                userChatID: chatID
+            },
+            success: function(data)
+            {
+                location.reload();
+               // $(this).attr("src","{% static 'icons_/unopened_muted_chat_icon.PNG' %}");
+                
+            }
+        }
+    )
+}
+)});
+*/
+
+$(window).ready(function(){
+    if($('.list-group').children().length == 0){
+        $('#nochats').css("visibility","visible");
+        $('#numofunopenedChats').css("visibility","hidden");
+    }
+    else {
+        $('#numofunopenedChats').text($('.list-group').children().length);
+    }
+
+});
 
 function unopenedUnmute(){
+    var chatID;
+    chatID = $(this).attr("data-userChatID");
+    $.ajax(
+        {
+            type:"GET",
+            url: "/mute_chat",
+            data:{
+                userChatID: chatID
+                },
+            success: function(data)
+            {
+                $(this).siblings("[id^=chat_icon]").attr("src", "{% static 'icons_/unopened_chat_icon.PNG' %}");
+                $(this).text("Mute");
+                                        
+            }
+        }
+    )
     $(this).siblings("[id^=chat_icon]").attr("src","{% static 'icons_/unopened_chat_icon.PNG' %}");
-    
     $(this).text("Mute");
     $(this).off("click");
     $(this).click(unopenedMute);
 }
         
 function unopenedMute(){
+    var chatID;
+    chatID = $(this).attr("data-userChatID");
+    $.ajax(
+        {
+            type:"GET",
+            url: "/mute_chat",
+            data:{
+                userChatID: chatID
+                },
+            success: function(data)
+            {
+                $(this).siblings("[id^=chat_icon]").attr("src", "{% static 'icons_/unopened_muted_chat_icon.PNG' %}");
+                $(this).text("Unmute");
+                                        
+            }
+        }
+    )
     $(this).siblings("[id^=chat_icon]").attr("src","{% static 'icons_/unopened_muted_chat_icon.PNG' %}");
     $(this).text("Unmute");
     $(this).off("click");
@@ -102,6 +218,23 @@ function unopenedMute(){
 }
         
 function openedUnmute(){
+    var chatID;
+    chatID = $(this).attr("data-userChatID");
+    $.ajax(
+        {
+            type:"GET",
+            url: "/mute_chat",
+            data:{
+                userChatID: chatID
+                },
+            success: function(data)
+            {
+                $(this).siblings("[id^=chat_icon]").attr("src", "{% static 'icons_/opened_chat_icon.PNG' %}");
+                $(this).text("Mute");
+                                        
+            }
+        }
+    )
     $(this).siblings("[id^=chat_icon]").attr("src", "{% static 'icons_/opened_chat_icon.PNG' %}");
     $(this).text("Mute");
     $(this).off("click");
@@ -109,6 +242,23 @@ function openedUnmute(){
 }
         
 function openedMute(){
+    var chatID;
+    chatID = $(this).attr("data-userChatID");
+    $.ajax(
+        {
+            type:"GET",
+            url: "/mute_chat",
+            data:{
+                userChatID: chatID
+                },
+            success: function(data)
+            {
+                $(this).siblings("[id^=chat_icon]").attr("src", "{% static 'icons_/opened_muted_chat_icon.PNG' %}");
+                $(this).text("Unmute");
+                                        
+            }
+        }
+    )
     $(this).siblings("[id^=chat_icon]").attr("src","{% static 'icons_/opened_muted_chat_icon.PNG' %}");
     $(this).text("Unmute");
     $(this).off("click");
@@ -117,11 +267,13 @@ function openedMute(){
 
 //Initialize Mute/Unmute button functionality
 $(document).ready(function(){
-                $("[id^=mutebtn]").each(function(index){
-                    
+                $("[id^=mutebtn]").each(function(index){    
                 if($(this).attr("data-chat-seen") == "True"){
                     if($(this).attr("data-chat-muteStatus") == "True"){
+                            
+                        
                         $(this).click(openedUnmute);
+                        
                     }
                     else {
                     $(this).click(openedMute);
@@ -129,16 +281,17 @@ $(document).ready(function(){
                 }
                 else if ($(this).attr("data-chat-seen") == "False"){
                     if($(this).attr("data-chat-muteStatus") == "True"){
+                        
                         $(this).click(unopenedUnmute);
                     }
                     else{
+    
                         $(this).click(unopenedMute);
                     }
                 }
                 
                 });
 });
-
 
 </script>
       
