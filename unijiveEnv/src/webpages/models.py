@@ -83,6 +83,7 @@ class ListofChats(models.Model):
     professor           = models.CharField(max_length = 30)
     s_year              = models.CharField(max_length = 3)
     currently_active    = models.BooleanField(default = 0)
+    university          = models.CharField(max_length = 45)
 
     def __str__(self):
         return self.className + ' (' + str(self.chatID) + ')'

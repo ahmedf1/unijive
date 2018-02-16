@@ -58,10 +58,12 @@ class ChatsListView(LoginRequiredMixin, ListView):
     def get_queryset(self):
         queryset = User_s_Chats.objects.filter(owner = self.request.user)
         return queryset
-    
 
-    
-
+class SearchChatsView(LoginRequiredMixin, ListView):
+    def get_queryset(self):
+        queryset = ListofChats.objects.filter(university = self.request.user.userprofile.university)
+        return queryset
+   
 
 class AccountDetailView(LoginRequiredMixin, ListView):
     def get_queryset(self):
@@ -69,11 +71,16 @@ class AccountDetailView(LoginRequiredMixin, ListView):
         return queryset
 
 class LoggedInMainPageView(LoginRequiredMixin, TemplateView):
-    x = "asdasd"    
+    x = "asdasd"  
+      
 class RegisterClassesView(LoginRequiredMixin, TemplateView):
     x = "asdasd"
+
+'''
 class SearchChatsView(LoginRequiredMixin, TemplateView):
-    x = "asdasd"    
+    x = "asdasd" 
+
+'''   
 class DistractionsView(LoginRequiredMixin, TemplateView):
     x = "asdasd"    
 
