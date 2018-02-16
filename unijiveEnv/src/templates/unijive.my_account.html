@@ -49,7 +49,7 @@
                         </thead>
                         <tbody>
                         {% for  object in object_list %}
-                        {% if object.chatID.currently_active%}
+                        {% if object.chatID.currently_active and not object.archived %}
                         <tr>
                         <td>{{object.chatID.className}}</td>
                         <td>{{object.chatID.professor}}</td>
