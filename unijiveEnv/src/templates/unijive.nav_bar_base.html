@@ -55,9 +55,9 @@
         <div class = "dropdown" >
         <img id="settings" class="dropdown-toggle" src="{% static "icons_/settings.gif" %}" height ="35px"alt="" style = "margin-top:17px;position:relative;" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
         <div class="dropdown-menu" aria-labelledby="settings" style = "background-color:#439DBB;">
-            <a class="dropdown-item" href="{% url "myAccount" %}"" >My Account</a>
+            <a class="dropdown-item" href="{% url "myAccount" %}" >My Account</a>
             <a class="dropdown-item" href="#">Preferences</a>
-            <a class="dropdown-item" href="#">Log Out</a>
+            <a class="dropdown-item" id="logout" href="#">Log Out</a>
         </div>
         </div>
         
@@ -77,5 +77,33 @@
 
 {% endblock content %}
 </body>
+
+
+<script>
+
+$(document).ready(function(){
+    $('#logout').click(
     
+    function(){
+
+    $.ajax(
+        {
+            type:"GET",
+            url: "/log_out",
+
+            success: function(data)
+            {
+                location.reload();
+               // $(this).attr("src","{% static 'icons_/unopened_muted_chat_icon.PNG' %}");
+                
+            }
+        }
+    )
+}
+)});
+
+</script>
+
+
+
 </html>

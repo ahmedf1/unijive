@@ -7,11 +7,14 @@ from django.shortcuts import render, get_object_or_404, render_to_response, redi
 from django.views import View
 from django.views.generic import TemplateView, ListView, DetailView, CreateView
 from django.contrib.auth.views import LoginView
+from django.contrib.auth import logout
+
 #from django.views.generic.edit.FormMixin import get_form_class
 
 #from .forms import UserProfileCreateForm, UserCreateForm, UserInLineFormset
 from .models import ListofChats, User_s_Chats
 from accounts.models import User, UserProfile
+
 
 #Create your views here.
 '''
@@ -52,6 +55,10 @@ def leave_chat(request):
 
         
 
+def logout_view(request):
+    logout(request)
+    return redirect('login')
+    # Redirect to a success page.
 
 
 class ChatsListView(LoginRequiredMixin, ListView):
