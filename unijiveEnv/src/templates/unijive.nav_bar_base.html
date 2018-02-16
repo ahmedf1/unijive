@@ -38,7 +38,7 @@
 {% load static%}
 <link rel="stylesheet" media="screen" href="{% static "sidebar.css"%}" type="text/css"/>
 
-<div class = "navbar" style="background-color:#439DBB">
+<div class = "navbar" style="background-color:#439DBB;height:65px;padding:0 10px 0 0;">
     <div class = "col">
     <div class="navbar-brand" style="font-family:CaviarDreams;color:white;"><a href = "{% url "home" %}" class = "navbarLink"><h1>unijive</h1></a></div>
     </div>
@@ -47,14 +47,14 @@
         <a href ="{% url "myAccount" %}" >
             <button type= "button" class="btn btn-link">
                 <div class = "image-cropper">
-                    <img class = "rounded" src = "{% static "icons_/account_icon.PNG" %}">
+                    <img class = "rounded" style="height:45px;" src = "{% static "icons_/account_icon.PNG" %}">
                 </div>
             </button>
         </a>
         
         <div class = "dropdown" >
-        <img id="settings" class="dropdown-toggle" src="{% static "icons_/settings.gif" %}" height ="35px"alt="" style = "margin-top:17px;position:relative;" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-        <div class="dropdown-menu" aria-labelledby="settings" style = "background-color:#439DBB;">
+        <img id="settings" class="dropdown-toggle" src="{% static "icons_/settings.gif" %}" height ="25px"alt="" style = "margin-top:17px;position:relative;" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        <div class="dropdown-menu" aria-labelledby="settings" style = "background-color:#439DBB;top:60px;">
             <a class="dropdown-item" href="{% url "myAccount" %}" >My Account</a>
             <a class="dropdown-item" href="#">Preferences</a>
             <a class="dropdown-item" id="logout" href="#">Log Out</a>

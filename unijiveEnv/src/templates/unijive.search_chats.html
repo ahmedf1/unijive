@@ -6,7 +6,7 @@
         <div class = "page-header" style = "margin-top:50px;margin-left:30px;">
             <h1>
                 <a href = "{% url "myChats" %}"><img src = "{% static "icons_/my_chats_icon.PNG" %}" height="80px" width="auto" style = "float:left;"></a>
-                <h1 style = "text-align:center;color:#439DBB;">Search Chats
+                <h1 style = "text-align:center;color:#439DBB;">Search for Chats
                 <a href = "{% url "distractions" %}"><img src = "{% static "icons_/distractions.PNG" %}" height="80px" width="auto" style = "float:right;margin-right:60px;"></a>
                 </h1>
             </h1>
@@ -24,15 +24,26 @@
             <div class = "row">
                 <div class="col-lg-6 offset-lg-3">
                     <div class="input-group" style="margin-top:15px;margin-bottom:15px;">
-                        <input type="text" class="form-control" placeholder="Professor">
+                        <input list="classes" class="form-control" placeholder="Class">
+                        <datalist id="classes">
+                        {% for  object in object_list %}
+                        <option value = "{{object.className}}">
+                        {% endfor %}
+                        </datalist>
                             </div><!-- /input-group -->
                 </div><!-- /.col-lg-6 -->
             </div><!-- /.row -->
             <div class = "row">
                 <div class="col-lg-6 offset-lg-3">
                     <div class="input-group" style="margin-top:15px;margin-bottom:15px;">
-                        <input type="text" class="form-control" placeholder="Class">
-                            </div><!-- /input-group -->
+                        <input list="professors" class="form-control" placeholder="Professor">
+                        <datalist id="classes">
+                                {% for  object in object_list %}
+                                // need to filter professor for selected class using js
+                                <option value = "{{object.className}}">
+                                {% endfor %}
+                        </datalist>
+                    </div><!-- /input-group -->
                 </div><!-- /.col-lg-6 -->
             </div><!-- /.row -->
 
@@ -40,6 +51,8 @@
     <button class="btn btn-default" style = "margin: 10px auto 0px auto;background-color:#439DBB;color:white;" type="button">Search</button>
 </span>
         </div>
+
+<script></script>
         
 {% endblock content%}
     

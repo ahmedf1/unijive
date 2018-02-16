@@ -20,6 +20,14 @@
         img.test{
             max-width:33%;
         }
+        .dropdown:last-child .dropdown-menu {
+            right: 0;
+            left: auto;
+        }
+        .dropdown-item{
+            color:white;
+        }
+    
     
      @font-face{
      font-family: 'CaviarDreams';
@@ -31,19 +39,37 @@
 {% load static%}
 <link rel="stylesheet" media="screen" href="{% static "sidebar.css"%}" type="text/css"/>
 
-<div class = "navbar" style="background-color:#439DBB">
-    <div class="navbar-brand" style="font-family:CaviarDreams;color:white;"><a href = "{% url "home" %}" class = "navbarLink"><h1 style = "padding: 0px 0px 0px 0px;margin:0;">unijive</h1></a></div>
-    
-        <a href ="{% url "myAccount" %}">
-            <button type= "button" class="btn btn-link">
-                <div class = "image-cropper">
-                    <img class = "rounded" src = "{% static "icons_/account_icon.PNG" %}">
-                        </button>
+<div class = "navbar" style="background-color:#439DBB;height:65px;padding:0 10px 0 0;">
+        <div class = "col">
+        <div class="navbar-brand" style="font-family:CaviarDreams;color:white;"><a href = "{% url "home" %}" class = "navbarLink"><h1>unijive</h1></a></div>
+        </div>
+        <div class = "col">
+            <div class = "row" style = "float:right;">
+            <a href ="{% url "myAccount" %}" >
+                <button type= "button" class="btn btn-link">
+                    <div class = "image-cropper">
+                        <img class = "rounded" style="height:45px;" src = "{% static "icons_/account_icon.PNG" %}">
+                    </div>
+                </button>
+            </a>
+            
+            <div class = "dropdown" >
+            <img id="settings" class="dropdown-toggle" src="{% static "icons_/settings.gif" %}" height ="25px"alt="" style = "margin-top:17px;position:relative;" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <div class="dropdown-menu" aria-labelledby="settings" style = "background-color:#439DBB;top:60px;">
+                <a class="dropdown-item" href="{% url "myAccount" %}" >My Account</a>
+                <a class="dropdown-item" href="#">Preferences</a>
+                <a class="dropdown-item" id="logout" href="#">Log Out</a>
             </div>
-    </a>
+            </div>
+            
+            
+        
+        </div>
+        </div>
     
-    
-</div>
+        
+        
+    </div>
 </head>
 <body style = "background-color:#439DBB1F"></body>
 
