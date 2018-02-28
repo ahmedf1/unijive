@@ -165,10 +165,48 @@ $(window).ready(function counter(){
         $('#numofunopenedChats').css("visibility","hidden");
     }
     else {
-        $('#numofunopenedChats').text($('.list-group').children().length);
+        
+        $('#numofunopenedChats').text(checker()
+            
+            
+        );
     }
 
 });
+
+function checker(index) {
+    var index =0;
+                $("[id^=mutebtn]").each(
+                    function (index){
+                        if($(this).attr("data-chat-seen") == "False"){
+                            index +=1;
+                        }
+                    }
+                );
+                
+                return index;
+
+
+                /*
+                var unopenedChatsNum = 0;
+                $('.list-group').children().each(
+                    function(unopenedChatsNum){
+                        $(this).children().each(
+                            function(unopenedChatsNum) {
+                                if( $(this).attr("id") == "mutebtn1") {
+                                    if (  $(this).atrr("data-chat-seen") == "False"   ) {
+                                        unopenedChatsNum++;
+                                    }
+                                }
+                            }
+                        );
+                    }
+                );
+                return unopenedChatsNum;
+                */
+
+
+            }
 
 
 function unopenedUnmute(){

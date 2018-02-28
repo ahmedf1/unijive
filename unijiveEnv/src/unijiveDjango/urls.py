@@ -42,6 +42,8 @@ urlpatterns = [
     url(r'^mute_chat/$', mute_chat,name="mute_chat"),
     url(r'^leave_chat/$', leave_chat,name ="leave_chat"),
     url(r'^log_out/$', logout_view ,name ="log_out"),
+    #url(r'^unopenedChatCounter/$', unopenedChatCounter ,name ="unopenedChatCounter"),
+
     #url(r'^my_chats/(?P<slug>\w+)/$', ChatsListView.as_view( template_name = 'unijive.my_chats.html') ),
    
     url(r'^search_chats/$', SearchChatsView.as_view(template_name = "unijive.search_chats.html"), name="searchChats"),

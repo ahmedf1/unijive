@@ -32,6 +32,9 @@ def login(request):
     return render(request, "unijive.home_logged_out.html")
 '''
 
+        
+
+
 def mute_chat(request):       
     if request.method == 'GET':
         userChatID = request.GET['userChatID']
@@ -59,6 +62,17 @@ def logout_view(request):
     logout(request)
     return redirect('login')
     # Redirect to a success page.
+
+
+def unopenedChatCounter(request):
+        count = 0
+        usersChats = User_s_Chats.objects.filter(owner = request.user)
+        for usersChat in usersChats:
+            if (usersChat.seen == False):
+                count+=1
+        return count
+        
+
 
 
 class ChatsListView(LoginRequiredMixin, ListView):
