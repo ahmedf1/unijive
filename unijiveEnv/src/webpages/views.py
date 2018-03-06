@@ -8,6 +8,7 @@ from django.views import View
 from django.views.generic import TemplateView, ListView, DetailView, CreateView
 from django.contrib.auth.views import LoginView
 from django.contrib.auth import logout
+import re
 
 #from django.views.generic.edit.FormMixin import get_form_class
 
@@ -32,7 +33,30 @@ def login(request):
     return render(request, "unijive.home_logged_out.html")
 '''
 
+
+def userCreate(request):
+    if request.method == 'POST':
+        fName = request.POST.get('fName', '')
+        lName = request.POST.get('lName', '')
+        university = request.POST.get('university', '')
+        email = request.POST.get('email', '')
+        password = request.POST.get('password', '')
+        confirmPassword = request.POST.get('confirmPassword', '')
+
+        # now for some form validation
+        #first check database for existing userid and email since these need to be unique to each user
         
+         
+        # this is checking to make sure first name and last name only include letters
+        if re.match("^[A-Za-z0-9_-]*$", fName):
+            if re.match("^[A-Za-z0-9_-]*$", lName):
+
+
+
+
+
+
+
 
 
 def mute_chat(request):       

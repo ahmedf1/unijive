@@ -24,13 +24,16 @@
             <div class = "row">
                 <div class="col-lg-6 offset-lg-3">
                     <div class="input-group" style="margin-top:15px;margin-bottom:15px;">
+
                         <input list="classes" class="form-control" placeholder="Class">
                         <datalist id="classes">
                         {% for  object in object_list %}
                         <option value = "{{object.className}}">
                         {% endfor %}
+                        
                         </datalist>
-                            </div><!-- /input-group -->
+                
+                    </div><!-- /input-group -->
                 </div><!-- /.col-lg-6 -->
             </div><!-- /.row -->
             <div class = "row">
@@ -39,7 +42,7 @@
                         <input list="professors" class="form-control" placeholder="Professor">
                         <datalist id="classes">
                                 {% for  object in object_list %}
-                                // need to filter professor for selected class using js
+                                <!-- need to filter professor for selected class using js -->
                                 <option value = "{{object.className}}">
                                 {% endfor %}
                         </datalist>
