@@ -1,59 +1,55 @@
-from django.conf import settings  
-from django.contrib.auth import authenticate, login, logout, get_user
+from django.conf                import settings  
+from django.contrib.auth        import authenticate, login, logout, get_user
 from django.contrib.auth.mixins import LoginRequiredMixin
-from django.db.models import Q
-from django.http import HttpResponse, HttpResponseRedirect,HttpRequest
-from django.shortcuts import render, get_object_or_404, render_to_response, redirect, reverse
-from django.views import View
-from django.views.generic import TemplateView, ListView, DetailView, CreateView
-from django.contrib.auth.views import LoginView
-from django.contrib.auth import logout
-import re
+from django.db.models           import Q
+from django.http                import HttpResponse, HttpResponseRedirect,HttpRequest
+from django.shortcuts           import render, get_object_or_404, render_to_response, redirect, reverse
+from django.views               import View
+from django.views.generic       import TemplateView, ListView, DetailView, CreateView
+from django.contrib.auth.views  import LoginView
+from django.contrib.auth        import logout
+from django.contrib             import messages
 
 #from django.views.generic.edit.FormMixin import get_form_class
 
 #from .forms import UserProfileCreateForm, UserCreateForm, UserInLineFormset
-from .models import ListofChats, User_s_Chats
-from accounts.models import User, UserProfile
+from .models                    import ListofChats, User_s_Chats
+from accounts.models            import User, UserProfile
+
+def isEmailPresent(email):
+    return User.objects.filter(email=email).exists()
+    
+def isUsernamePresent(username):
+    return UserProfile.objects.filter(username=username).exists()
 
 
-#Create your views here.
-'''
-from django.contrib.auth import authenticate, login
-def login(request):
-    email = request.POST['username']
-    password = request.POST['password']
-    user = authenticate(request, username=email, password=password)
-    if user is not None:
-        login(request, user)
-        redirect()
-    #else:
-        # Return an 'invalid login' error message.
-        #..
-    return render(request, "unijive.home_logged_out.html")
-'''
 
 
 def userCreate(request):
     if request.method == 'POST':
-        fName = request.POST.get('fName', '')
-        lName = request.POST.get('lName', '')
-        university = request.POST.get('university', '')
-        email = request.POST.get('email', '')
-        password = request.POST.get('password', '')
-        confirmPassword = request.POST.get('confirmPassword', '')
+        fName           = str(request.POST.get('fName', ''))
+        lName           = str(request.POST.get('lName', ''))
+        university      = str(request.POST.get('university', ''))
+        email           = str(request.POST.get('email', ''))
+        username        = str(request.POST.get('username', ''))
+        password        = str(request.POST.get('password', ''))
+        confirmPassword = str(request.POST.get('confirmPassword', ''))
 
         # now for some form validation
         #first check database for existing userid and email since these need to be unique to each user
         
-         
-        # this is checking to make sure first name and last name only include letters
-        if re.match("^[A-Za-z0-9_-]*$", fName):
-            if re.match("^[A-Za-z0-9_-]*$", lName):
+        if not isEmailPresent(email) and not isUsernamePresent(username):
+            # this is checking to make sure first name and last name only include letters
+            isFNameValid        = fName.isalpha()  
+            isLNameValid        = lName.isalpha()
+            isUserNamevalid     = True if username.isalnum() and len(username) in range(5,12)   else False
+            isNyuEmail          = True if "@nyu.edu" in email                                   else False   #Currently only serves NYU
+            passwordsMatch      = True if password == confirmPassword                           else False
 
-
-
-
+            if not isFNameValid: messages.error(request,"The First Name Entered is not Valid!")
+            
+            if not isLNameValid: messages.error(request,"The First Name Entered is not Valid!")
+            
 
 
 
@@ -121,11 +117,6 @@ class LoggedInMainPageView(LoginRequiredMixin, TemplateView):
 class RegisterClassesView(LoginRequiredMixin, TemplateView):
     x = "asdasd"
 
-'''
-class SearchChatsView(LoginRequiredMixin, TemplateView):
-    x = "asdasd" 
-
-'''   
 class DistractionsView(LoginRequiredMixin, TemplateView):
     x = "asdasd"    
 
@@ -135,6 +126,28 @@ class ChatPageView(LoginRequiredMixin, ListView):
         return queryset   
 
 
+'''
+class SearchChatsView(LoginRequiredMixin, TemplateView):
+    x = "asdasd" 
+
+'''   
+
+
+#Create your views here.
+'''
+from django.contrib.auth import authenticate, login
+def login(request):
+    email = request.POST['username']
+    password = request.POST['password']
+    user = authenticate(request, username=email, password=password)
+    if user is not None:
+        login(request, user)
+        redirect()
+    #else:
+        # Return an 'invalid login' error message.
+        #..
+    return render(request, "unijive.home_logged_out.html")
+'''
 
 '''
 from django.contrib.auth import authenticate, login
