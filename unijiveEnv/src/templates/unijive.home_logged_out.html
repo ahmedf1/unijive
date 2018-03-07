@@ -42,14 +42,14 @@
                         text-align: center;
                         color: white;
                     }
-                    /*
+                    
                     body{
                         background-image:url('https://media.giphy.com/media/rRmOVAieVYOnS/giphy.gif');
                         background-size:cover;
                         
                         
                     }
-                    */
+                    
                     .main_pageLoginInput{
                         width:100%;max-width:300px;border-radius:15px;background-color:#439DBB9F;color:white;
                     }
@@ -238,12 +238,20 @@ $(document).on('click','#registerBtn',
                 confirmPassword: $('#confirmPass').val(),
                 csrfmiddlewaretoken: $('input[name=csrfmiddlewaretoken]').val(),
             },
-            success: function(event){
-                alert(yee);
-            }
-            error: function(){
+            error: function() {
                 
+                location.reload(
+                    $(window).on('load',function() {
+                        $('#myModal').modal('show');
+                    })
+                );
+                
+            },
+
+            success: function(event){
+                alert("yee");
             }
+           
             
         });
     }
