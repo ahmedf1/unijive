@@ -34,23 +34,39 @@ def userCreate(request):
         username        = str(request.POST.get('username', ''))
         password        = str(request.POST.get('password', ''))
         confirmPassword = str(request.POST.get('confirmPassword', ''))
-
+        print(fName)
+        print(lName)
+        print(email)
+        print(username)
         # now for some form validation
         #first check database for existing userid and email since these need to be unique to each user
-        
+
         if not isEmailPresent(email) and not isUsernamePresent(username):
             # this is checking to make sure first name and last name only include letters
             isFNameValid        = fName.isalpha()  
             isLNameValid        = lName.isalpha()
-            isUserNamevalid     = True if username.isalnum() and len(username) in range(5,12)   else False
+            isUserNameValid     = True if username.isalnum() and len(username) in range(5,12)   else False
             isNyuEmail          = True if "@nyu.edu" in email                                   else False   #Currently only serves NYU
             passwordsMatch      = True if password == confirmPassword                           else False
 
             if not isFNameValid: messages.error(request,"The First Name Entered is not Valid!")
             
-            if not isLNameValid: messages.error(request,"The First Name Entered is not Valid!")
+            if not isLNameValid: messages.error(request,"The Last Name Entered is not Valid!")
+
+            if not isUserNameValid: messages.error(request,"Username should only include letters and numbers and be between 5 and 12 characters long!")
             
 
+
+            
+        elif isEmailPresent(email):
+            messages.error(request,"This email is already registered to an existing user!")
+
+        elif isUsernamePresent(username):
+            messages.error(request,"This username already belongs to an existing user!")
+
+
+            
+            
 
 
 

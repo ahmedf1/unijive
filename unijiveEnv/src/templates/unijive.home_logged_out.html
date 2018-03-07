@@ -42,13 +42,14 @@
                         text-align: center;
                         color: white;
                     }
+                    /*
                     body{
                         background-image:url('https://media.giphy.com/media/rRmOVAieVYOnS/giphy.gif');
                         background-size:cover;
                         
-                        /*style = "background-color:#439DBB1F"*/
+                        
                     }
-                    
+                    */
                     .main_pageLoginInput{
                         width:100%;max-width:300px;border-radius:15px;background-color:#439DBB9F;color:white;
                     }
@@ -123,13 +124,20 @@
         <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
             <div class="modal-dialog" role="document">
                 <div class="modal-content">
-                    <form id = "userCreateForm" method = "POST" name="registration" onsubmit="return formValidation();"> {% csrf_token %}
+                    <form id = "userCreateForm" method = "POST" name="registration"> {% csrf_token %}
                     <div class="modal-header">
                         <h5 class="modal-title" id="exampleModalLabel" >Creating an Account is Easy!</h5>
                         
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                             <span aria-hidden="true">&times;</span>
                         </button>
+                        {% if messages %}
+<ul class="messages">
+    {% for message in messages %}
+    <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+    {% endfor %}
+</ul>
+{% endif %}
                     </div>
                     <div class="modal-body">
                         <p style = "text-align:center;">Step 1: Let us know a bit about yourself!</p>
@@ -192,7 +200,7 @@
                     </div>
                 
                     <div class="modal-footer">
-                        <button id="registerBtn" type="submit" class="btn btn-primary" >Next Step!</button>
+                        <button id="registerBtn" type="button" class="btn btn-primary" >Next Step!</button>
                     </div>
                 </form>
                 </div>
@@ -212,14 +220,13 @@
     <script>
 
 
-
-$(document).on('submit','#userCreateForm', 
+$(document).on('click','#registerBtn', 
     function(event){
-        event.preventDefault();
+        //event.preventDefault();
         $.ajaxSettings.traditional = true;
         $.ajax({
             type: 'POST',
-            url: '', // whatever url is aka function that handles fields of data
+            url: '/userCreate/', // whatever url is aka function that handles fields of data
             dataType: 'json',
             data: {
                 fName: $('#Fname').val(),
@@ -229,9 +236,15 @@ $(document).on('submit','#userCreateForm',
                 username: $('#username').val(),
                 password: $('#password').val(),
                 confirmPassword: $('#confirmPass').val(),
-                csrfmiddlewaretoken: $('input[name=csrfmiddlewaretoke]').val(),
+                csrfmiddlewaretoken: $('input[name=csrfmiddlewaretoken]').val(),
             },
-            success: success,
+            success: function(event){
+                alert(yee);
+            }
+            error: function(){
+                
+            }
+            
         });
     }
 
