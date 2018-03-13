@@ -4,9 +4,9 @@ from django.forms import formset_factory
 from django.conf import settings  
 from accounts.models import UserProfile
 from django.forms.models import model_to_dict, fields_for_model
+from django.contrib.auth.forms import UserCreationForm
 
 User = settings.AUTH_USER_MODEL
-
 
 
 '''

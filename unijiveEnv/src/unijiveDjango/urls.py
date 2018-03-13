@@ -34,6 +34,7 @@ urlpatterns = [
     #url(r'^login/$', login, name='login'),
     #url(r'^login/$', UserCreateLoginView.as_view(template_name = "unijive.home_logged_out.html"), name='login'),
     url(r'^login/$', LoginView.as_view(template_name = "unijive.home_logged_out.html",redirect_field_name = "/logged_in"), name='login'),
+    url(r'^loginErrors/$', LoginView.as_view(template_name = "unijive.home_logged_out_with_errors.html",redirect_field_name = "/logged_in"), name='loginErrors'),
     #url(r'^login/$', UserCreateView.as_view(template_name = "unijive.home_logged_out.html")),
     url(r'^logged_in/$', LoggedInMainPageView.as_view(template_name = "unijive.home_logged_in.html"), name ='home'),
     url(r'^register/$', RegisterClassesView.as_view(template_name = "unijive.register.html"), name='addClasses'),

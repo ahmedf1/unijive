@@ -22,6 +22,11 @@ def isEmailPresent(email):
 def isUsernamePresent(username):
     return UserProfile.objects.filter(username=username).exists()
 
+def isPasswordValid(password):
+    if len(password) in range(8,15):
+        return True
+    else:
+        return False
 
 
 
@@ -41,6 +46,16 @@ def userCreate(request):
         # now for some form validation
         #first check database for existing userid and email since these need to be unique to each user
 
+                    
+        if isEmailPresent(email):
+            messages.error(request,"This email is already registered to an existing user!")
+            
+
+        if isUsernamePresent(username):
+            messages.error(request,"This username already belongs to an existing user!")
+            
+
+
         if not isEmailPresent(email) and not isUsernamePresent(username):
             # this is checking to make sure first name and last name only include letters
             isFNameValid        = fName.isalpha()  
@@ -55,14 +70,24 @@ def userCreate(request):
 
             if not isUserNameValid: messages.error(request,"Username should only include letters and numbers and be between 5 and 12 characters long!")
             
-
-
+            if not isNyuEmail: messages.error(request, "Please use the email associated with your university!")
             
-        elif isEmailPresent(email):
-            messages.error(request,"This email is already registered to an existing user!")
+            if not passwordsMatch: messages.error(request, "Please make sure that the passwords match!")
+            
+            elif passwordsMatch: #already confirmed that they match, now checking if it's valid
+                isValid = isPasswordValid(password)
+                if not isValid:
+                    messages.error(request, "Passwords should be between 8 and 15 characters!")
 
-        elif isUsernamePresent(username):
-            messages.error(request,"This username already belongs to an existing user!")
+            if isFNameValid and isLNameValid and isUserNameValid and isNyuEmail and passwordsMatch and isPasswordValid(password):
+                #create instance of user and save to db
+                newUser = User(email=email, )
+                
+
+       
+
+
+        
 
 
             

@@ -165,11 +165,11 @@
                         <div class="form-group">
                             <label label-default="" for="school" class="col-sm-12"> School/University:</label>
                             <div class="col-sm-12">
-                                   <!-- <input list="School/University" class="form-control" id="school" name="university" placeholder="School/University" required> -->     
-                                    <select id="School/University">
-                                            <option value = "-------------------">-------------------</option>>
-                                            <option value = "New York University"> New York University </option>>                                 
-                                    </select>
+                                    <!-- <input list="School/University" class="form-control" id="school" name="university" placeholder="School/University" required> -->     
+                                    <select id="School">
+                                        <option value = "-------------------">-------------------</option>>
+                                        <option value = "New York University"> New York University </option>>                                 
+                                </select>
                             </div>
                         </div>
                         
@@ -223,11 +223,25 @@
         </body>
     <script>
 
+                $(document).ready(function() {
+                    $("#myModal").modal();
+                    $('#Fname').val(sessionStorage.getItem('firstName'));
+                    $('#Lname').val(sessionStorage.getItem('lastName'));
+                    
+                    
+                
+                    $('#email').val(sessionStorage.getItem('email'));
+                    $('#username').val(sessionStorage.getItem('username'));
+                    $('select[id^="School"] option[value="New York University"]').attr("selected","selected");
+    
+  });
+  
+
+
 
 
 $(document).on('click','#registerBtn', 
     function(event){
-        //event.preventDefault();
         $.ajaxSettings.traditional = true;
         $.ajax({
             type: 'POST',
@@ -237,7 +251,7 @@ $(document).on('click','#registerBtn',
             data: {
                 fName: $('#Fname').val(),
                 lName: $('#Lname').val(),
-                university: $('#school').val(),
+                university: $('#School').val(),
                 email: $('#email').val(),
                 username: $('#username').val(),
                 password: $('#password').val(),
@@ -250,12 +264,21 @@ $(document).on('click','#registerBtn',
                 sessionStorage.setItem('university', $('#School').find(":selected").text());
                 sessionStorage.setItem('email', $('#email').val());
                 sessionStorage.setItem('username', $('#username').val());
-                window.location = "/loginErrors/";
+                
+                location.reload(true);
             },
 
-            success: function(){
-                alert("yee");
-            }
+            success: function(event){
+                sessionStorage.removeItem('firstName');
+                sessionStorage.removeItem('lastName');
+                sessionStorage.removeItem('university');
+                sessionStorage.removeItem('email');
+                sessionStorage.removeItem('username');
+                
+                
+            },
+            //preventDefault();
+
            
             
         });
@@ -263,16 +286,15 @@ $(document).on('click','#registerBtn',
 
 
 );  
-
- function registerErrorReload() {
-    $("#createAccount").click();
-
-        
-                   
-                
-                
-                
-         }
+/*
+  sessionStorage.setItem('firstName', $('#Fname').val());
+  sessionStorage.setItem('lastName', $('#Lname').val());
+  sessionStorage.setItem('firstName', $('#Fname').val());
+  sessionStorage.setItem('firstName', $('#Fname').val());
+  sessionStorage.setItem('firstName', $('#Fname').val());
+  sessionStorage.setItem('firstName', $('#Fname').val());
+  sessionStorage.setItem('firstName', $('#Fname').val());
+  */
     </script>
     
     
