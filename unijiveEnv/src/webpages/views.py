@@ -14,7 +14,7 @@ from django.contrib             import messages
 
 #from .forms import UserProfileCreateForm, UserCreateForm, UserInLineFormset
 from .models                    import ListofChats, User_s_Chats
-from accounts.models            import User, UserProfile
+from accounts.models            import User, UserProfile, UserManager
 
 def isEmailPresent(email):
     return User.objects.filter(email=email).exists()
@@ -81,7 +81,9 @@ def userCreate(request):
 
             if isFNameValid and isLNameValid and isUserNameValid and isNyuEmail and passwordsMatch and isPasswordValid(password):
                 #create instance of user and save to db
-                newUser = User(email=email, )
+                print("here")
+                newUser = User(email=email, password=password)
+                newUser.save()
                 
 
        
