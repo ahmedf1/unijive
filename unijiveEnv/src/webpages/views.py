@@ -39,10 +39,12 @@ def userCreate(request):
         username        = str(request.POST.get('username', ''))
         password        = str(request.POST.get('password', ''))
         confirmPassword = str(request.POST.get('confirmPassword', ''))
+        '''
         print(fName)
         print(lName)
         print(email)
         print(username)
+        '''
         # now for some form validation
         #first check database for existing userid and email since these need to be unique to each user
 
@@ -93,7 +95,11 @@ def userCreate(request):
                 newUserProfile.username = username
                 newUserProfile.university = university
                 newUserProfile.save()
+                
 
+                user = authenticate(username = email, password = password)
+                login(request, user)
+                return HttpResponseRedirect('/register/')
                 
                 
 

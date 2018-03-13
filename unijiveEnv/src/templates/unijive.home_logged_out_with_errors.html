@@ -166,7 +166,7 @@
                             <label label-default="" for="school" class="col-sm-12"> School/University:</label>
                             <div class="col-sm-12">
                                     <!-- <input list="School/University" class="form-control" id="school" name="university" placeholder="School/University" required> -->     
-                                    <select id="School">
+                                    <select id="school">
                                         <option value = "-------------------">-------------------</option>>
                                         <option value = "New York University"> New York University </option>>                                 
                                 </select>
@@ -232,7 +232,7 @@
                 
                     $('#email').val(sessionStorage.getItem('email'));
                     $('#username').val(sessionStorage.getItem('username'));
-                    $('select[id^="School"] option[value="New York University"]').attr("selected","selected");
+                    $('select[id^="school"] option[value="New York University"]').attr("selected","selected");
     
   });
   
@@ -247,11 +247,10 @@ $(document).on('click','#registerBtn',
             type: 'POST',
             cache: false,
             url: '/userCreate/', // whatever url is aka function that handles fields of data
-            dataType: 'json',
             data: {
                 fName: $('#Fname').val(),
                 lName: $('#Lname').val(),
-                university: $('#School').val(),
+                university: $('#school').val(),
                 email: $('#email').val(),
                 username: $('#username').val(),
                 password: $('#password').val(),
@@ -261,7 +260,7 @@ $(document).on('click','#registerBtn',
             error:function(){
                 sessionStorage.setItem('firstName', $('#Fname').val());
                 sessionStorage.setItem('lastName', $('#Lname').val());
-                sessionStorage.setItem('university', $('#School').find(":selected").text());
+                sessionStorage.setItem('university', $('#school').find(":selected").text());
                 sessionStorage.setItem('email', $('#email').val());
                 sessionStorage.setItem('username', $('#username').val());
                 
