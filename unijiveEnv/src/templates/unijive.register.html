@@ -5,7 +5,7 @@
 <body>
 
 <div class = "page-header-like-modal"  >
-    <h3 style = "text-align:center;color:#439DBB;">Step 2: Add your classes at {{user.userprofile.university}} </h3>
+    <h3 style = "text-align:center;color:#439DBB;">Add your classes at {{user.userprofile.university}} </h3>
 </div>
 
 
@@ -16,25 +16,25 @@
 <div class = "container">
 <div class="row">
     <div class="col-lg" ><h6 class="col-lg-10 offset-lg-1" style="text-align:center;">Search for your classes here!</h6>
-    <div class = "container-fluid" style="margin-top:20px;text-align:center;border-right: 2px solid black">
+    <div class = "container-fluid" style="margin-top:20px;text-align:center;">
         <div class = "row">
             <div class="col-lg-10 offset-lg-1">
                 <div class="input-group" style="margin-top:15px;margin-bottom:15px;">
-                    <input type="text" id = "class" name="class" class="form-control" placeholder="Class" >
+                    <input type="text" id = "class" name="Subject" class="form-control" placeholder="Subject" >
                 </div><!-- /input-group -->
             </div><!-- /.col-lg-6 -->
         </div><!-- /.row -->
         <div class = "row">
             <div class="col-lg-10 offset-lg-1 ">
                 <div class="input-group" style="margin-top:15px;margin-bottom:15px;">
-                    <input type="text" id= "professor" name="professor" class="form-control" placeholder="Professor">
+                    <input type="text" id= "professor" name="Class" class="form-control" placeholder="Class">
                         </div><!-- /input-group -->
             </div><!-- /.col-lg-6 -->
         </div><!-- /.row -->
         <div class = "row">
             <div class="col-lg-10 offset-lg-1">
                 <div class="input-group" style="margin-top:15px;margin-bottom:15px;">
-                    <input type="text" id="section" name="section" class="form-control" placeholder="Section">
+                    <input type="text" id="section" name="Professor" class="form-control" placeholder="Professor">
                         </div><!-- /input-group -->
             </div><!-- /.col-lg-6 -->
         </div><!-- /.row -->
@@ -53,9 +53,9 @@
     <table class="table table-striped table-bordered" id= "tableOFaddedClasses">
         <thead>
             <tr>
+                <th>Subject</th>
                 <th>Class</th>
                 <th>Professor</th>
-                <th>Section</th>
                 <th>Remove</th>
             </tr>
         </thead>

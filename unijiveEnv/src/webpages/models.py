@@ -79,6 +79,7 @@ class ListofChats(models.Model):
     class Meta:
         verbose_name_plural = "List of Chats"
     chatID              = models.AutoField(primary_key=True)
+    subject             = models.CharField(max_length = 5)
     className           = models.CharField(max_length = 30)
     professor           = models.CharField(max_length = 30)
     s_year              = models.CharField(max_length = 3)
