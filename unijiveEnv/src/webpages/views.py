@@ -7,7 +7,7 @@ from django.shortcuts           import render, get_object_or_404, render_to_resp
 from django.views               import View
 from django.views.generic       import TemplateView, ListView, DetailView, CreateView
 from django.contrib.auth.views  import LoginView
-from django.contrib.auth        import logout
+from django.contrib.auth        import logout, login
 from django.contrib             import messages
 
 #from django.views.generic.edit.FormMixin import get_form_class
@@ -82,8 +82,23 @@ def userCreate(request):
             if isFNameValid and isLNameValid and isUserNameValid and isNyuEmail and passwordsMatch and isPasswordValid(password):
                 #create instance of user and save to db
                 print("here")
-                newUser = User(email=email, password=password)
+                newUser = User(email=email)
+                newUser.set_password(password)
                 newUser.save()
+
+                newUserProfile = UserProfile()
+                newUserProfile.user = newUser
+                newUserProfile.firstName = fName
+                newUserProfile.lastName = lName
+                newUserProfile.username = username
+                newUserProfile.university = university
+                newUserProfile.save()
+
+                
+                
+
+
+                
                 
 
        

@@ -254,7 +254,12 @@ $(document).on('click','#registerBtn',
             },
 
             success: function(){
-                alert("yee");
+                window.location = '/register/';
+                sessionStorage.removeItem('firstName');
+                sessionStorage.removeItem('lastName');
+                sessionStorage.removeItem('university');
+                sessionStorage.removeItem('email');
+                sessionStorage.removeItem('username');
             }
            
             

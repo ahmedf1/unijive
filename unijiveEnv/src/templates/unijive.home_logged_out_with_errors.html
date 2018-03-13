@@ -269,6 +269,7 @@ $(document).on('click','#registerBtn',
             },
 
             success: function(event){
+                window.location = '/register/';
                 sessionStorage.removeItem('firstName');
                 sessionStorage.removeItem('lastName');
                 sessionStorage.removeItem('university');

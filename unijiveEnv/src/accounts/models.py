@@ -16,6 +16,7 @@ class UserManager(BaseUserManager):
     def create_user(self, email, password = None, is_active = True, is_staff = False, is_admin = False):
         if not email: raise ValueError("Users must have an email address! ")
         if not password: raise ValueError("Users must have a password! ")
+        print("yerrrr")
         user_obj = self.model(email = self.normalize_email(email))
         user_obj.set_password(password)
         user_obj.active = is_active
@@ -101,6 +102,9 @@ class UserProfile(models.Model):
     )
     year_in_school = models.CharField(max_length=15, choices=YEAR_IN_SCHOOL_CHOICES, default='Freshman',)
     
+    
+
     #def get_full_name(self):
         # The user is identified by their email address
         #return self.firstName + " " + self.lastName
+
