@@ -27,7 +27,8 @@
 
                         <input list="classes" class="form-control" placeholder="Class">
                         <datalist id="classes">
-                        {% for  object in object_list %}
+                        {% for  object in someList %}
+                        
                         <option value = "{{object.className}}">
                         {% endfor %}
                         

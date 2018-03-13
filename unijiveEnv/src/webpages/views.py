@@ -99,25 +99,12 @@ def userCreate(request):
 
                 user = authenticate(username = email, password = password)
                 login(request, user)
-                return HttpResponseRedirect('/register/')
+                return HttpResponseRedirect('/search_chats/')
                 
                 
-
-
-                
-                
-
-       
-
-
-        
 
 
             
-            
-
-
-
 
 def mute_chat(request):       
     if request.method == 'GET':
@@ -166,8 +153,12 @@ class ChatsListView(LoginRequiredMixin, ListView):
 
 class SearchChatsView(LoginRequiredMixin, ListView):
     def get_queryset(self):
-        queryset = ListofChats.objects.filter(university = self.request.user.userprofile.university)
-        return queryset
+        queryset = ListofChats.objects.filter(university = self.request.user.userprofile.university).values('className').distinct()
+        #return queryset
+        context = {"someList":queryset}
+        print(context["someList"])
+        return (self.request,"unijive.search_chats.html",context)
+    
    
 
 class AccountDetailView(LoginRequiredMixin, ListView):
@@ -190,11 +181,6 @@ class ChatPageView(LoginRequiredMixin, ListView):
         return queryset   
 
 
-'''
-class SearchChatsView(LoginRequiredMixin, TemplateView):
-    x = "asdasd" 
-
-'''   
 
 
 #Create your views here.

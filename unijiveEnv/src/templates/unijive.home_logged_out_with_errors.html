@@ -268,7 +268,9 @@ $(document).on('click','#registerBtn',
             },
 
             success: function(event){
-                window.location = '/register/';
+                //window.location = '/register/';
+                window.location = '/search_chats/';
+
                 sessionStorage.removeItem('firstName');
                 sessionStorage.removeItem('lastName');
                 sessionStorage.removeItem('university');
