@@ -22,7 +22,7 @@ from django.contrib.auth.views import LoginView
 from webpages.views import (ChatsListView, AccountDetailView, #UserCreateLoginView, 
                             LoggedInMainPageView, RegisterClassesView, ChatPageView,
                             SearchChatsView, DistractionsView, mute_chat, leave_chat, logout_view,
-                            userCreate #login
+                            userCreate, professorsSubQuery #login
                             )
 
 #ChatsNearMe
@@ -45,6 +45,7 @@ urlpatterns = [
     url(r'^leave_chat/$', leave_chat,name ="leave_chat"),
     url(r'^log_out/$', logout_view ,name ="log_out"),
     url(r'^userCreate/$', userCreate ,name ="userCreate"),
+    url(r'^professorsSubQuery/$', professorsSubQuery ,name ="professorsSubQuery"),
 
     #url(r'^unopenedChatCounter/$', unopenedChatCounter ,name ="unopenedChatCounter"),
 

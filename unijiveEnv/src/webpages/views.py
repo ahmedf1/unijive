@@ -9,6 +9,9 @@ from django.views.generic       import TemplateView, ListView, DetailView, Creat
 from django.contrib.auth.views  import LoginView
 from django.contrib.auth        import logout, login
 from django.contrib             import messages
+from django.core                import serializers
+import json
+import ast
 
 #from django.views.generic.edit.FormMixin import get_form_class
 
@@ -144,6 +147,30 @@ def unopenedChatCounter(request):
         return count
         
 
+def professorsSubQuery(request):
+    if request.method == "GET":
+        classSelected = request.GET['class']
+        classToFilterOn = ListofChats.objects.filter(className=classSelected)       #all classes that have that name
+        data = serializers.serialize("json", classToFilterOn)
+        data = data.replace('true','True')
+        data = data.replace('false','False')
+        data = ast.literal_eval(data)
+        returnDict = {}
+        dictKey = 0
+        for i in data:
+            x = i['fields']['professor']
+            returnDict[dictKey] = x
+            dictKey += 1
+        
+        json_object = json.dumps(returnDict)
+        return HttpResponse(json_object)
+        
+
+'''
+[{"model": "webpages.listofchats", "pk": 12, "fields": {
+    "subject": "CS", "className": "Software Engineering", "professor": "Strauss, Fred", "s_year": "S18", "currently_active": True, "university": "NYU"}}, 
+{"model": "webpages.listofchats", "pk": 13, "fields": {"subject": "cs", "className": "Software Engineering", "professor": "Shadman Ahmed", "s_year": "s18", "currently_active": True, "university": "NYU"}}]
+'''
 
 
 class ChatsListView(LoginRequiredMixin, ListView):
@@ -154,10 +181,8 @@ class ChatsListView(LoginRequiredMixin, ListView):
 class SearchChatsView(LoginRequiredMixin, ListView):
     def get_queryset(self):
         queryset = ListofChats.objects.filter(university = self.request.user.userprofile.university).values('className').distinct()
-        #return queryset
-        context = {"someList":queryset}
-        print(context["someList"])
-        return (self.request,"unijive.search_chats.html",context)
+        return queryset
+
     
    
 

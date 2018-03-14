@@ -25,28 +25,46 @@
                 <div class="col-lg-6 offset-lg-3">
                     <div class="input-group" style="margin-top:15px;margin-bottom:15px;">
 
-                        <input list="classes" class="form-control" placeholder="Class">
-                        <datalist id="classes">
-                        {% for  object in someList %}
+                         <!--<input list="classes" class="form-control" placeholder="Class">
+                       <datalist id="classes"> not supported by safari
+                        {% for  object in object_list %}
                         
                         <option value = "{{object.className}}">
                         {% endfor %}
                         
                         </datalist>
-                
+                --> 
+
+                <select id="classSelect" class="form-control">
+                        <option value = "Select a Class">Select a Class</option>
+                        {% for  object in object_list %}
+                        
+                        <option value = "{{object.className}}">{{object.className}}</option>
+                        {% endfor %}
+                </select>
                     </div><!-- /input-group -->
                 </div><!-- /.col-lg-6 -->
             </div><!-- /.row -->
             <div class = "row">
                 <div class="col-lg-6 offset-lg-3">
-                    <div class="input-group" style="margin-top:15px;margin-bottom:15px;">
+                    <div class="input-group"  style="margin-top:15px;margin-bottom:15px;">
+
+                <select id = "profSelect" class="form-control">
+                        
+                       
+                </select>
+                        <!--
+                            <option value = "Select a Professor">Select a Professor</option>
+                             <option ng-repeat="x in profs" value = "{{x}}">{{x}}</option>
                         <input list="professors" class="form-control" placeholder="Professor">
                         <datalist id="classes">
                                 {% for  object in object_list %}
-                                <!-- need to filter professor for selected class using js -->
+                                
                                 <option value = "{{object.className}}">
                                 {% endfor %}
                         </datalist>
+
+                    -->
                     </div><!-- /input-group -->
                 </div><!-- /.col-lg-6 -->
             </div><!-- /.row -->
@@ -55,8 +73,95 @@
     <button class="btn btn-default" style = "margin: 10px auto 0px auto;background-color:#439DBB;color:white;" type="button">Add</button>
 </span>
         </div>
+        
 
-<script></script>
+<script>
+
+
+
+var returnedData;
+$('select[id="classSelect"]').change(function(){
+  
+  if ($(this).val() != "Select a Class"){
+      var selectedClass = $(this).val();
+      
+      $.ajax(
+          {
+              type: "GET",
+              url: "/professorsSubQuery",
+              dataType: "json",
+              data:{
+                  class : selectedClass,
+              },
+              success: function(data){
+                addingProfOptions(data);
+
+                
+
+              }
+          }
+      );
+      
+
+
+  }
+     
+
+ });
+
+function addingProfOptions(data){
+    $('#profSelect').empty();
+    var select = document.getElementById("profSelect");
+
+    for (var i in data) {
+		$(select).append('<option value=' + data[i] + '>' + data[i] + '</option>');
+	}
+}
+
+
+
+
+
+
+
+
+
+
+
+
+$(document).ready(function(){
+
+
+/*
+                $("[id^=removebtn]").each(function(index){  
+                $(this).click(function (){
+                    var chatID;
+                    chatID = $(this).attr("data-userChatID");
+                    
+                    $.ajax(
+                        {
+                            type:"GET",
+                            url: "/leave_chat",
+                            data:{
+                            userChatID: chatID
+                                },
+                            success: function(data)
+                            {
+                                //($(this).closest("[id^=list_chat]")).remove();
+                                
+                                location.reload();
+                                //alert(data);
+                                //($(this).closest("[id^=list_chat]")).remove();
+                            }
+                        }
+                     )
+                $(this).closest("[id^=list_chat]").remove();
+});
+                });
+                */
+});
+
+</script>
         
 {% endblock content%}
     
