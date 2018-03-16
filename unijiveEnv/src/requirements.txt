@@ -1,3 +1,4 @@
+channels
 dj-database-url==0.4.2
 Django==1.11.2
 django-crispy-forms==1.7.0

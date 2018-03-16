@@ -41,10 +41,22 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'widget_tweaks',
     'webpages',
-    'accounts'
+    'accounts',
+    'chat_app',
+    'channels'
 ]
 
 AUTH_USER_MODEL = 'accounts.User'
+
+CHANNEL_LAYERS = {
+    "default": {
+        "BACKEND": "asgi_redis.RedisChannelLayer",
+        "CONFIG": {
+            "hosts": [("localhost", 6379)],
+        },
+        "ROUTING": "unijiveDjango.routing.channel_routing",
+    },
+}
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
