@@ -13,16 +13,17 @@ Including another URLconf
     1. Import the include() function: from django.conf.urls import url, include
     2. Add a URL to urlpatterns:  url(r'^blog/', include('blog.urls'))
 """
-from django.conf.urls import url
-from django.contrib import admin
-from django.views.generic import TemplateView   
-from django.contrib.auth.views import LoginView
+from django.conf.urls           import url
+from django.contrib             import admin
+from django.http                import HttpResponse, HttpResponseRedirect,HttpRequest
+from django.views.generic       import TemplateView   
+from django.contrib.auth.views  import LoginView
 
 
 from webpages.views import (ChatsListView, AccountDetailView, #UserCreateLoginView, 
                             LoggedInMainPageView, RegisterClassesView, ChatPageView,
                             SearchChatsView, DistractionsView, mute_chat, leave_chat, logout_view,
-                            userCreate, professorsSubQuery #login
+                            userCreate, professorsSubQuery, addClassFunc #login
                             )
 
 #ChatsNearMe
@@ -31,10 +32,11 @@ from webpages.views import (ChatsListView, AccountDetailView, #UserCreateLoginVi
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
+    url(r'^$', lambda r: HttpResponseRedirect('/login/')),
     #url(r'^login/$', login, name='login'),
     #url(r'^login/$', UserCreateLoginView.as_view(template_name = "unijive.home_logged_out.html"), name='login'),
-    url(r'^login/$', LoginView.as_view(template_name = "unijive.home_logged_out.html",redirect_field_name = "/logged_in"), name='login'),
-    url(r'^loginErrors/$', LoginView.as_view(template_name = "unijive.home_logged_out_with_errors.html",redirect_field_name = "/logged_in"), name='loginErrors'),
+    url(r'^login/$', LoginView.as_view(template_name = "unijive.home_logged_out.html",redirect_field_name = "/logged_out"), name='login'),
+    url(r'^loginErrors/$', LoginView.as_view(template_name = "unijive.home_logged_out_with_errors.html",redirect_field_name = "/logged_out_errors"), name='loginErrors'),
     #url(r'^login/$', UserCreateView.as_view(template_name = "unijive.home_logged_out.html")),
     url(r'^logged_in/$', LoggedInMainPageView.as_view(template_name = "unijive.home_logged_in.html"), name ='home'),
     url(r'^register/$', RegisterClassesView.as_view(template_name = "unijive.register.html"), name='addClasses'),
@@ -46,6 +48,7 @@ urlpatterns = [
     url(r'^log_out/$', logout_view ,name ="log_out"),
     url(r'^userCreate/$', userCreate ,name ="userCreate"),
     url(r'^professorsSubQuery/$', professorsSubQuery ,name ="professorsSubQuery"),
+    url(r'^addClassFunc/$', addClassFunc, name = "addClassFunc"),
 
     #url(r'^unopenedChatCounter/$', unopenedChatCounter ,name ="unopenedChatCounter"),
 

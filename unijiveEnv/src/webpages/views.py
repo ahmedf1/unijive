@@ -106,6 +106,45 @@ def userCreate(request):
                 
                 
 
+def addClassFunc(request):       
+    if request.method == 'GET':
+        className = request.GET['class']
+        profName = request.GET['professor']
+
+        #get chatID of class being added
+        chatBeingAdded = ListofChats.objects.get(className=className, professor=profName)
+        
+        #check to see if user already in class
+        UsersChats = User_s_Chats.objects.filter(owner=request.user,chatID=chatBeingAdded.chatID)
+        
+        #user is not in chat already
+        if not UsersChats:
+            #add user to chat
+            newUserChat = User_s_Chats(chatID=chatBeingAdded, owner=request.user)
+            newUserChat.save()
+            return redirect("myChats")
+        
+        #need to check if chat is archived so that user can add it back
+        # if this else is entered, it means 1 of 2 things
+        #       1) User is already in chat currently
+        #       2) User was in this chat, then archived it
+        # so need to handle adding in the second case, and give error on first case
+        else:
+            chatToUnarchive = User_s_Chats.objects.get(owner=request.user,chatID=chatBeingAdded.chatID)
+            
+            #case 2
+            if chatToUnarchive.archived:
+                chatToUnarchive.archived = not chatToUnarchive.archived
+                chatToUnarchive.save()
+                return redirect("myChats")
+
+            #case 1, returning some type of error, figure it out in a bit
+            else:
+                print("ERROR, already in this class!")
+                return HttpResponse("FAILED!")
+    else:
+        return HttpResponse("FAILED!")
+
 
             
 

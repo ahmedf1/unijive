@@ -70,7 +70,7 @@
             </div><!-- /.row -->
 
 <span class="input-group-btn">
-    <button class="btn btn-default" style = "margin: 10px auto 0px auto;background-color:#439DBB;color:white;" type="button">Add</button>
+    <button id="addButton" class="btn btn-default" style = "margin: 10px auto 0px auto;background-color:#439DBB;color:white;" type="button">Add</button>
 </span>
         </div>
         
@@ -79,7 +79,6 @@
 
 
 
-var returnedData;
 $('select[id="classSelect"]').change(function(){
   
   if ($(this).val() != "Select a Class"){
@@ -129,37 +128,39 @@ function addingProfOptions(data){
 
 
 
+
 $(document).ready(function(){
 
 
-/*
-                $("[id^=removebtn]").each(function(index){  
-                $(this).click(function (){
-                    var chatID;
-                    chatID = $(this).attr("data-userChatID");
-                    
-                    $.ajax(
-                        {
-                            type:"GET",
-                            url: "/leave_chat",
-                            data:{
-                            userChatID: chatID
-                                },
-                            success: function(data)
+
+                $("#addButton").click(function(){
+                    //first check to see that both fields have valid (not "Select One" Option)
+                    if ($('select[id="classSelect"]').val() != "Select a Class"){
+                        var course = $('select[id="classSelect"]').val();
+                        var prof = $("#profSelect option:selected").text();
+
+                        $.ajax(
                             {
-                                //($(this).closest("[id^=list_chat]")).remove();
-                                
-                                location.reload();
-                                //alert(data);
-                                //($(this).closest("[id^=list_chat]")).remove();
+                                type: "GET",
+                                url: "/addClassFunc/",
+                                dataType: "json",
+                                data:{
+                                    class : course,
+                                    professor: prof,
+                                },
                             }
-                        }
-                     )
-                $(this).closest("[id^=list_chat]").remove();
-});
+                        );
+
+                    }
+                    else{
+                        alert("Please select a class!");
+                    }
+                    //get class and professor that was selected
+
                 });
-                */
+
 });
+
 
 </script>
         
