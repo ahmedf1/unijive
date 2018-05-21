@@ -31,6 +31,7 @@
             </nav>
         </div>
 
+
         <div class="chat">
             <div class="chat-title">
                 <h1>Calculus II</h1>
@@ -58,36 +59,8 @@
 {% include 'snippets/chat_page.html' %}
 
       <script type="text/javascript">
-        // Opens the websocket
-        var ws = new WebSocket("ws://"+location.host+"/chat_page/someuser?username=someuser");
 
-        // Shoves a new message into the message div.
-        ws.onmessage = function(message){
-          var newMessage = message.data[0];
-          var textNode = document.createTextNode(newMessage);
-
-          var messageHolder = document.getElementsByClassName("messages");
-          var messageDiv = document.createElement("div");
-          messageDiv.className = "messages-content";
-          messageDiv.append(textNode);
-          messageHolder.append(messageDiv)
-        }
-
-        // Sends a message to the server when written in the
-        ws.onopen = function(){
-          // sendMessage();
-          alert("It works!")
-        }
-
-        // function sendMessage(){
-        //   var sendButton = document.getElementsByClassName("message-submit");
-        //   sendButton.onclick = function(){
-        //     var textArea = document.getElementsByClassName("message-input");
-        //     var text = textarea.value;
-        //     ws.send(text);
-        //   }
-        // }
-      </script>
+       </script>
 
 
 

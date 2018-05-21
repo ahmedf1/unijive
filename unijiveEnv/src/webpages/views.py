@@ -148,7 +148,7 @@ def addClassFunc(request):
 
             
 
-def mute_chat(request):       
+def mute_chat(request):
     if request.method == 'GET':
         userChatID = request.GET['userChatID']
         mutedChat = User_s_Chats.objects.get(pk=userChatID)
@@ -159,7 +159,7 @@ def mute_chat(request):
         return HttpResponse("FAILED!")
 
 
-def leave_chat(request):       
+def leave_chat(request):
     if request.method == 'GET':
         userChatID = request.GET['userChatID']
         archivedChat = User_s_Chats.objects.get(pk=userChatID)
@@ -242,7 +242,7 @@ class DistractionsView(LoginRequiredMixin, TemplateView):
 class ChatPageView(LoginRequiredMixin, ListView):
     def get_queryset(self):
         queryset = User_s_Chats.objects.filter(owner = self.request.user)
-        return queryset   
+        return queryset
 
 
 
